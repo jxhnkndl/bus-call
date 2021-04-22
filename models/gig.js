@@ -1,4 +1,4 @@
-// Import modules
+// Import dependencies
 const mongoose = require("mongoose");
 
 // Extract Schema constructor

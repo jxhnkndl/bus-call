@@ -1,0 +1,19 @@
+// Import base styles
+@import '../../base';
+
+.dashboard-heading {
+  margin-top: 20px;
+}
+
+.list-group-item {
+  border-radius: .25rem;
+  margin: 5px 0;
+
+  &:nth-child(odd) {
+    background-color: $base-600;
+  }
+
+  &:nth-child(even) {
+    background-color: $base-500;
+  }
+}

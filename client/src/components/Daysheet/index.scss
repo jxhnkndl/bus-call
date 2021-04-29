@@ -1,0 +1,11 @@
+// Import base styles
+@import '../../base';
+
+.card-item {
+  margin: 20px 0;
+
+  iframe {
+    border: 0;
+    width: 100%;
+  }
+}

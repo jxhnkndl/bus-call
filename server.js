@@ -25,16 +25,19 @@ if (process.env.NODE_ENV === "production") {
 // Import API and React routes
 app.use(routes);
 
+// Local DB
+const localdb = `mongodb://${process.env.LOCALDB_HOST}/${process.env.LOCALDB_NAME}`;
+
+// Atlas DB
+const atlasdb = `mongodb+srv://${process.env.ATLASDB_USER}:${process.env.ATLASDB_PASS}@jxhnkndl-dbs.d5dpb.mongodb.net/${process.env.ATLASDB_NAME}?retryWrites=true&w=majority`;
+
 // Connect to database
-mongoose.connect(
-  process.env.MONGODB_URI || 
-  `mongodb://${process.env.LOCALDB_HOST}/${process.env.LOCALDB_NAME}`, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-  }
-);
+mongoose.connect(process.env.MONGODB_URI || atlasdb, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useCreateIndex: true,
+  useFindAndModify: false,
+});
 
 // Start listening...
 app.listen(PORT, function() {

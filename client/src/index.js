@@ -1,14 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "./index.css";
+import { BrowserRouter as Router } from 'react-router-dom';
+import "./index.scss";
 import App from "./App";
-import registerServiceWorker from "./registerServiceWorker";
 
 // Importing the Bootstrap CSS
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 // Render the React app
-ReactDOM.render(<App />, document.getElementById("root"));
-
-// Register service worker
-registerServiceWorker();
+ReactDOM.render(
+  <Router>
+    <App />
+  </Router>, 
+  document.getElementById("root")
+);

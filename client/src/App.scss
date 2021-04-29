@@ -1,0 +1,16 @@
+// Import base
+@import './base';
+
+// Ensure app stretches full viewport height
+.app-container {
+  background: linear-gradient(to bottom, #{$base-900}, #{$base-800});
+  display: flex;
+  flex-direction: column;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+
+  // Ensure main content fills up the viewport between header and footer
+  main {
+    flex: auto;
+  }
+}

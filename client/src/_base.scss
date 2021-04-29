@@ -1,0 +1,24 @@
+// Color variables
+$primary-dark: #005D61;
+$light: #E0F7F9;
+$primary-mid: #00818C;
+$primary: #21C4D6;
+$danger: #EA746B;
+
+// Monochromatic approach
+$base-900: #263238;
+$base-800: #37474F;
+$base-700: #455A64;
+$base-600: #546E7A;
+$base-500: #607D8B;
+$base-400: #78909C;
+$base-300: #90A4AE;
+$base-200: #B0BEC5;
+$base-100: #CFD8DC;
+$base-000: #ECEFF1;
+
+// Font variables
+$font-stack: 'Roboto', Arial, Helvetica, sans-serif;
+
+// Import Bootstrap
+@import '~bootstrap/scss/bootstrap';

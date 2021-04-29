@@ -4,13 +4,26 @@ const mongoose = require("mongoose");
 // Extract Schema constructor
 const Schema = mongoose.Schema;
 
-// Create Gig document schema
+// Define model for documents inserted into the gigs collection
 const gigSchema = new Schema({
   date: { type: Date, default: Date.now },
-  venue: { type: String, required: true },
-  city: { type: String, required: true },
-  doors: { type: String },
-  setlist: [{ type: String }]
+  venue: {
+    name: { type: String },
+    street: { type: String },
+    city: { type: String },
+    state: { type: String },
+    zip: { type: String },
+    capacity: { type: String }
+  },
+  presale: { type: String, default: '0' },
+  catering: { type: String },
+  internet: { type: Boolean, default: false },
+  greenrooms: { type: String, default: '0' },
+  showers: { type: Boolean, default: false },
+  schedule: [{ 
+    timeString: { type: String },
+    event: { type: String }
+  }]
 });
 
 // Compile Gig model

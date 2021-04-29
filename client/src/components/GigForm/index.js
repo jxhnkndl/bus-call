@@ -8,19 +8,27 @@ import './index.scss';
 // Create and export dashboard page component
 export default function GigForm() {
   return (
-    <section>
-      <div className="row">
-        <div className="col-12 col-md-6 mb-4">
-          <CardBody>
-            <h2>INPUT FIELDS</h2>
-          </CardBody>
+    <motion.div
+      initial="initial"
+      animate="in"
+      exit="out"
+      variants={pageVariants}
+      transition={pageTransitions}
+    >
+      <section>
+        <div className="row">
+          <div className="col-12 col-md-6 mb-4">
+            <CardBody>
+              <h2>INPUT FIELDS</h2>
+            </CardBody>
+          </div>
+          <div className="col-12 col-md-6 mb-4">
+            <CardBody>
+              <h2>INPUT FIELDS</h2>
+            </CardBody>
+          </div>
         </div>
-        <div className="col-12 col-md-6 mb-4">
-          <CardBody>
-            <h2>INPUT FIELDS</h2>
-          </CardBody>
-        </div>
-      </div>
-    </section>
+      </section>
+    </motion.div>
   );
 }

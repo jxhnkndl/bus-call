@@ -11,6 +11,8 @@ import './App.scss';
 
 // Create and export App component
 export default function App() {
+  const location = useLocation();
+
   const fetchGigs = async () => {
     try {
       const gigs = await API.getGigs();
@@ -24,11 +26,13 @@ export default function App() {
     <div className="app-container">
       <MainNav />
       <main style={{ overflowX: 'hidden' }} className="container p-3 p-md-5">
-        <Switch>
-          <Route exact path="/" component={Dashboard} />
-          <Route exact path="/dashboard" component={Dashboard} />
-          <Route exact path="/create-gig" component={GigForm} />
-        </Switch>
+        <AnimatePresence exitBeforeEnter>
+          <Switch>
+            <Route exact path="/" component={Dashboard} />
+            <Route exact path="/dashboard" component={Dashboard} />
+            <Route exact path="/create-gig" component={GigForm} />
+          </Switch>
+        </AnimatePresence>
       </main>
       <Footer />
     </div>

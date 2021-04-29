@@ -1,0 +1,8 @@
+// Import base styles
+@import '../../base';
+
+.dash-card {
+  background-color: $base-700;
+  border-radius: .5rem;
+  min-height: 100%;
+}

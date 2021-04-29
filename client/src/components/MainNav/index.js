@@ -12,7 +12,7 @@ export default function MainNav() {
       <Navbar.Brand href="/">Bus Call</Navbar.Brand>
       <Nav className="mr-auto">
         <NavLink className="nav-link" exact to="/">Dashboard</NavLink>
-        <NavLink className="nav-link" to="/gigform">Add Gig</NavLink>
+        <NavLink className="nav-link" to="/create-gig">Add Gig</NavLink>
       </Nav>
     </Navbar>
   );

@@ -1,3 +1,7 @@
-.main-nav {
+// Import base styles
+@import '../../base';
+
+nav {
+  background-color: $base-900;
   flex: none;
 }

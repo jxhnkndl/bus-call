@@ -20,5 +20,6 @@ yarn-error.log*
 
 # workflow
 sandbox.js
+sandbox.scss
 notes.txt
 /scripts/testSeed.js

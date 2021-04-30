@@ -29,7 +29,7 @@ export default function Dashboard() {
           </div>
           <div className="col-12 col-md-6 mb-4">
             <CardBody>
-              <StageSchedule />
+              {selected ? <StageSchedule /> : 'LOADING SCHEDULE' }
             </CardBody>
           </div>
         </div>

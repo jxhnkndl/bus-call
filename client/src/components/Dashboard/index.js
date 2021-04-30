@@ -12,6 +12,7 @@ import './index.scss';
 // Create and export dashboard page component
 export default function Dashboard() {
   const [gigs, setGigs] = useState([]);
+  let [index, setIndex] = useState(0);
 
   // On load
   useEffect(() => {
@@ -28,6 +29,22 @@ export default function Dashboard() {
     }
   };
 
+  const next = () => {
+    if (index === gigs.length - 1) {
+      setIndex(0);
+    } else {
+      setIndex(index + 1);
+    }
+  }
+
+  const prev = () => {
+    if (index === 0) {
+      setIndex(gigs.length - 1)
+    } else {
+      setIndex(index - 1);
+    }
+  }
+
   return (
     <motion.div
       initial="initial"
@@ -37,22 +54,22 @@ export default function Dashboard() {
       transition={pageTransitions}
     >
       <section>
-        <CycleControl />
+        <CycleControl prev={prev} next={next} />
         {gigs.length ? (
           <div className="row">
             <div className="col-12 col-md-6 mb-4">
               <CardBody>
                 <Daysheet 
-                  date={gigs[0].date}
-                  city={gigs[0].venue.city}
-                  state={gigs[0].venue.state}
+                  date={gigs[index].date}
+                  city={gigs[index].venue.city}
+                  state={gigs[index].venue.state}
                 />
               </CardBody>
             </div>
             <div className="col-12 col-md-6 mb-4">
               <CardBody>
                 <StageSchedule 
-                  schedule={gigs[0].schedule}
+                  schedule={gigs[index].schedule}
                 />
               </CardBody>
             </div>

@@ -8,6 +8,7 @@ import Daysheet from '../Daysheet';
 import StageSchedule from '../StageSchedule';
 import API from '../../utils/API';
 import './index.scss';
+import dayjs from 'dayjs';
 
 // Create and export dashboard page component
 export default function Dashboard() {
@@ -29,7 +30,13 @@ export default function Dashboard() {
     }
   };
 
-  const next = () => {
+  // Handle formatting date for display
+  const handleDate = (date) => {
+    return dayjs(date).format('dddd MMM. D, YYYY');
+  }
+
+  // Click handler for cycling to next gig
+  const handleNext = () => {
     if (index === gigs.length - 1) {
       setIndex(0);
     } else {
@@ -37,7 +44,8 @@ export default function Dashboard() {
     }
   }
 
-  const prev = () => {
+  // Click handler for cycling to previous gig
+  const handlePrev = () => {
     if (index === 0) {
       setIndex(gigs.length - 1)
     } else {
@@ -54,15 +62,16 @@ export default function Dashboard() {
       transition={pageTransitions}
     >
       <section>
-        <CycleControl prev={prev} next={next} />
+        <CycleControl prev={handlePrev} next={handleNext} />
         {gigs.length ? (
           <div className="row">
             <div className="col-12 col-md-6 mb-4">
               <CardBody>
                 <Daysheet 
-                  date={gigs[index].date}
+                  date={handleDate(gigs[index].date)}
                   city={gigs[index].venue.city}
                   state={gigs[index].venue.state}
+                  venue={gigs[index].venue.name}
                 />
               </CardBody>
             </div>

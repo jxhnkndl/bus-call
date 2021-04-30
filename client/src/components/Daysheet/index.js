@@ -9,15 +9,15 @@ export default function Daysheet(props) {
     <div className="info-container">
       <div className="card-item">
         <p className="h5 mb-1">Today is:</p>
-        <p className="h2"></p>
+        <p className="h2">{props.date}</p>
       </div>
 
       <div className="card-item">
         <p className="h5 mb-1">You are in:</p>
-        <p className="h2"></p>
+        <p className="h2">{`${props.city}, ${props.state}.`}</p>
       </div>
 
-      <div className="card-item">
+      {/* <div className="card-item">
         <p className="h5 mb-1">Tonight's show:</p>
         <p className="h2"></p>
         <div className="row">
@@ -69,7 +69,7 @@ export default function Daysheet(props) {
         <p className="h4 mb-1"></p>
         <p className="h5 mb-1"></p>
         <p className="h5 mb-1"></p>
-      </div>
+      </div> */}
 
     </div>
   );

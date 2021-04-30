@@ -11,16 +11,18 @@ import './index.scss';
 
 // Create and export dashboard page component
 export default function Dashboard() {
-  const [results, setResults] = useState([]);
+  const [gigs, setGigs] = useState([]);
 
+  // On load
   useEffect(() => {
     fetchGigs();
   }, []);
 
+  // Fetch gigs from DB
   const fetchGigs = async () => {
     try {
       const res = await API.getGigs();
-      setResults(res.data);
+      setGigs(res.data);
     } catch (err) {
       console.log(err);
     }
@@ -36,16 +38,22 @@ export default function Dashboard() {
     >
       <section>
         <CycleControl />
-        {results.length ? (
+        {gigs.length ? (
           <div className="row">
             <div className="col-12 col-md-6 mb-4">
               <CardBody>
-                
+                <Daysheet 
+                  date={gigs[0].date}
+                  city={gigs[0].venue.city}
+                  state={gigs[0].venue.state}
+                />
               </CardBody>
             </div>
             <div className="col-12 col-md-6 mb-4">
               <CardBody>
-
+                <StageSchedule 
+                  schedule={gigs[0].schedule}
+                />
               </CardBody>
             </div>
           </div>

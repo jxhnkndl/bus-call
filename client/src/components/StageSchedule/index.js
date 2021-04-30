@@ -5,14 +5,14 @@ import ListGroupItem from 'react-bootstrap/ListGroupItem';
 import './index.scss';
 
 // Create and export reusable card component
-export default function StageSchedule() {
+export default function StageSchedule(props) {
   return (
     <div className="info-container">
       <p className="dashboard-heading h5 mb-1">Daysheet</p>
 
-      {selected.schedule.length ? (
+      {props.schedule.length ? (
         <ListGroup key="schedule" variant="flush">
-          {selected.schedule.map((block, index) => {
+          {props.schedule.map((block, index) => {
             return (
               <ListGroup.Item
                 key={`${index}-${block._id}`}

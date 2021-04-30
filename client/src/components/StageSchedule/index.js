@@ -1,14 +1,11 @@
 // Import dependencies
-import React, { useContext } from 'react';
-import GigsContext from '../../utils/gigsContext';
+import React from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
 import ListGroupItem from 'react-bootstrap/ListGroupItem';
 import './index.scss';
 
 // Create and export reusable card component
 export default function StageSchedule() {
-  const { gigs, selected } = useContext(GigsContext);
-
   return (
     <div className="info-container">
       <p className="dashboard-heading h5 mb-1">Daysheet</p>

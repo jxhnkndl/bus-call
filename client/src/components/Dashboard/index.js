@@ -1,16 +1,16 @@
 // Import dependencies
-import React, { useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { pageVariants, pageTransitions } from '../../utils/transitions';
 import CardBody from '../CardBody';
+import CycleControl from '../CycleControl';
 import Daysheet from '../Daysheet';
 import StageSchedule from '../StageSchedule';
-import GigsContext from '../../utils/gigsContext';
 import './index.scss';
 
 // Create and export dashboard page component
 export default function Dashboard() {
-  const { gigs, selected } = useContext(GigsContext);
+  const [results, setResults] = useState([]);
 
   return (
     <motion.div
@@ -21,15 +21,16 @@ export default function Dashboard() {
       transition={pageTransitions}
     >
       <section>
+        <CycleControl />
         <div className="row">
           <div className="col-12 col-md-6 mb-4">
             <CardBody>
-              {selected ? <Daysheet /> : 'LOADING GIGS'}
+
             </CardBody>
           </div>
           <div className="col-12 col-md-6 mb-4">
             <CardBody>
-              {selected ? <StageSchedule /> : 'LOADING SCHEDULE' }
+
             </CardBody>
           </div>
         </div>

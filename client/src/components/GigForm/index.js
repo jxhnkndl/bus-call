@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { pageVariants, pageTransitions } from '../../utils/transitions';
 import { emptyFormObj } from '../../utils/emptyFormObj';
+import API from '../../utils/API';
 import CardBody from '../CardBody';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
@@ -12,19 +13,56 @@ import './index.scss';
 export default function GigForm() {
   const [formObj, setFormObj] = useState(emptyFormObj);
 
+  const addGig = async () => {
+    try {
+      const res = await API.addGig(formObj);
+      console.log(res);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    setFormObj({
-      ...formObj,
-      [name]: value,
-    });
-    console.log(formObj);
+    const venue = formObj.venue;
+    const schedule = formObj.schedule;
+
+    // If input field is in a nested object inside of state
+    if (
+      name === 'name' ||
+      name === 'street' ||
+      name === 'city' ||
+      name === 'state' ||
+      name === 'zip' ||
+      name === 'capacity' ||
+      name === 'presale'
+    ) {
+      // Update the nested venue object in the form state object
+      setFormObj({
+        ...formObj,
+        venue: {
+          ...venue,
+          [name]: value,
+        },
+      });
+    }
+
+    // If input field is a direct property of state
+    else {
+      setFormObj({
+        ...formObj,
+        [name]: value,
+      });
+    }
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log(formObj);
-    setFormObj(emptyFormObj);
+    if (formObj.date) {
+      // addGig();
+      console.log(formObj);
+      setFormObj(emptyFormObj);
+    }
   };
 
   return (
@@ -41,6 +79,7 @@ export default function GigForm() {
             <CardBody>
               <Form>
                 <div className="row">
+                  {/* Input: Venue */}
                   <div className="col-12">
                     <Form.Group controlId="formGroupVenue">
                       <Form.Label>Venue Name:</Form.Label>
@@ -53,6 +92,22 @@ export default function GigForm() {
                       />
                     </Form.Group>
                   </div>
+
+                  {/* Input: Street Address */}
+                  <div className="col-12">
+                    <Form.Group controlId="formGroupStreet">
+                      <Form.Label>Address:</Form.Label>
+                      <Form.Control
+                        name="street"
+                        type="text"
+                        placeholder="Enter Street"
+                        value={formObj.street}
+                        onChange={handleInputChange}
+                      />
+                    </Form.Group>
+                  </div>
+
+                  {/* Input: City */}
                   <div className="col-6">
                     <Form.Group controlId="formGroupCity">
                       <Form.Label>City:</Form.Label>
@@ -65,6 +120,8 @@ export default function GigForm() {
                       />
                     </Form.Group>
                   </div>
+
+                  {/* Input: State */}
                   <div className="col-6">
                     <Form.Group controlId="formGroupState">
                       <Form.Label>City:</Form.Label>
@@ -77,8 +134,24 @@ export default function GigForm() {
                       />
                     </Form.Group>
                   </div>
+
+                  {/* Input: Zip */}
                   <div className="col-6">
-                    <Form.Group controlId="formGroupState">
+                    <Form.Group controlId="formGroupZip">
+                      <Form.Label>Zip:</Form.Label>
+                      <Form.Control
+                        name="zip"
+                        type="text"
+                        placeholder="Enter Zip"
+                        value={formObj.zip}
+                        onChange={handleInputChange}
+                      />
+                    </Form.Group>
+                  </div>
+
+                  {/* Input: Date */}
+                  <div className="col-6">
+                    <Form.Group controlId="formGroupDate">
                       <Form.Label>Date:</Form.Label>
                       <Form.Control
                         name="date"
@@ -89,8 +162,41 @@ export default function GigForm() {
                       />
                     </Form.Group>
                   </div>
+
+                  {/* Input: Capacity */}
+                  <div className="col-6">
+                    <Form.Group controlId="formGroupCapacity">
+                      <Form.Label>Venue Capacity:</Form.Label>
+                      <Form.Control
+                        name="capacity"
+                        type="text"
+                        placeholder="Enter Capacity"
+                        value={formObj.capacity}
+                        onChange={handleInputChange}
+                      />
+                    </Form.Group>
+                  </div>
+
+                  {/* Input: Presale */}
+                  <div className="col-6">
+                    <Form.Group controlId="formGroupPresale">
+                      <Form.Label>Presale:</Form.Label>
+                      <Form.Control
+                        name="presale"
+                        type="text"
+                        placeholder="Enter Presale"
+                        value={formObj.presale}
+                        onChange={handleInputChange}
+                      />
+                    </Form.Group>
+                  </div>
+
+
+
+
                 </div>
-                <div className="row">
+
+                <div className="row pt-3">
                   <div className="col-12">
                     <Button
                       type="submit"

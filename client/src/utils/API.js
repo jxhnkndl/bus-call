@@ -5,5 +5,8 @@ import axios from 'axios';
 export default {
   getGigs: function() {
     return axios.get("/api/gigs");
+  },
+  addGig: function(gigData) {
+    return axios.post("/api/gigs", gigData);
   }
 }

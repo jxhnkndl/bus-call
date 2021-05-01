@@ -14,6 +14,8 @@ export const emptyFormObj = {
   internet: false,
   showers: false,
   greenrooms: false,
+  parking: false,
+  rider: false,
   schedule: []
 }
 

@@ -11,7 +11,18 @@ import './index.scss';
 
 // Create and export dashboard page component
 export default function GigForm() {
+  // Init state
   const [formObj, setFormObj] = useState(emptyFormObj);
+
+  // Amenities array
+  const amenities = [
+    'catering',
+    'internet',
+    'showers',
+    'greenrooms',
+    'parking',
+    'rider',
+  ];
 
   const addGig = async () => {
     try {
@@ -56,6 +67,18 @@ export default function GigForm() {
     }
   };
 
+  const handleCheck = (event) => {
+    const { name, checked } = event.target;
+    setFormObj({
+      ...formObj,
+      [name]: checked,
+    });
+  };
+
+  const createLabel = (name) => {
+    return name.slice(0, 1).toUpperCase() + name.slice(1);
+  }  
+
   const handleSubmit = (event) => {
     event.preventDefault();
     if (formObj.date) {
@@ -79,6 +102,10 @@ export default function GigForm() {
             <CardBody>
               <Form>
                 <div className="row">
+
+
+
+
                   {/* Input: Venue */}
                   <div className="col-12">
                     <Form.Group controlId="formGroupVenue">
@@ -191,8 +218,23 @@ export default function GigForm() {
                     </Form.Group>
                   </div>
 
+                  <div className="col-12">
+                    <p>Amenities (Select all that apply):</p>
+                  </div>
 
-
+                  {amenities.map((amenity, index) => {
+                    return (
+                      <div key={index} className="col-6 col-md-4">
+                        <Form.Check
+                          type="checkbox"
+                          name={amenity}
+                          label={`${createLabel(amenity)}:`}
+                          checked={formObj[amenity]}
+                          onChange={handleCheck}
+                        />
+                      </div>
+                    );
+                  })}
 
                 </div>
 

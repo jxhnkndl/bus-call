@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import { Switch, Route, NavLink, useLocation } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import API from '../src/utils/API';
 import MainNav from './components/MainNav';
 import Dashboard from './components/Dashboard';
@@ -24,6 +26,13 @@ export default function App() {
         </AnimatePresence>
       </main>
       <Footer />
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressionBar={false}
+        newestOnTop
+        closeOnClick
+      />
     </div>
   );
 }

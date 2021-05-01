@@ -118,8 +118,6 @@ export default function GigForm() {
       ...formObj,
       schedule: schedule,
     });
-
-    console.log(formObj);
   };
 
   // Handle resetting all input fields in UI on submit
@@ -141,6 +139,7 @@ export default function GigForm() {
     event.preventDefault();
     if (formObj.date) {
       console.log(formObj);
+      addGig();
       handleReset();
     }
   };
@@ -159,6 +158,7 @@ export default function GigForm() {
             <CardBody>
               <Form>
                 <div className="row">
+                  {/* Creates all fields for adding venue data to form object */}
                   {venueFields.map((field, index) => {
                     return (
                       <div
@@ -187,6 +187,7 @@ export default function GigForm() {
                     <p>Amenities (Select all that apply):</p>
                   </div>
 
+                  {/* Creates checkboxes for each element in the amenities array */}
                   {amenities.map((amenity, index) => {
                     return (
                       <div key={`checkbox-${index}`} className="col-6 col-md-4">
@@ -205,6 +206,7 @@ export default function GigForm() {
                     <p>Insert time strings for each block:</p>
                   </div>
 
+                  {/* Create inputs for adding times to stage schedule events */}
                   {stageBlocks.map((block, index) => {
                     return (
                       <div key={`block-${block.event}`} className="col-12">
@@ -229,6 +231,8 @@ export default function GigForm() {
                     );
                   })}
                 </div>
+
+                {/* Submit */}
                 <div className="row pt-3">
                   <div className="col-12">
                     <Button

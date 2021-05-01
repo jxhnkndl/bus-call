@@ -13,7 +13,6 @@ module.exports = {
   },
   create: async function (req, res) {
     try {
-      console.log(req.body);
       const gig = await db.Gig.create(req.body);
       res.json(gig);
     } catch (err) {

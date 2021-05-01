@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { pageVariants, pageTransitions } from '../../utils/transitions';
 import { emptyFormObj } from '../../utils/emptyFormObj';
+import { toast } from 'react-toastify';
 import API from '../../utils/API';
 import CardBody from '../CardBody';
 import Form from 'react-bootstrap/Form';
@@ -61,33 +62,24 @@ export default function GigForm() {
     const { name, value } = event.target;
     const venue = formObj.venue;
 
-    // If input field is in a nested object inside of state
-    if (
-      name === 'name' ||
-      name === 'street' ||
-      name === 'city' ||
-      name === 'state' ||
-      name === 'zip' ||
-      name === 'capacity' ||
-      name === 'presale'
-    ) {
-      // Update the nested venue object in the form state object
-      setFormObj({
-        ...formObj,
-        venue: {
-          ...venue,
-          [name]: value,
-        },
-      });
-    }
-
-    // If input field is a direct property of state
-    else {
+    // If input is date, set field directly
+    if (name === 'date') {
       setFormObj({
         ...formObj,
         [name]: value,
       });
+
+      return;
     }
+
+    // Otherwise, set field inside venue object
+    setFormObj({
+      ...formObj,
+      venue: {
+        ...venue,
+        [name]: value,
+      },
+    });
   };
 
   // Handle updating state from checkboxes
@@ -140,6 +132,7 @@ export default function GigForm() {
     if (formObj.date) {
       console.log(formObj);
       addGig();
+      toast('Gig created!');
       handleReset();
     }
   };

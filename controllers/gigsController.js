@@ -5,7 +5,7 @@ const db = require('../models');
 module.exports = {
   getAll: async function (req, res) {
     try {
-      const gigs = await db.Gig.find({});
+      const gigs = await db.Gig.find({}).sort({ date: 1 });
       res.json(gigs);
     } catch (err) {
       console.log(err);

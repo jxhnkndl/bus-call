@@ -33,7 +33,7 @@ export default function Dashboard() {
   // Handle formatting date for display
   const handleDate = (date) => {
     return dayjs(date).format('dddd MMM. D, YYYY');
-  }
+  };
 
   // Click handler for cycling to next gig
   const handleNext = () => {
@@ -42,16 +42,16 @@ export default function Dashboard() {
     } else {
       setIndex(index + 1);
     }
-  }
+  };
 
   // Click handler for cycling to previous gig
   const handlePrev = () => {
     if (index === 0) {
-      setIndex(gigs.length - 1)
+      setIndex(gigs.length - 1);
     } else {
       setIndex(index - 1);
     }
-  }
+  };
 
   return (
     <motion.div
@@ -62,26 +62,39 @@ export default function Dashboard() {
       transition={pageTransitions}
     >
       <section>
-        <CycleControl prev={handlePrev} next={handleNext} />
+        
         {gigs.length ? (
-          <div className="row">
-            <div className="col-12 col-md-6 mb-4">
-              <CardBody>
-                <Daysheet 
-                  date={handleDate(gigs[index].date)}
-                  city={gigs[index].venue.city}
-                  state={gigs[index].venue.state}
-                  venue={gigs[index].venue.name}
-                />
-              </CardBody>
+          <div>
+            <div className="row">
+              <div className="col-12 col-md-6 mb-4">
+                <CardBody>
+                  <Daysheet
+                    date={handleDate(gigs[index].date)}
+                    city={gigs[index].venue.city}
+                    state={gigs[index].venue.state}
+                    venue={gigs[index].venue.name}
+                    street={gigs[index].venue.street}
+                    zip={gigs[index].venue.zip}
+                    capacity={gigs[index].venue.capacity}
+                    presale={gigs[index].presale}
+                    greenrooms={gigs[index].greenrooms}
+                    catering={'Yes'}
+                    showers={gigs[index].showers}
+                    internet={gigs[index].internet}
+                    nextDate={handleDate(gigs[index + 1].date)}
+                    nextCity={gigs[index + 1].venue.city}
+                    nextState={gigs[index + 1].venue.state}
+                    nextVenue={gigs[index + 1].venue.name}
+                  />
+                </CardBody>
+              </div>
+              <div className="col-12 col-md-6 mb-4">
+                <CardBody>
+                  <StageSchedule schedule={gigs[index].schedule} />
+                </CardBody>
+              </div>
             </div>
-            <div className="col-12 col-md-6 mb-4">
-              <CardBody>
-                <StageSchedule 
-                  schedule={gigs[index].schedule}
-                />
-              </CardBody>
-            </div>
+            <CycleControl prev={handlePrev} next={handleNext} />
           </div>
         ) : (
           <p className="h4">NOTHING SCHEDULED</p>

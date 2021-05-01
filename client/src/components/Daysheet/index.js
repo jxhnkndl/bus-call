@@ -17,60 +17,60 @@ export default function Daysheet(props) {
         <p className="h2">{`${props.city}, ${props.state}.`}</p>
       </div>
 
-      {/* <div className="card-item">
-        <p className="h5 mb-1">Tonight's show:</p>
-        <p className="h2"></p>
-        <div className="row">
-          <div className="col-12 col-lg-6 my-2 my-lg-0">
-            <p className="h5 mb-1"></p>
-            <p className="h5 mb-1"></p>
-          </div>
+      <div className="card-item">
+        <p className="h5 mb-1">Tonight:</p>
+        <p className="h2">{props.venue}</p>
+      </div>
 
-          <div className="col-12 col-lg-6 my-2 my-lg-0">
-            <p className="h5 mb-1">
-              <span className="inline-heading">Capacity: </span>
-              
-            </p>
-            <p className="h5 mb-1">
-              <span className="inline-heading">Presale: </span>
-              
-            </p>
-          </div>
+      <div className="card-item">
+        <p className="h5 mb-1">Address:</p>
+        <p className="h5 mb-1">{props.street}</p>
+        <p className="h5 mb-1">{`${props.city}, ${props.state}. ${props.zip}`}</p>
+      </div>
+
+      <div className="card-item row text-center text-lg-left">
+        <div className="col-6 col-lg-4 my-2 my-lg-0 order-1">
+          <p className="h6 mb-1">Capacity:</p>
+          <p className="h2">{props.capacity}</p>
+        </div>
+
+        <div className="col-6 col-lg-4 my-2 my-lg-0 order-2 order-lg-4">
+          <p className="h6 mb-1">Presale:</p>
+          <p className="h2">{props.presale}</p>
+        </div>
+
+        <div className="col-6 col-lg-4 my-2 my-lg-0 order-3 order-lg-5">
+          <p className="h6 mb-1">Rooms:</p>
+          <p className="h2">{props.greenrooms}</p>
+        </div>
+
+        <div className="col-6 col-lg-4 my-2 my-lg-0 order-4 order-lg-2">
+          <p className="h6 mb-1">Catering:</p>
+          <p className="h2">{props.catering}</p>
+        </div>
+
+        <div className="col-6 col-lg-4 my-2 my-lg-0 order-5 order-lg-3">
+          <p className="h6 mb-1">Internet:</p>
+          <p className="h2">{props.catering ? 'Yes' : 'No'}</p>
+        </div>
+
+        <div className="col-6 col-lg-4 my-2 my-lg-0 order-6 order-lg-6 ">
+          <p className="h6 mb-1">Showers:</p>
+          <p className="h2">{props.presale ? 'Yes' : 'No'}</p>
         </div>
       </div>
 
       <div className="card-item">
-        <div className="row">
-          <div className="col-12 col-lg-6 my-2 my-lg-0">
-            <p className="h5 mb-1">
-              <span className="inline-heading">Catering: </span>
-              
-            </p>
-            <p className="h5 mb-1">
-              <span className="inline-heading">Internet: </span>
-              
-            </p>
-          </div>
-          <div className="col-12 col-lg-6 my-2 my-lg-0">
-            <p className="h5 mb-1">
-              <span className="inline-heading">Green Rooms: </span>
-              
-            </p>
-            <p className="h5 mb-1">
-              <span className="inline-heading">Showers: </span>
-              
-            </p>
-          </div>
-        </div>
+        <p className="h6 mb-1">Tomorrow:</p>
+        <p className="h3 mb-1">{props.nextVenue}</p>
+        <p className="h5 mb-1">{`${props.nextCity}, ${props.nextState}.`}</p>
+        <p className="h5">{`Distance: 315 miles`}</p>
       </div>
 
       <div className="card-item">
-        <p className="h5 mb-1">Tomorrow:</p>
-        <p className="h4 mb-1"></p>
-        <p className="h5 mb-1"></p>
-        <p className="h5 mb-1"></p>
-      </div> */}
-
+        <p className="h5 mb-1">{`${props.nextCity}, ${props.nextState}.`}</p>
+        <p className="h6">{`Distance: 315 miles`}</p>
+      </div>
     </div>
   );
 }

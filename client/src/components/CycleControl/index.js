@@ -16,7 +16,9 @@ export default function CycleControl(props) {
                 </span>
               </a>
             </div>
-            <div className="col-8"></div>
+            <div className="col-8">
+              
+            </div>
             <div className="col-2 d-flex justify-content-end align-items-center">
               <a href="#" onClick={props.next}>
                 <span className="material-icons md-48 material-icons-outlined">

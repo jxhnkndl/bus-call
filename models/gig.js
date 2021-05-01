@@ -13,12 +13,12 @@ const gigSchema = new Schema({
     city: { type: String },
     state: { type: String },
     zip: { type: String },
-    capacity: { type: String }
+    capacity: { type: String },
+    presale: { type: String, default: '0' },
   },
-  presale: { type: String, default: '0' },
-  catering: { type: String },
+  catering: { type: Boolean, default: false },
   internet: { type: Boolean, default: false },
-  greenrooms: { type: String, default: '0' },
+  greenrooms: { type: Boolean, default: false },
   showers: { type: Boolean, default: false },
   schedule: [{ 
     timeString: { type: String },

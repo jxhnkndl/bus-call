@@ -41,17 +41,17 @@ export default function Daysheet(props) {
 
         <div className="col-6 col-lg-4 my-2 my-lg-0 order-3 order-lg-5">
           <p className="h6 mb-1">Rooms:</p>
-          <p className="h2">{props.greenrooms}</p>
+          <p className="h2">{props.greenrooms ? 'Yes' : 'No'}</p>
         </div>
 
         <div className="col-6 col-lg-4 my-2 my-lg-0 order-4 order-lg-2">
           <p className="h6 mb-1">Catering:</p>
-          <p className="h2">{props.catering}</p>
+          <p className="h2">{props.catering ? 'Yes' : 'No'}</p>
         </div>
 
         <div className="col-6 col-lg-4 my-2 my-lg-0 order-5 order-lg-3">
           <p className="h6 mb-1">Internet:</p>
-          <p className="h2">{props.catering ? 'Yes' : 'No'}</p>
+          <p className="h2">{props.internet ? 'Yes' : 'No'}</p>
         </div>
 
         <div className="col-6 col-lg-4 my-2 my-lg-0 order-6 order-lg-6 ">

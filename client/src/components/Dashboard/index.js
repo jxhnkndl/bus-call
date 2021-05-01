@@ -76,9 +76,9 @@ export default function Dashboard() {
                     street={gigs[index].venue.street}
                     zip={gigs[index].venue.zip}
                     capacity={gigs[index].venue.capacity}
-                    presale={gigs[index].presale}
+                    presale={gigs[index].venue.presale}
                     greenrooms={gigs[index].greenrooms}
-                    catering={'Yes'}
+                    catering={gigs[index].catering}
                     showers={gigs[index].showers}
                     internet={gigs[index].internet}
                     nextDate={handleDate(gigs[index + 1].date)}

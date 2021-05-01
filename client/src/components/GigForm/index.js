@@ -24,6 +24,29 @@ export default function GigForm() {
     'rider',
   ];
 
+  const venueFields = [
+    { name: 'name', col: 12 },
+    { name: 'street', col: 12 },
+    { name: 'city', col: 6 },
+    { name: 'state', col: 6 },
+    { name: 'zip', col: 6 },
+    { name: 'date', col: 6 },
+    { name: 'capacity', col: 6 },
+    { name: 'presale', col: 6 },
+  ];
+
+  const stageBlocks = [
+    { timeString: '', event: 'Load In' },
+    { timeString: '', event: 'Soundcheck' },
+    { timeString: '', event: 'Doors' },
+    { timeString: '', event: 'Opener' },
+    { timeString: '', event: 'Second' },
+    { timeString: '', event: 'Direct' },
+    { timeString: '', event: 'Headliner' },
+    { timeString: '', event: 'Curfew' },
+    { timeString: '', event: 'Bus Call' },
+  ];
+
   const addGig = async () => {
     try {
       const res = await API.addGig(formObj);
@@ -33,10 +56,10 @@ export default function GigForm() {
     }
   };
 
+  // Handle input changes
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     const venue = formObj.venue;
-    const schedule = formObj.schedule;
 
     // If input field is in a nested object inside of state
     if (
@@ -67,6 +90,7 @@ export default function GigForm() {
     }
   };
 
+  // Handle updating state from checkboxes
   const handleCheck = (event) => {
     const { name, checked } = event.target;
     setFormObj({
@@ -75,16 +99,49 @@ export default function GigForm() {
     });
   };
 
+  // Handle updating state's nested schedule array
+  const handleSchedule = (event) => {
+    // Capture event parameters
+    const { name, value } = event.target;
+    const { index } = event.target.dataset;
+
+    // Extract matching object from schedule in state
+    const schedule = [...formObj.schedule];
+    const currentBlock = schedule[index];
+
+    // Update the block's and put it back in the schedule
+    currentBlock.timeString = value;
+    schedule.splice(index, 1, currentBlock);
+
+    // Reset state
+    setFormObj({
+      ...formObj,
+      schedule: schedule,
+    });
+
+    console.log(formObj);
+  };
+
+  // Handle resetting all input fields in UI on submit
+  const handleReset = () => {
+    Array.from(document.querySelectorAll('input')).forEach(
+      (input) => (input.value = '')
+    );
+
+    setFormObj(emptyFormObj);
+  };
+
+  // Create a formatted input label from its name
   const createLabel = (name) => {
     return name.slice(0, 1).toUpperCase() + name.slice(1);
-  }  
+  };
 
+  // Post form data to API
   const handleSubmit = (event) => {
     event.preventDefault();
     if (formObj.date) {
-      // addGig();
       console.log(formObj);
-      setFormObj(emptyFormObj);
+      handleReset();
     }
   };
 
@@ -102,121 +159,29 @@ export default function GigForm() {
             <CardBody>
               <Form>
                 <div className="row">
-
-
-
-
-                  {/* Input: Venue */}
-                  <div className="col-12">
-                    <Form.Group controlId="formGroupVenue">
-                      <Form.Label>Venue Name:</Form.Label>
-                      <Form.Control
-                        name="name"
-                        type="text"
-                        placeholder="Enter Venue"
-                        value={formObj.name}
-                        onChange={handleInputChange}
-                      />
-                    </Form.Group>
-                  </div>
-
-                  {/* Input: Street Address */}
-                  <div className="col-12">
-                    <Form.Group controlId="formGroupStreet">
-                      <Form.Label>Address:</Form.Label>
-                      <Form.Control
-                        name="street"
-                        type="text"
-                        placeholder="Enter Street"
-                        value={formObj.street}
-                        onChange={handleInputChange}
-                      />
-                    </Form.Group>
-                  </div>
-
-                  {/* Input: City */}
-                  <div className="col-6">
-                    <Form.Group controlId="formGroupCity">
-                      <Form.Label>City:</Form.Label>
-                      <Form.Control
-                        name="city"
-                        type="text"
-                        placeholder="Enter City"
-                        value={formObj.city}
-                        onChange={handleInputChange}
-                      />
-                    </Form.Group>
-                  </div>
-
-                  {/* Input: State */}
-                  <div className="col-6">
-                    <Form.Group controlId="formGroupState">
-                      <Form.Label>City:</Form.Label>
-                      <Form.Control
-                        name="state"
-                        type="text"
-                        placeholder="Enter State"
-                        value={formObj.state}
-                        onChange={handleInputChange}
-                      />
-                    </Form.Group>
-                  </div>
-
-                  {/* Input: Zip */}
-                  <div className="col-6">
-                    <Form.Group controlId="formGroupZip">
-                      <Form.Label>Zip:</Form.Label>
-                      <Form.Control
-                        name="zip"
-                        type="text"
-                        placeholder="Enter Zip"
-                        value={formObj.zip}
-                        onChange={handleInputChange}
-                      />
-                    </Form.Group>
-                  </div>
-
-                  {/* Input: Date */}
-                  <div className="col-6">
-                    <Form.Group controlId="formGroupDate">
-                      <Form.Label>Date:</Form.Label>
-                      <Form.Control
-                        name="date"
-                        type="date"
-                        placeholder="Enter State"
-                        value={formObj.date}
-                        onChange={handleInputChange}
-                      />
-                    </Form.Group>
-                  </div>
-
-                  {/* Input: Capacity */}
-                  <div className="col-6">
-                    <Form.Group controlId="formGroupCapacity">
-                      <Form.Label>Venue Capacity:</Form.Label>
-                      <Form.Control
-                        name="capacity"
-                        type="text"
-                        placeholder="Enter Capacity"
-                        value={formObj.capacity}
-                        onChange={handleInputChange}
-                      />
-                    </Form.Group>
-                  </div>
-
-                  {/* Input: Presale */}
-                  <div className="col-6">
-                    <Form.Group controlId="formGroupPresale">
-                      <Form.Label>Presale:</Form.Label>
-                      <Form.Control
-                        name="presale"
-                        type="text"
-                        placeholder="Enter Presale"
-                        value={formObj.presale}
-                        onChange={handleInputChange}
-                      />
-                    </Form.Group>
-                  </div>
+                  {venueFields.map((field, index) => {
+                    return (
+                      <div
+                        key={`inputField-${index}`}
+                        className={`col-${field.col}`}
+                      >
+                        <Form.Group controlId={`${field.name}InputGroup`}>
+                          <Form.Label>
+                            {index === 0
+                              ? `Venue Name:`
+                              : `${createLabel(field.name)}`}
+                          </Form.Label>
+                          <Form.Control
+                            name={field.name}
+                            type={field.name === 'date' ? 'date' : 'text'}
+                            placeholder={`Enter ${createLabel(field.name)}`}
+                            value={formObj[field.name]}
+                            onChange={handleInputChange}
+                          />
+                        </Form.Group>
+                      </div>
+                    );
+                  })}
 
                   <div className="col-12">
                     <p>Amenities (Select all that apply):</p>
@@ -224,7 +189,7 @@ export default function GigForm() {
 
                   {amenities.map((amenity, index) => {
                     return (
-                      <div key={index} className="col-6 col-md-4">
+                      <div key={`checkbox-${index}`} className="col-6 col-md-4">
                         <Form.Check
                           type="checkbox"
                           name={amenity}
@@ -236,8 +201,34 @@ export default function GigForm() {
                     );
                   })}
 
-                </div>
+                  <div className="col-12 pt-3">
+                    <p>Insert time strings for each block:</p>
+                  </div>
 
+                  {stageBlocks.map((block, index) => {
+                    return (
+                      <div key={`block-${block.event}`} className="col-12">
+                        <Form.Group>
+                          <Form.Label>{block.event}</Form.Label>
+                          <Form.Control
+                            data-index={index}
+                            name={block.event}
+                            type="text"
+                            placeholder={`Enter ${block.event} start time`}
+                            value={formObj.schedule.timeString}
+                            onChange={handleSchedule}
+                            onSubmit={() =>
+                              setFormObj({
+                                ...formObj,
+                                schedule: stageBlocks,
+                              })
+                            }
+                          />
+                        </Form.Group>
+                      </div>
+                    );
+                  })}
+                </div>
                 <div className="row pt-3">
                   <div className="col-12">
                     <Button

@@ -40,6 +40,7 @@ export default function Dashboard() {
     if (index === gigs.length - 1) {
       setIndex(0);
     } else {
+      console.log(gigs);
       setIndex(index + 1);
     }
   };
@@ -81,10 +82,10 @@ export default function Dashboard() {
                     catering={gigs[index].catering}
                     showers={gigs[index].showers}
                     internet={gigs[index].internet}
-                    nextDate={handleDate(gigs[index + 1].date)}
-                    nextCity={gigs[index + 1].venue.city}
-                    nextState={gigs[index + 1].venue.state}
-                    nextVenue={gigs[index + 1].venue.name}
+                    nextDate={gigs[index + 1] ? gigs[index + 1].date : 'N/A'}
+                    nextCity={gigs[index + 1] ? gigs[index + 1].venue.city : 'N/A'}
+                    nextState={gigs[index + 1] ? gigs[index + 1].venue.state : 'N/A'}
+                    nextVenue={gigs[index + 1] ? gigs[index + 1].venue.name : 'N/A'}
                   />
                 </CardBody>
               </div>

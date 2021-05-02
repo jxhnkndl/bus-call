@@ -8,7 +8,7 @@ import './index.scss';
 export default function StageSchedule(props) {
   return (
     <div className="info-container">
-      <p className="dashboard-heading h5 mb-1">Daysheet</p>
+      <p className="dashboard-heading small-heading h5 mb-2">Day Schedule</p>
 
       {props.schedule.length ? (
         <ListGroup key="schedule" variant="flush">
@@ -19,11 +19,11 @@ export default function StageSchedule(props) {
                 className="daysheet-item"
               >
                 <div className="row">
-                  <div className="col-12 col-lg-5 daysheet-time">
-                    {block.timeString}
+                  <div className="col-12 col-lg-12 daysheet-time">
+                    <p className="block-time pt-2 mb-1">{block.timeString}</p>
                   </div>
-                  <div className="col-12 col-lg-7 daysheet-item">
-                    {block.event}
+                  <div className="col-12 col-lg-12 daysheet-item">
+                    <p className="block-event mb-1">{block.event}</p>
                   </div>
                 </div>
               </ListGroup.Item>

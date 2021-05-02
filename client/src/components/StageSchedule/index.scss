@@ -10,10 +10,18 @@
   margin: 5px 0;
 
   &:nth-child(odd) {
-    background-color: $base-600;
+    background-color: $base-700;
   }
 
   &:nth-child(even) {
-    background-color: $base-500;
+    background-color: $base-600;
+  }
+
+  .block-time {
+    font-size: 1rem;
+  }
+
+  .block-event {
+    font-size: 2rem;
   }
 }

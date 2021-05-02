@@ -1,23 +1,22 @@
 // Color variables
-$primary-dark: #005D61;
-$light: #E0F7F9;
-$primary-mid: #00818C;
-$primary: #21C4D6;
-$danger: #EA746B;
 
-// Monochromatic approach
-$base-900: #263238;
-$base-800: #37474F;
-$base-700: #455A64;
-$base-600: #546E7A;
-$base-500: #607D8B;
-$base-400: #78909C;
-$base-300: #90A4AE;
-$base-200: #B0BEC5;
-$base-100: #CFD8DC;
-$base-000: #ECEFF1;
+$primary: #ff9800;
+$primary-light: #ffc947;
+$primary-dark: #c66900;
 
-// Font variables
+// Base white, gray, and black
+$base-000: #fafafa;
+$base-100: #f5f5f5;
+$base-200: #eeeeee;
+$base-300: #e0e0e0;
+$base-400: #bebebe;
+$base-500: #9f9f9f;
+$base-600: #7676768c;
+$base-700: #6262626c;
+$base-800: #4242426c;
+$base-900: #212121;
+
+// Primary font-stack
 $font-stack: 'Roboto', Arial, Helvetica, sans-serif;
 
 // Import Bootstrap

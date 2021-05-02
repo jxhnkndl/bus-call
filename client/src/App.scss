@@ -3,7 +3,8 @@
 
 // Ensure app stretches full viewport height
 .app-container {
-  background: linear-gradient(to bottom, #{$base-900}, #{$base-800});
+  background: $base-900;
+  color: $base-000;
   display: flex;
   flex-direction: column;
   font-family: 'Roboto', Arial, Helvetica, sans-serif;
@@ -12,5 +13,10 @@
   // Ensure main content fills up the viewport between header and footer
   main {
     flex: auto;
+  }
+
+  // App wide heading styles
+  .small-heading {
+    color: $primary;
   }
 }

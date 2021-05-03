@@ -1,0 +1,26 @@
+// Import base styles
+@import '../../base';
+
+.dashboard-nav {
+
+  &-link {
+    display: inline-block;
+    font-size: 1rem;
+  }
+
+  #dropdown-basic {
+    background-color: $base-800 !important;
+    border: 1px solid $base-300;
+    color: $base-000;
+  }
+
+  .nav-icon {
+    color: $base-400;
+    display: inline-block;
+    font-size: 2rem;
+  
+    &:hover {
+      color: $base-500;
+    }
+  }
+}

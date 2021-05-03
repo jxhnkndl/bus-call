@@ -24,14 +24,14 @@ export default function App() {
   return (
     <div className="app-container">
       <MainNav />
-      <main style={{ overflowX: 'hidden' }} className="">
+      <main style={{ overflow: 'hidden' }} className="">
         <AnimatePresence exitBeforeEnter>
           <Switch>
             <Route exact path="/" component={LandingPage} />
-            <Route exact path="/dashboard" component={Dashboard} />
-            <Route exact path="/create-gig" component={GigForm} />
-            {/* <ProtectedRoute exact path="/dashboard" component={Dashboard} />
-            <ProtectedRoute exact path="/create-gig" component={GigForm} /> */}
+            {/* <Route exact path="/dashboard" component={Dashboard} />
+            <Route exact path="/create-gig" component={GigForm} /> */}
+            <ProtectedRoute exact path="/dashboard" component={Dashboard} />
+            <ProtectedRoute exact path="/create-gig" component={GigForm} />
           </Switch>
         </AnimatePresence>
       </main>

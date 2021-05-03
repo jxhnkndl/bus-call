@@ -4,8 +4,14 @@
 .card-item {
   margin: 20px 0;
 
-  iframe {
-    border: 0;
-    width: 100%;
+  .amenity-badge {
+    background-color: $base-700;
+  }
+
+  .badge {
+    font-family: $font-stack-primary;
+    font-size: 1.5rem;
+    font-weight: 200;
+    text-align: left;
   }
 }

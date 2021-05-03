@@ -4,4 +4,14 @@
 nav {
   background-color: $base-900;
   flex: none;
+
+  .navbar-brand {
+    font-family: $font-stack-primary;
+    font-weight: 300;
+  }
+
+  .nav-link {
+    font-family: $font-stack-secondary;
+    font-size: 1rem;
+  }
 }

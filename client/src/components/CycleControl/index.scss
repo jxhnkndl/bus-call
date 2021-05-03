@@ -2,5 +2,10 @@
 @import '../../base';
 
 .nav-icon {
+  color: $primary;
   font-size: 2rem;
+
+  &:hover {
+    color: $primary-dark;
+  }
 }

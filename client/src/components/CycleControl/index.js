@@ -8,17 +8,14 @@ export default function CycleControl(props) {
   return (
     <div className="row">
       <div className="col-12 mb-4">
-        <CardBody>
-          <div className="row">
-            <div className="col-2 d-flex justify-content-start align-items-center">
+        <CardBody spacing={'p-3 p-md-4 mx-2 m-md-0 align-items-center'}>
+          <div className="row px-2">
+            <div className="col-6 ">
               <p className="nav-icon mb-0" onClick={props.prev}>
                 <i class="fas fa-arrow-circle-left"></i>
               </p>
             </div>
-            <div className="col-8">
-              
-            </div>
-            <div className="col-2 d-flex justify-content-end align-items-center">
+            <div className="col-6 text-right ">
               <p className="nav-icon mb-0" onClick={props.next}>
                 <i class="fas fa-arrow-circle-right"></i>
               </p>

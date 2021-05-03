@@ -62,13 +62,17 @@ export default function Dashboard() {
       variants={pageVariants}
       transition={pageTransitions}
     >
-      <section>
-        
+      <section className="p-2 px-md-4 px-lg-5">
         {gigs.length ? (
           <div>
+            <CycleControl
+              spacing={'p-4 p-md-4 m-2 m-md-0'}
+              prev={handlePrev}
+              next={handleNext}
+            />
             <div className="row">
               <div className="col-12 col-md-6 mb-4">
-                <CardBody>
+                <CardBody spacing={'p-4 p-md-4 m-2 m-md-0'}>
                   <Daysheet
                     date={handleDate(gigs[index].date)}
                     city={gigs[index].venue.city}
@@ -83,19 +87,24 @@ export default function Dashboard() {
                     showers={gigs[index].showers}
                     internet={gigs[index].internet}
                     nextDate={gigs[index + 1] ? gigs[index + 1].date : 'N/A'}
-                    nextCity={gigs[index + 1] ? gigs[index + 1].venue.city : 'N/A'}
-                    nextState={gigs[index + 1] ? gigs[index + 1].venue.state : 'N/A'}
-                    nextVenue={gigs[index + 1] ? gigs[index + 1].venue.name : 'N/A'}
+                    nextCity={
+                      gigs[index + 1] ? gigs[index + 1].venue.city : 'N/A'
+                    }
+                    nextState={
+                      gigs[index + 1] ? gigs[index + 1].venue.state : 'N/A'
+                    }
+                    nextVenue={
+                      gigs[index + 1] ? gigs[index + 1].venue.name : 'N/A'
+                    }
                   />
                 </CardBody>
               </div>
               <div className="col-12 col-md-6 mb-4">
-                <CardBody>
+                <CardBody spacing={'p-4 p-md-4 m-2 m-md-0'}>
                   <StageSchedule schedule={gigs[index].schedule} />
                 </CardBody>
               </div>
             </div>
-            <CycleControl prev={handlePrev} next={handleNext} />
           </div>
         ) : (
           <p className="h4">NOTHING SCHEDULED</p>

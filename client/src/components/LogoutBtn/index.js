@@ -10,6 +10,7 @@ export default function LogoutBtn() {
   return (
     <Button className="m-2 px-4 py-2" variant="primary" onClick={() => logout()}>
       Log Out
+      <i class="fas fa-sign-out-alt ml-2"></i>
     </Button>
   );
 }

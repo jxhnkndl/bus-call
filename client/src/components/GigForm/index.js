@@ -148,7 +148,7 @@ export default function GigForm() {
       <section>
         <div className="row">
           <div className="col-12 col-md-10 col-lg-8 mx-auto">
-            <CardBody>
+            <CardBody spacing={'p-4 p-md-4 m-2 m-md-0'}>
               <Form>
                 <div className="row">
                   {/* Creates all fields for adding venue data to form object */}
@@ -167,7 +167,11 @@ export default function GigForm() {
                           <Form.Control
                             name={field.name}
                             type={field.name === 'date' ? 'date' : 'text'}
-                            placeholder={`Enter ${createLabel(field.name)}`}
+                            placeholder={
+                              field.name === 'date'
+                                ? 'mm/dd/yyyy'
+                                : `Enter ${createLabel(field.name)}`
+                            }
                             value={formObj[field.name]}
                             onChange={handleInputChange}
                           />

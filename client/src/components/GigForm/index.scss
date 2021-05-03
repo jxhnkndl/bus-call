@@ -1,2 +1,24 @@
 // Import base styles
 @import '../../base';
+
+input[type="text"],
+input[type="date"] {
+  background-color: $base-700;
+  border: none;
+  color: $base-000;
+
+  &::placeholder {
+    color: $base-000;
+  }
+
+  &::-webkit-calendar-picker-indicator {
+    filter: invert(.8);
+  }
+
+  &:focus {
+    background-color: $base-600;
+    border: 1px solid $base-000;
+    color: $base-000;
+    outline-color: $base-000;
+  }
+}

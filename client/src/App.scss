@@ -7,7 +7,7 @@
   color: $base-000;
   display: flex;
   flex-direction: column;
-  font-family: 'Roboto', Arial, Helvetica, sans-serif;
+  font-family: $font-stack-primary;
   min-height: 100vh;
 
   // Ensure main content fills up the viewport between header and footer
@@ -18,5 +18,6 @@
   // App wide heading styles
   .small-heading {
     color: $primary;
+    font-family: $font-stack-secondary;
   }
 }

@@ -1,5 +1,4 @@
 // Color variables
-
 $primary: #ff9800;
 $primary-light: #ffc947;
 $primary-dark: #c66900;
@@ -17,7 +16,8 @@ $base-800: #4242426c;
 $base-900: #212121;
 
 // Primary font-stack
-$font-stack: 'Roboto', Arial, Helvetica, sans-serif;
+$font-stack-primary: 'Archivo', Arial, Helvetica, sans-serif;
+$font-stack-secondary: 'Roboto', Arial, Helvetica, sans-serif;
 
 // Import Bootstrap
 @import '~bootstrap/scss/bootstrap';

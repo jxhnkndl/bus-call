@@ -29,80 +29,89 @@ export default function Daysheet(props) {
         <p className="h5 mb-3 small-heading">Amenities</p>
         <div className="row">
           <div className="col-12">
-
             {/* Green Rooms */}
-            <Badge className="col-12 col-lg-6 px-4 py-2">
-              <div className="row amenity-badge py-4 rounded">
-                <div className="col-3">
-                  <i class="fas fa-couch mx-3"></i>
+            {props.greenrooms && (
+              <Badge className="col-12 col-lg-6 px-4 py-2">
+                <div className="row amenity-badge py-4 rounded">
+                  <div className="col-3">
+                    <i class="amenity-icon fas fa-couch mx-3"></i>
+                  </div>
+                  <div className="col-6">
+                    <p className="mb-0">Green Room</p>
+                  </div>
                 </div>
-                <div className="col-6">
-                  <p className="mb-0">Green Room</p>
-                </div>
-              </div>
-            </Badge>
+              </Badge>
+            )}
 
             {/* Catering */}
-            <Badge className="col-12 col-lg-6 px-4 py-2">
-              <div className="row amenity-badge py-4 rounded">
-                <div className="col-3">
-                  <i class="fas fa-pizza-slice mx-3"></i>
+            {props.catering && (
+              <Badge className="col-12 col-lg-6 px-4 py-2">
+                <div className="row amenity-badge py-4 rounded">
+                  <div className="col-3">
+                    <i class="amenity-icon fas fa-pizza-slice mx-3"></i>
+                  </div>
+                  <div className="col-6">
+                    <p className="mb-0">Catering</p>
+                  </div>
                 </div>
-                <div className="col-6">
-                  <p className="mb-0">Catering</p>
-                </div>
-              </div>
-            </Badge>
+              </Badge>
+            )}
 
             {/* Wifi */}
-            <Badge className="col-12 col-lg-6 px-4 py-2">
-              <div className="row amenity-badge py-4 rounded">
-                <div className="col-3">
-                  <i class="fas fa-wifi mx-3"></i>
+            {props.internet && (
+              <Badge className="col-12 col-lg-6 px-4 py-2">
+                <div className="row amenity-badge py-4 rounded">
+                  <div className="col-3">
+                    <i class="amenity-icon fas fa-wifi mx-3"></i>
+                  </div>
+                  <div className="col-6">
+                    <p className="mb-0">Wifi</p>
+                  </div>
                 </div>
-                <div className="col-6">
-                  <p className="mb-0">Wifi</p>
-                </div>
-              </div>
-            </Badge>
+              </Badge>
+            )}
 
             {/* Parking */}
-            <Badge className="col-12 col-lg-6 px-4 py-2">
-              <div className="row amenity-badge py-4 rounded">
-                <div className="col-3">
-                  <i class="fas fa-parking mx-3"></i>
+            {props.parking && (
+              <Badge className="col-12 col-lg-6 px-4 py-2">
+                <div className="row amenity-badge py-4 rounded">
+                  <div className="col-3">
+                    <i class="amenity-icon fas fa-parking mx-3"></i>
+                  </div>
+                  <div className="col-6">
+                    <p className="mb-0">Parking</p>
+                  </div>
                 </div>
-                <div className="col-6">
-                  <p className="mb-0">Parking</p>
-                </div>
-              </div>
-            </Badge>
+              </Badge>
+            )}
 
-            {/*  */}
-            <Badge className="col-12 col-lg-6 px-4 py-2">
-              <div className="row amenity-badge py-4 rounded">
-                <div className="col-3">
-                  <i class="fas fa-shower mx-3"></i>
+            {/* Showers */}
+            {props.showers && (
+              <Badge className="col-12 col-lg-6 px-4 py-2">
+                <div className="row amenity-badge py-4 rounded">
+                  <div className="col-3">
+                    <i class="amenity-icon fas fa-shower mx-3"></i>
+                  </div>
+                  <div className="col-6">
+                    <p className="mb-0">Showers</p>
+                  </div>
                 </div>
-                <div className="col-6">
-                  <p className="mb-0">Shower</p>
-                </div>
-              </div>
-            </Badge>
+              </Badge>
+            )}
 
             {/* Rider */}
-            <Badge className="col-12 col-lg-6 px-4 py-2">
-              <div className="row amenity-badge py-4 rounded ">
-                <div className="col-3">
-                  <i class="fas fa-cocktail mx-3"></i>
+            {props.rider && (
+              <Badge className="col-12 col-lg-6 px-4 py-2">
+                <div className="row amenity-badge py-4 rounded ">
+                  <div className="col-3">
+                    <i class="amenity-icon fas fa-cocktail mx-3"></i>
+                  </div>
+                  <div className="col-6">
+                    <p className="mb-0">Full Rider</p>
+                  </div>
                 </div>
-                <div className="col-6">
-                  <p className="mb-0">Full Rider</p>
-                </div>
-              </div>
-            </Badge>
-
-
+              </Badge>
+            )}
           </div>
         </div>
       </div>

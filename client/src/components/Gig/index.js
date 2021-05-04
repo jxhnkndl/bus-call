@@ -3,7 +3,6 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { pageVariants, pageTransitions } from '../../utils/transitions';
 import CardBody from '../CardBody';
-import CycleControl from '../DashboardNav';
 import Daysheet from '../Daysheet';
 import StageSchedule from '../StageSchedule';
 import './index.scss';

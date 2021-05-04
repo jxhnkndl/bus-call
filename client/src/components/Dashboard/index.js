@@ -6,6 +6,7 @@ import Button from 'react-bootstrap/Button';
 import CardBody from '../CardBody';
 import DashboardNav from '../DashboardNav';
 import Gig from '../Gig';
+import Tour from '../Tour';
 import GigForm from '../GigForm';
 import API from '../../utils/API';
 import dayjs from 'dayjs';
@@ -111,6 +112,9 @@ export default function Dashboard() {
                 next={handleNext}
               />
             )}
+
+            {/* Tour view for viewing full tour routing */}
+            {view === 'tour' && <Tour gigs={gigs} handleDate={handleDate} />}
 
             {/* Form view for adding and editing gigs */}
             {view === 'form' && <GigForm fetchGigs={fetchGigs} gigs={gigs} />}

@@ -19,10 +19,10 @@ export default function StageSchedule(props) {
                 className="daysheet-item"
               >
                 <div className="row">
-                  <div className="col-12 col-lg-12 daysheet-time">
+                  <div className="col-12 col-lg-12">
                     <p className="list-label pt-2 mb-1">{block.timeString}</p>
                   </div>
-                  <div className="col-12 col-lg-12 daysheet-item">
+                  <div className="col-12 col-lg-12">
                     <p className="list-item mb-1">{block.event}</p>
                   </div>
                 </div>

@@ -20,28 +20,3 @@
     }
   }
 }
-
-.dashboard-heading {
-  margin-top: 20px;
-}
-
-.list-group-item {
-  border-radius: .25rem;
-  margin: 5px 0;
-
-  &:nth-child(odd) {
-    background-color: $base-700;
-  }
-
-  &:nth-child(even) {
-    background-color: $base-600;
-  }
-
-  .list-label {
-    font-size: 1rem;
-  }
-
-  .list-item {
-    font-size: 2rem;
-  }
-}

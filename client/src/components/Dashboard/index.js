@@ -16,7 +16,7 @@ export default function Dashboard() {
   // Set initial state
   const [gigs, setGigs] = useState([]);
   const [index, setIndex] = useState(0);
-  const [view, setView] = useState('day');
+  const [view, setView] = useState('gig');
 
   // Fetch gigs from API when component mounts and whenever the view state changes
   useEffect(() => {
@@ -78,11 +78,12 @@ export default function Dashboard() {
             <DashboardNav
               prev={handlePrev}
               next={handleNext}
+              view={view}
               handleView={handleView}
             />
 
             {/* Daysheet and stage schedule view */}
-            {view === 'day' && (
+            {view === 'gig' && (
               <DayView
                 date={handleDate(gigs[index].date)}
                 city={gigs[index].venue.city}

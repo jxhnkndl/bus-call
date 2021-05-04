@@ -28,19 +28,27 @@ export default function DashboardNav(props) {
           <Dropdown className="d-inline-block">
             <Dropdown.Toggle id="dropdown-basic">View By</Dropdown.Toggle>
             <Dropdown.Menu>
-              <Dropdown.Item onSelect={(e) => props.handleView('day')}>Daysheets</Dropdown.Item>
-              <Dropdown.Item onSelect={(e) => props.handleView('day')}>Routing</Dropdown.Item>
-              <Dropdown.Item onSelect={(e) => props.handleView('form')}>Add/Edit Gig</Dropdown.Item>
+              <Dropdown.Item onSelect={(e) => props.handleView('gig')}>
+                Daysheets
+              </Dropdown.Item>
+              <Dropdown.Item onSelect={(e) => props.handleView('gig')}>
+                Routing
+              </Dropdown.Item>
+              <Dropdown.Item onSelect={(e) => props.handleView('form')}>
+                Add/Edit Gig
+              </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
-          <div>
-            <p className="nav-icon mb-0 mr-2" onClick={props.prev}>
-              <i className="fas fa-arrow-circle-left"></i>
-            </p>
-            <p className="nav-icon mb-0 ml-2" onClick={props.next}>
-              <i className="fas fa-arrow-circle-right"></i>
-            </p>
-          </div>
+          {props.view === 'gig' && (
+            <div>
+              <p className="nav-icon mb-0 mr-2" onClick={props.prev}>
+                <i className="fas fa-arrow-circle-left"></i>
+              </p>
+              <p className="nav-icon mb-0 ml-2" onClick={props.next}>
+                <i className="fas fa-arrow-circle-right"></i>
+              </p>
+            </div>
+          )}
         </CardBody>
       </div>
     </div>

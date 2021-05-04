@@ -21,9 +21,6 @@ export default function MainNav() {
           <NavLink className="nav-link" exact to="/dashboard">
             Dashboard
           </NavLink>
-          <NavLink className="nav-link" exact to="/create-gig">
-            Add Gig
-          </NavLink>
         </Nav>
         <Nav>{isAuthenticated ? <LogoutBtn /> : <LoginBtn />}</Nav>
       </Navbar.Collapse>

@@ -9,7 +9,6 @@ import ProtectedRoute from './components/ProtectedRoute';
 import MainNav from './components/MainNav';
 import LandingPage from './components/LandingPage';
 import Dashboard from './components/Dashboard';
-import GigForm from './components/GigForm';
 import Footer from './components/Footer';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.scss';
@@ -28,10 +27,8 @@ export default function App() {
         <AnimatePresence exitBeforeEnter>
           <Switch>
             <Route exact path="/" component={LandingPage} />
-            {/* <Route exact path="/dashboard" component={Dashboard} />
-            <Route exact path="/create-gig" component={GigForm} /> */}
+            {/* <Route exact path="/dashboard" component={Dashboard} /> */}
             <ProtectedRoute exact path="/dashboard" component={Dashboard} />
-            <ProtectedRoute exact path="/create-gig" component={GigForm} />
           </Switch>
         </AnimatePresence>
       </main>

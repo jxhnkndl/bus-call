@@ -39,6 +39,7 @@ export default function DayView(props) {
                 nextCity={props.nextCity}
                 nextState={props.nextState}
                 nextVenue={props.nextVenue}
+                distance={props.distance}
               />
             </CardBody>
           </div>

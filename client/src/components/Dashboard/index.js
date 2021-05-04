@@ -36,7 +36,7 @@ export default function Dashboard() {
 
   // Handle formatting date for display
   const handleDate = (date) => {
-    return dayjs(date).format('dddd MMM. D, YYYY');
+    return dayjs(date).format('ddd. MMMM D, YYYY');
   };
 
   // Click handler for cycling to next gig
@@ -61,7 +61,7 @@ export default function Dashboard() {
   // Click handler for change dashboard's view state
   const handleView = (view) => {
     setView(view);
-  }
+  };
 
   return (
     <motion.div
@@ -75,7 +75,11 @@ export default function Dashboard() {
         {gigs.length ? (
           <div>
             {/* Dashboard navigation controls */}
-            <DashboardNav prev={handlePrev} next={handleNext} handleView={handleView} />
+            <DashboardNav
+              prev={handlePrev}
+              next={handleNext}
+              handleView={handleView}
+            />
 
             {/* Daysheet and stage schedule view */}
             {view === 'day' && (
@@ -92,10 +96,15 @@ export default function Dashboard() {
                 catering={gigs[index].catering}
                 showers={gigs[index].showers}
                 internet={gigs[index].internet}
-                nextDate={gigs[index + 1] ? gigs[index + 1].date : 'N/A'}
+                nextDate={
+                  gigs[index + 1] ? handleDate(gigs[index + 1].date) : 'N/A'
+                }
                 nextCity={gigs[index + 1] ? gigs[index + 1].venue.city : 'N/A'}
-                nextState={gigs[index + 1] ? gigs[index + 1].venue.state : 'N/A'}
+                nextState={
+                  gigs[index + 1] ? gigs[index + 1].venue.state : 'N/A'
+                }
                 nextVenue={gigs[index + 1] ? gigs[index + 1].venue.name : 'N/A'}
+                distance={'315 miles'}
                 schedule={gigs[index].schedule}
                 prev={handlePrev}
                 next={handleNext}

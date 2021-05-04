@@ -38,6 +38,7 @@ const seed = [
     showers: true,
     parking: true,
     rider: true,
+    distance: '215 miles',
     schedule: [
       {
         timeString: '12:30 PM',
@@ -94,6 +95,7 @@ const seed = [
     showers: false,
     parking: true,
     rider: true,
+    distance: '110 miles',
     schedule: [
       {
         timeString: '2:00 PM',
@@ -206,6 +208,7 @@ const seed = [
     showers: false,
     parking: false,
     rider: true,
+    distance: '5 hours',
     schedule: [
       {
         timeString: '2:30 PM',

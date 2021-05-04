@@ -16,6 +16,7 @@ export const emptyFormObj = {
   greenrooms: false,
   parking: false,
   rider: false,
+  distance: 'N/A',
   schedule: [
     { timeString: '', event: 'Load In' },
     { timeString: '', event: 'Soundcheck' },

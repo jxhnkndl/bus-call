@@ -22,6 +22,7 @@ const gigSchema = new Schema({
   showers: { type: Boolean, default: false },
   parking: { type: Boolean, default: false },
   rider: { type: Boolean, default: false },
+  distance: { type: String, default: 'N/A' },
   schedule: [{ 
     timeString: { type: String },
     event: { type: String }

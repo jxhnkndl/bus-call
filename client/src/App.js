@@ -27,8 +27,8 @@ export default function App() {
         <AnimatePresence exitBeforeEnter>
           <Switch>
             <Route exact path="/" component={LandingPage} />
-            {/* <Route exact path="/dashboard" component={Dashboard} /> */}
-            <ProtectedRoute exact path="/dashboard" component={Dashboard} />
+            <Route exact path="/dashboard" component={Dashboard} />
+            {/* <ProtectedRoute exact path="/dashboard" component={Dashboard} /> */}
           </Switch>
         </AnimatePresence>
       </main>

@@ -1,17 +1,47 @@
 // Import base styles
-@import '../../base';
+@import '../../theme.scss';
 
 .card-item {
   margin: 20px 0;
 
-  .badge {
+  .amenity-badge {
     font-family: $font-stack-primary;
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 200;
-    text-align: left;
+    text-align: center;
+    background-color: $base-700;
 
-    .amenity-badge {
-      background-color: $base-700;
+    .amenity-icon {
+      font-size: 2rem;
     }
+
+    .amenity-label {
+      font-size: 1rem;
+    }
+  }
+}
+
+.dashboard-heading {
+  margin-top: 20px;
+}
+
+.list-group-item {
+  border-radius: .25rem;
+  margin: 5px 0;
+
+  &:nth-child(odd) {
+    background-color: $base-700;
+  }
+
+  &:nth-child(even) {
+    background-color: $base-600;
+  }
+
+  .list-label {
+    font-size: 1rem;
+  }
+
+  .list-item {
+    font-size: 2rem;
   }
 }

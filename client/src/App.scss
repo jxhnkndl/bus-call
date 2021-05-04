@@ -1,5 +1,8 @@
 // Import base
-@import './base';
+@import './theme.scss';
+
+// Import Bootstrap
+@import '~bootstrap/scss/bootstrap';
 
 // Ensure app stretches full viewport height
 .app-container {
@@ -16,6 +19,7 @@
   }
 
   // App wide heading styles
+  .heading,
   .small-heading {
     color: $primary;
     font-family: $font-stack-secondary;

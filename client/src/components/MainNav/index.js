@@ -13,7 +13,7 @@ export default function MainNav() {
   const { isAuthenticated } = useAuth0();
 
   return (
-    <Navbar variant="dark" expand="lg" className="mb-4">
+    <Navbar variant="dark" expand="lg">
       <Navbar.Brand href="/">Bus Call</Navbar.Brand>
       <Navbar.Toggle aria-controls="nav-drawer" />
       <Navbar.Collapse id="nav-drawer">

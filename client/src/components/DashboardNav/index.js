@@ -26,13 +26,13 @@ export default function DashboardNav(props) {
           spacing={'px-4 py-2 m-2 m-md-0'}
         >
           <Dropdown className="d-inline-block">
-            <Dropdown.Toggle id="dropdown-basic">View By</Dropdown.Toggle>
+            <Dropdown.Toggle id="dropdown-basic">Options</Dropdown.Toggle>
             <Dropdown.Menu>
               <Dropdown.Item onSelect={(e) => props.handleView('gig')}>
-                Daysheets
+                View Gigs
               </Dropdown.Item>
               <Dropdown.Item onSelect={(e) => props.handleView('gig')}>
-                Routing
+                View Tour
               </Dropdown.Item>
               <Dropdown.Item onSelect={(e) => props.handleView('form')}>
                 Add/Edit Gig

@@ -9,7 +9,7 @@ import StageSchedule from '../StageSchedule';
 import './index.scss';
 
 // Create and export dashboard page component
-export default function DayView(props) {
+export default function Gig(props) {
   return (
     <motion.div
       initial="initial"

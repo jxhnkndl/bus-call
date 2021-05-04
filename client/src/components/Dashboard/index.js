@@ -5,8 +5,8 @@ import { pageVariants, pageTransitions } from '../../utils/transitions';
 import Button from 'react-bootstrap/Button';
 import CardBody from '../CardBody';
 import DashboardNav from '../DashboardNav';
-import DayView from '../DayView';
-import FormView from '../FormView';
+import Gig from '../Gig';
+import GigForm from '../GigForm';
 import API from '../../utils/API';
 import dayjs from 'dayjs';
 import './index.scss';
@@ -84,7 +84,7 @@ export default function Dashboard() {
 
             {/* Daysheet and stage schedule view */}
             {view === 'gig' && (
-              <DayView
+              <Gig
                 date={handleDate(gigs[index].date)}
                 city={gigs[index].venue.city}
                 state={gigs[index].venue.state}
@@ -113,7 +113,7 @@ export default function Dashboard() {
             )}
 
             {/* Form view for adding and editing gigs */}
-            {view === 'form' && <FormView fetchGigs={fetchGigs} gigs={gigs} />}
+            {view === 'form' && <GigForm fetchGigs={fetchGigs} gigs={gigs} />}
           </div>
         ) : (
           <p className="h2">LOADING</p>

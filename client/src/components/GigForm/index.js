@@ -26,14 +26,14 @@ export default function GigForm(props) {
   ];
 
   const venueFields = [
-    { name: 'name', col: 12 },
-    { name: 'street', col: 12 },
-    { name: 'city', col: 6 },
-    { name: 'state', col: 6 },
-    { name: 'zip', col: 6 },
-    { name: 'date', col: 6 },
-    { name: 'capacity', col: 6 },
-    { name: 'presale', col: 6 },
+    { name: 'name', col: 12, required: true },
+    { name: 'street', col: 12, required: false },
+    { name: 'city', col: 6, required: true },
+    { name: 'state', col: 6, required: true },
+    { name: 'zip', col: 6, required: false },
+    { name: 'date', col: 6, required: true },
+    { name: 'capacity', col: 6, required: false },
+    { name: 'presale', col: 6, required: false },
   ];
 
   const stageBlocks = [
@@ -148,10 +148,13 @@ export default function GigForm(props) {
     >
       <section>
         <div className="row">
-          <div className="col-12 col-md-10 col-lg-8 mx-auto">
+          <div className="col-12">
             <CardBody spacing={'p-4 p-md-4 m-2 m-md-0'}>
+
+              <p className="h2 heading">Add/Edit Gig</p>
               <Form>
                 <div className="row">
+
                   {/* Creates all fields for adding venue data to form object */}
                   {venueFields.map((field, index) => {
                     return (
@@ -162,7 +165,7 @@ export default function GigForm(props) {
                         <Form.Group controlId={`${field.name}InputGroup`}>
                           <Form.Label>
                             {index === 0
-                              ? `Venue Name:`
+                              ? `Venue Name`
                               : `${createLabel(field.name)}`}
                           </Form.Label>
                           <Form.Control
@@ -182,7 +185,7 @@ export default function GigForm(props) {
                   })}
 
                   <div className="col-12">
-                    <p>Amenities (Select all that apply):</p>
+                    <p className="small-heading">Amenities (Select all that apply):</p>
                   </div>
 
                   {/* Creates checkboxes for each element in the amenities array */}
@@ -192,7 +195,7 @@ export default function GigForm(props) {
                         <Form.Check
                           type="checkbox"
                           name={amenity}
-                          label={`${createLabel(amenity)}:`}
+                          label={`${createLabel(amenity)}`}
                           checked={formObj[amenity]}
                           onChange={handleCheck}
                         />
@@ -201,7 +204,7 @@ export default function GigForm(props) {
                   })}
 
                   <div className="col-12 pt-3">
-                    <p>Insert time strings for each block:</p>
+                    <p className="small-heading">Insert time strings for each block:</p>
                   </div>
 
                   {/* Create inputs for adding times to stage schedule events */}

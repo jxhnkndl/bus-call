@@ -1,14 +1,15 @@
 // Import dependencies
 import React, { useContext } from 'react';
+import ListGroup from 'react-bootstrap/ListGroup';
+import ListGroupItem from 'react-bootstrap/ListGroupItem';
 import dayjs from 'dayjs';
-import Badge from 'react-bootstrap/Badge';
 import './index.scss';
 
 // Create and export reusable card component
 export default function Daysheet(props) {
   // Create amenities array from props for rendering
   const amenities = [
-    { name: 'Green Rooms', icon: 'fas fa-couch', value: props.greenrooms },
+    { name: 'Lounge', icon: 'fas fa-couch', value: props.greenrooms },
     { name: 'Catering', icon: 'fas fa-pizza-slice', value: props.catering },
     { name: 'Internet', icon: 'fas fa-wifi', value: props.internet },
     { name: 'Parking', icon: 'fas fa-parking', value: props.parking },
@@ -18,7 +19,6 @@ export default function Daysheet(props) {
 
   return (
     <div className="info-container">
-
       {/* Date */}
       <div className="card-item">
         <p className="h5 mb-1 small-heading">Today is</p>
@@ -42,7 +42,9 @@ export default function Daysheet(props) {
       {/* Tickets */}
       <div className="card-item">
         <p className="h5 mb-1 small-heading">Presale / Capacity</p>
-        <p className="h2">{props.presale} / {props.capacity}</p>
+        <p className="h2">
+          {props.presale} / {props.capacity}
+        </p>
       </div>
 
       {/* Amenities badges */}
@@ -50,26 +52,30 @@ export default function Daysheet(props) {
         <p className="h5 mb-3 small-heading">Amenities</p>
         <div className="row">
           <div className="col-12">
-            {/* Map over amenities and render only those that evaluate to true */}
-            {amenities.map((amenity, index) => {
-              if (amenity.value) {
-                return (
-                  <Badge
-                    key={`${index}-${amenity.name}`}
-                    className="col-12 col-lg-6 px-4 py-2"
-                  >
-                    <div className="row amenity-badge py-4 rounded">
-                      <div className="col-3">
-                        <i className={`amenity-icon mx-3 ${amenity.icon}`}></i>
+            <ListGroup key="amenities" variant="flush">
+              {/* Map over amenities and render only those that evaluate to true */}
+              {amenities.map((amenity, index) => {
+                if (amenity.value) {
+                  return (
+                    <ListGroup.Item
+                      key={`${index}-${amenity.name}`}
+                      className="daysheet-item"
+                    >
+                      <div className="row">
+                        <div className="col-3 col-md-2">
+                          <p className="list-item text-center mb-1">
+                            <i className={`amenity-icon mr-2 ${amenity.icon}`}></i>
+                          </p>
+                        </div>
+                        <div className="col-9 col-md-10 daysheet-item">
+                          <p className="list-item mb-1">{amenity.name}</p>
+                        </div>
                       </div>
-                      <div className="col-6">
-                        <p className="mb-0">{amenity.name}</p>
-                      </div>
-                    </div>
-                  </Badge>
-                );
-              }
-            })}
+                    </ListGroup.Item>
+                  );
+                }
+              })}
+            </ListGroup>
           </div>
         </div>
       </div>
@@ -82,7 +88,6 @@ export default function Daysheet(props) {
         <p className="h5 mb-1">{`${props.nextCity}, ${props.nextState}.`}</p>
         <p className="h4 mb-1">{props.distance}</p>
       </div>
-
     </div>
   );
 }

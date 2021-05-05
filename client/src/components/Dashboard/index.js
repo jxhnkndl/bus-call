@@ -42,6 +42,8 @@ export default function Dashboard() {
 
   // Handle finding and rendering matching show details from click event in tour view
   const handleSelect = (event) => {
+    event.preventDefault();
+
     // Figure out which show was clicked
     const { id } = event.target;
     const index = gigs.findIndex((gig) => gig._id === id);

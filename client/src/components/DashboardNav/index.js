@@ -16,7 +16,6 @@ const styles = {
 
 // Create and export cycle control component
 export default function DashboardNav(props) {
-  console.log(props);
 
   return (
     <div className="row mb-2 dashboard-nav">

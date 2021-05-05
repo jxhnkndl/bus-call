@@ -2,6 +2,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { pageVariants, pageTransitions } from '../../utils/transitions';
+import { toast } from 'react-toastify';
+import Button from 'react-bootstrap/Button';
 import CardBody from '../CardBody';
 import ListGroup from 'react-bootstrap/ListGroup';
 import ListGroupItem from 'react-bootstrap/ListGroupItem';
@@ -35,12 +37,9 @@ export default function Tour(props) {
                       return (
                         <ListGroup.Item
                           key={`${index}-${gig._id}`}
-                          className="tour-date"
-                          onClick={() => {
-                            props.handleSelect(event);
-                          }}
+                          className="tour-date row"
                         >
-                          <div id={gig._id} className="row">
+                          <div className="row">
                             <div className="col-12 col-md-8 mx-auto">
                               <p className="small-heading pt-2 mb-1">
                                 <i className="fas fa-calendar mr-2"></i>
@@ -62,6 +61,23 @@ export default function Tour(props) {
                               <p className="list-label mb-1">
                                 {`w/ Cartel, This Providence, Anarbor`}
                               </p>
+                            </div>
+                            <div className="col-12 col-md-8 mx-auto">
+                              <Button
+                                id={gig._id}
+                                variant="primary"
+                                className="my-2"
+                                onClick={(event) => {
+                                  if (props.gigs.length) {
+                                    props.handleSelect(event);
+
+                                  } else {
+                                    toast.error('Oh no! Something went wrong. Try again!');
+                                  }
+                                }}
+                              >
+                                View Details
+                              </Button>
                             </div>
                           </div>
                         </ListGroup.Item>

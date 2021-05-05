@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { pageVariants, pageTransitions } from '../../utils/transitions';
+import { toast } from 'react-toastify';
 import Button from 'react-bootstrap/Button';
 import CardBody from '../CardBody';
 import DashboardNav from '../DashboardNav';
@@ -26,7 +27,7 @@ export default function Dashboard() {
 
   // Fetch gigs from DB
   const fetchGigs = async () => {
-    console.log('fetching gigs...');
+    console.log('Fetching gigs...');
     try {
       const res = await API.getGigs();
       setGigs(res.data);
@@ -44,22 +45,24 @@ export default function Dashboard() {
   const handleSelect = (event) => {
     event.preventDefault();
 
-    // Figure out which show was clicked
     const { id } = event.target;
     const index = gigs.findIndex((gig) => gig._id === id);
 
-    console.log(id);
-    console.log(index);
-    // console.log(gigs[index]);
+    if (index === -1) {
+      toast.error('Something went wrong! Please try again.');
+      console.log(event.target);
+      return;
 
-    // Update index state to render selected show
-    setIndex(index);
-
-    // Update view state to switch back to gig view
-    setView('gig');
-
-    // Reset window position to ensure gig details are within the viewport
-    window.scrollTo(0, 0);
+    } else {
+      console.log('Accessing gig...');
+  
+      // Update index state to render selected show
+      setIndex(index);
+  
+      // Update view state to switch back to gig view
+      setView('gig');
+      window.scrollTo(0, 0);
+    }
   };
 
   // Click handler for cycling to next gig
@@ -101,6 +104,7 @@ export default function Dashboard() {
             <DashboardNav
               prev={handlePrev}
               next={handleNext}
+              gigs={gigs}
               view={view}
               handleView={handleView}
             />

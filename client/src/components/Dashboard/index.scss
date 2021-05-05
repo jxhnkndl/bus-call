@@ -23,17 +23,13 @@
 
   .list-item {
     font-size: 2rem;
-  }
 
-  @media screen and (max-width: $small) {
-    .list-item {
-      font-size: 1.3rem;
+    @media screen and (max-width: $small) {
+       font-size: 1.3rem;
     }
-  }
-
-  @media screen and (min-width: $small) and (max-width: $medium) {
-    .list-item {
+  
+    @media screen and (min-width: $small) and (max-width: $medium) {
       font-size: 1.75rem;
-    }
+    } 
   }
 }

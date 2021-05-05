@@ -14,4 +14,17 @@ nav {
     font-family: $font-stack-secondary;
     font-size: 1rem;
   }
+
+  .media {
+    display: flex;
+    align-items: center;
+
+    p {
+      font-family: $font-stack-secondary;
+    }
+  }
+
+  .avatar {
+    height: 30px;
+  }
 }

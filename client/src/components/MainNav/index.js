@@ -10,20 +10,26 @@ import './index.scss';
 
 // Create and export MainNav component
 export default function MainNav() {
-  const { isAuthenticated } = useAuth0();
+  const { isAuthenticated, user } = useAuth0();
+
+  console.log(user);
 
   return (
     <Navbar variant="dark" expand="lg">
       <Navbar.Brand href="/">Bus Call</Navbar.Brand>
-      <Navbar.Toggle aria-controls="nav-drawer" />
-      <Navbar.Collapse id="nav-drawer">
-        <Nav className="mr-auto">
-          <NavLink className="nav-link" exact to="/dashboard">
-            Dashboard
-          </NavLink>
-        </Nav>
-        <Nav>{isAuthenticated ? <LogoutBtn /> : <LoginBtn />}</Nav>
-      </Navbar.Collapse>
+      <Nav className="ml-auto">
+        {isAuthenticated ? (
+          <div class="media">
+            <img src={user.picture} class="avatar mr-3 rounded-circle" alt="Profile image" />
+            <div class="media-body mr-3">
+              <p class="h6 my-0">{`Hi ${user.given_name}!`}</p>
+            </div>
+            <LogoutBtn />
+          </div>
+        ) : (
+          <LoginBtn />
+        )}
+      </Nav>
     </Navbar>
   );
 }

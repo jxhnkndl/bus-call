@@ -2,8 +2,47 @@
 @import '../../theme.scss';
 
 header {
-  .hero-container {
-    position: relative;
-    color: rgba(206, 148, 24, 0.315);
+  padding-bottom: 300px;
+
+  .headline {
+    color: $primary;
+    font-family: $font-stack-headline;
+    font-size: 5rem;
+    font-weight: 600;
+  }
+
+  .sub-headline {
+    color: $base-000;
+    font-family: $font-stack-secondary;
+    font-size: 2.5rem;
+    font-weight: 300;
+  }
+
+  hr {
+    border-top: 1px solid $base-400;
+  }
+
+  @media screen and (max-width: $small) {
+    padding-bottom: 200px;
+
+    .headline {
+      font-size: 2rem;
+    }
+
+    .sub-headline {
+      font-size: 1.25rem;
+    }
+  }
+
+  @media screen and (min-width: $small) and (max-width: $medium) {
+    padding-bottom: 300px;
+
+    .headline {
+      font-size: 4rem;
+    }
+
+    .sub-headline {
+      font-size: 1.75rem;
+    }
   }
 }

@@ -1,6 +1,6 @@
 // Import packages
 import React, { useState, useEffect } from 'react';
-import { Switch, Route, NavLink, Redirect } from 'react-router-dom';
+import { Switch, Route, NavLink } from 'react-router-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ToastContainer } from 'react-toastify';
 import { useAuth0 } from '@auth0/auth0-react';
@@ -15,7 +15,6 @@ import './App.scss';
 
 // Create and export App component
 export default function App() {
-
   // Log authentication status during development
   const { isAuthenticated } = useAuth0();
   console.log(isAuthenticated);
@@ -26,9 +25,7 @@ export default function App() {
       <main style={{ overflow: 'hidden' }} className="">
         <AnimatePresence exitBeforeEnter>
           <Switch>
-            <Route exact path="/"> 
-              { isAuthenticated ? <Redirect to="/dashboard" /> : <LandingPage /> }
-            </Route>
+            <Route exact path="/" component={LandingPage} />
             {/* <Route exact path="/dashboard" component={Dashboard} /> */}
             <ProtectedRoute exact path="/dashboard" component={Dashboard} />
           </Switch>

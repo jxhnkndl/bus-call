@@ -129,12 +129,20 @@ export default function GigForm(props) {
   // Post form data to API
   const handleSubmit = (event) => {
     event.preventDefault();
+
+    // Only submit these properties have values
     if (formObj.date) {
       console.log(formObj);
-      props.fetchGigs();
       addGig();
       toast('Gig created!');
       handleReset();
+
+      // Delay fetching gigs from API for long enough to ensure
+      // that the newly added gig has been created and can be
+      // returned to the client
+      setTimeout(() => {
+        props.fetchGigs();
+      }, 250);
     }
   };
 

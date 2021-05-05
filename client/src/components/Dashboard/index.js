@@ -22,7 +22,7 @@ export default function Dashboard() {
   // Fetch gigs from API when component mounts and whenever the view state changes
   useEffect(() => {
     fetchGigs();
-  }, [view]);
+  }, []);
 
   // Fetch gigs from DB
   const fetchGigs = async () => {
@@ -50,15 +50,15 @@ export default function Dashboard() {
 
     console.log(id);
     console.log(index);
-    console.log(gigs[index]);
+    // console.log(gigs[index]);
 
     // Update index state to render selected show
     setIndex(index);
 
-    // Update view state to transition back to gig view
+    // Update view state to switch back to gig view
     setView('gig');
 
-    // Reset window position to ensure most important details are inside the viewport
+    // Reset window position to ensure gig details are within the viewport
     window.scrollTo(0, 0);
   };
 

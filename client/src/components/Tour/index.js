@@ -36,7 +36,9 @@ export default function Tour(props) {
                         <ListGroup.Item
                           key={`${index}-${gig._id}`}
                           className="tour-date"
-                          onClick={props.handleSelect}
+                          onClick={() => {
+                            props.handleSelect(event);
+                          }}
                         >
                           <div id={gig._id} className="row">
                             <div className="col-12 col-md-8 mx-auto">

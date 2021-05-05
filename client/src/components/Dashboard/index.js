@@ -18,7 +18,7 @@ export default function Dashboard() {
   // Set initial state
   const [gigs, setGigs] = useState([]);
   const [index, setIndex] = useState(0);
-  const [view, setView] = useState('gig');
+  const [view, setView] = useState('tour');
 
   // Fetch gigs from API when component mounts and whenever the view state changes
   useEffect(() => {
@@ -36,6 +36,18 @@ export default function Dashboard() {
     }
   };
 
+  // Delete gig from database and fetch updated gigs data from API
+  const handleDelete = async (id) => {
+    console.log('Deleting gig...');
+    try {
+      const res = await API.deleteGig(id);
+      fetchGigs();
+      toast('Gig deleted!');
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   // Handle formatting date for display
   const handleDate = (date) => {
     return dayjs(date).format('ddd. MMMM D, YYYY');
@@ -45,9 +57,12 @@ export default function Dashboard() {
   const handleSelect = (event) => {
     event.preventDefault();
 
+    // Figure out which gig the user wants to see
     const { id } = event.target;
     const index = gigs.findIndex((gig) => gig._id === id);
 
+    // If the specified gig can't be found, notify the user 
+    // and log the error
     if (index === -1) {
       toast.error('Something went wrong! Please try again.');
       console.log(event.target);
@@ -145,6 +160,7 @@ export default function Dashboard() {
                 gigs={gigs}
                 handleDate={handleDate}
                 handleSelect={handleSelect}
+                handleDelete={handleDelete}
               />
             )}
 

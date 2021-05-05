@@ -7,5 +7,9 @@ router.route("/")
   .get(gigsController.getAll)
   .post(gigsController.create);
 
+// ROUTE: "/api/gigs/:id"
+router.route("/:id")
+  .delete(gigsController.delete);
+
 // Export the router
 module.exports = router;

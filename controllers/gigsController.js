@@ -5,18 +5,31 @@ const db = require('../models');
 module.exports = {
   getAll: async function (req, res) {
     try {
-      const gigs = await db.Gig.find({}).sort({ date: 1 });
-      res.json(gigs);
+      const results = await db.Gig.find({}).sort({ date: 1 });
+      res.json(results);
     } catch (err) {
       console.log(err);
+      res.status(500).json({ success: false, msg: err });
     }
   },
   create: async function (req, res) {
     try {
-      const gig = await db.Gig.create(req.body);
-      res.json(gig);
+      const results = await db.Gig.create(req.body);
+      res.json(results);
     } catch (err) {
       console.log(err);
+      res.status(500).json({ success: false, msg: err });
     }
   },
+  delete: async function (req, res) {
+    try {
+      console.log(req.params);
+      const { id } = req.params;
+      const results = await db.Gig.deleteOne({ _id: id });
+      res.json({ success: true, msg: results })
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({ success: false, msg: err });
+    }
+  }
 };

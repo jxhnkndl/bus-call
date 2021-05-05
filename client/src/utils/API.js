@@ -8,5 +8,8 @@ export default {
   },
   addGig: function(gigData) {
     return axios.post("/api/gigs", gigData);
+  },
+  deleteGig: function(id) {
+    return axios.delete("/api/gigs/" + id);
   }
 }

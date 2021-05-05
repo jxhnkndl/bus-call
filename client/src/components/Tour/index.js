@@ -66,7 +66,7 @@ export default function Tour(props) {
                               <Button
                                 id={gig._id}
                                 variant="primary"
-                                className="my-2"
+                                className="my-2 mr-2"
                                 onClick={(event) => {
                                   if (props.gigs.length) {
                                     props.handleSelect(event);
@@ -76,7 +76,17 @@ export default function Tour(props) {
                                   }
                                 }}
                               >
+                                <i className="fas fa-info-circle mr-2"></i>
                                 View Details
+                              </Button>
+                              <Button
+                                id={gig._id}
+                                variant="danger"
+                                className="my-2 mr-2"
+                                onClick={() => props.handleDelete(gig._id)}
+                              >
+                                <i className="fas fa-trash-alt mr-2"></i>
+                                Delete Gig
                               </Button>
                             </div>
                           </div>

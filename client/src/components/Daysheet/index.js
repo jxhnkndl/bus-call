@@ -22,7 +22,7 @@ export default function Daysheet(props) {
       {/* Date */}
       <div className="card-item">
         <p className="h5 mb-1 small-heading">
-          <i class="far fa-calendar mr-2"></i>
+          <i className="far fa-calendar mr-2"></i>
           Today is
         </p>
         <p className="h2">{props.date}</p>
@@ -31,7 +31,7 @@ export default function Daysheet(props) {
       {/* Location */}
       <div className="card-item">
         <p className="h5 mb-1 small-heading">
-          <i class="fas fa-map-marker-alt mr-2"></i>
+          <i className="fas fa-map-marker-alt mr-2"></i>
           You are in
         </p>
         <p className="h2">{`${props.city}, ${props.state}.`}</p>
@@ -40,7 +40,7 @@ export default function Daysheet(props) {
       {/* Tonight's show */}
       <div className="card-item">
         <p className="h5 mb-1 small-heading">
-          <i class="fas fa-headphones-alt mr-2"></i>
+          <i className="fas fa-headphones-alt mr-2"></i>
           Tonight's show
         </p>
         <p className="h2">{props.venue}</p>
@@ -51,7 +51,7 @@ export default function Daysheet(props) {
       {/* Tickets */}
       <div className="card-item">
         <p className="h5 mb-1 small-heading">
-          <i class="fas fa-ticket-alt mr-2"></i>
+          <i className="fas fa-ticket-alt mr-2"></i>
           Presale / Capacity
         </p>
         <p className="h2">
@@ -97,7 +97,7 @@ export default function Daysheet(props) {
       {/* Next Up */}
       <div className="card-item">
         <p className="h5 mb-1 small-heading">
-          <i class="fas fa-road mr-2"></i>
+          <i className="fas fa-road mr-2"></i>
           Next up
         </p>
         <p className="h2 mb-1">{props.nextVenue}</p>

@@ -41,7 +41,7 @@ export default function Tour(props) {
                           <div id={gig._id} className="row">
                             <div className="col-12 col-md-8 mx-auto">
                               <p className="small-heading pt-2 mb-1">
-                                <i class="fas fa-calendar mr-2"></i>
+                                <i className="fas fa-calendar mr-2"></i>
                                 {props.handleDate(gig.date)}
                               </p>
                               <p className="list-item mb-1 d-lg-inline-block">

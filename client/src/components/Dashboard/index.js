@@ -46,6 +46,10 @@ export default function Dashboard() {
     const { id } = event.target;
     const index = gigs.findIndex((gig) => gig._id === id);
 
+    console.log(id);
+    console.log(index);
+    console.log(gigs[index]);
+
     // Update index state to render selected show
     setIndex(index);
 

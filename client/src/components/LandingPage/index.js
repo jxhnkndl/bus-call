@@ -9,7 +9,7 @@ import './index.scss';
 export default function LandingPage() {
   return (
     <header>
-      <h1 className="display-1">BUSCALL</h1>
+      <h1 className="display-1 heading text-center mt-5">Touring made simple.</h1>
     </header>
   );
 }

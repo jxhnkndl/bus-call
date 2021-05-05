@@ -22,6 +22,9 @@ export default function Tour(props) {
           <div className="col-12 mb-4">
             <CardBody spacing={'p-4 p-md-4 m-2 m-md-0'}>
               <div className="container-lg p-0">
+                <h3 className="heading">Full Tour Dates</h3>
+                <p>Click a date to view show details</p>
+
                 {props.gigs.length ? (
                   <ListGroup key="tour" variant="">
                     {/* Map over gigs array and create tour routing table */}
@@ -38,6 +41,7 @@ export default function Tour(props) {
                           <div id={gig._id} className="row">
                             <div className="col-12 col-md-8 mx-auto">
                               <p className="small-heading pt-2 mb-1">
+                                <i class="fas fa-calendar mr-2"></i>
                                 {props.handleDate(gig.date)}
                               </p>
                               <p className="list-item mb-1 d-lg-inline-block">
@@ -47,7 +51,9 @@ export default function Tour(props) {
                             </div>
                             <div className="col-12 col-md-8 mx-auto">
                               <p className="list-label mb-1">
-                                {`Doors @ ${gig.schedule[2].timeString}  /  Show @ ${showtime} PM`}
+                                {`Doors @ ${gig.schedule[2].timeString}`}
+                                <span className="d-none d-md-inline-block mx-2">{`/`}</span>
+                                <span className="d-block d-md-inline-block">{`Show @ ${showtime} PM`}</span>
                               </p>
                             </div>
                             <div className="col-12 col-md-8 mx-auto">

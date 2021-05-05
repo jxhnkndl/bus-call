@@ -21,19 +21,28 @@ export default function Daysheet(props) {
     <div className="info-container">
       {/* Date */}
       <div className="card-item">
-        <p className="h5 mb-1 small-heading">Today is</p>
+        <p className="h5 mb-1 small-heading">
+          <i class="far fa-calendar mr-2"></i>
+          Today is
+        </p>
         <p className="h2">{props.date}</p>
       </div>
 
       {/* Location */}
       <div className="card-item">
-        <p className="h5 mb-1 small-heading">You are in</p>
+        <p className="h5 mb-1 small-heading">
+          <i class="fas fa-map-marker-alt mr-2"></i>
+          You are in
+        </p>
         <p className="h2">{`${props.city}, ${props.state}.`}</p>
       </div>
 
       {/* Tonight's show */}
       <div className="card-item">
-        <p className="h5 mb-1 small-heading">Tonight's show</p>
+        <p className="h5 mb-1 small-heading">
+          <i class="fas fa-headphones-alt mr-2"></i>
+          Tonight's show
+        </p>
         <p className="h2">{props.venue}</p>
         <p className="h5 mb-1">{props.street}</p>
         <p className="h5 mb-1">{`${props.city}, ${props.state}. ${props.zip}`}</p>
@@ -41,7 +50,10 @@ export default function Daysheet(props) {
 
       {/* Tickets */}
       <div className="card-item">
-        <p className="h5 mb-1 small-heading">Presale / Capacity</p>
+        <p className="h5 mb-1 small-heading">
+          <i class="fas fa-ticket-alt mr-2"></i>
+          Presale / Capacity
+        </p>
         <p className="h2">
           {props.presale} / {props.capacity}
         </p>
@@ -64,7 +76,9 @@ export default function Daysheet(props) {
                       <div className="row">
                         <div className="col-3 col-md-2">
                           <p className="list-item text-center mb-1">
-                            <i className={`amenity-icon mr-2 ${amenity.icon}`}></i>
+                            <i
+                              className={`amenity-icon mr-2 ${amenity.icon}`}
+                            ></i>
                           </p>
                         </div>
                         <div className="col-9 col-md-10 daysheet-item">
@@ -82,7 +96,10 @@ export default function Daysheet(props) {
 
       {/* Next Up */}
       <div className="card-item">
-        <p className="h5 mb-1 small-heading">Next up</p>
+        <p className="h5 mb-1 small-heading">
+          <i class="fas fa-road mr-2"></i>
+          Next up
+        </p>
         <p className="h2 mb-1">{props.nextVenue}</p>
         <p className="h5 mb-1">{props.nextDate}</p>
         <p className="h5 mb-1">{`${props.nextCity}, ${props.nextState}.`}</p>

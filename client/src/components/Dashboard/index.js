@@ -40,6 +40,22 @@ export default function Dashboard() {
     return dayjs(date).format('ddd. MMMM D, YYYY');
   };
 
+  // Handle finding and rendering matching show details from click event in tour view
+  const handleSelect = (event) => {
+    // Figure out which show was clicked
+    const { id } = event.target;
+    const index = gigs.findIndex((gig) => gig._id === id);
+
+    // Update index state to render selected show
+    setIndex(index);
+
+    // Update view state to transition back to gig view
+    setView('gig');
+
+    // Reset window position to ensure most important details are inside the viewport
+    window.scrollTo(0, 0);
+  };
+
   // Click handler for cycling to next gig
   const handleNext = () => {
     if (index === gigs.length - 1) {
@@ -114,7 +130,13 @@ export default function Dashboard() {
             )}
 
             {/* Tour view for viewing full tour routing */}
-            {view === 'tour' && <Tour gigs={gigs} handleDate={handleDate} />}
+            {view === 'tour' && (
+              <Tour
+                gigs={gigs}
+                handleDate={handleDate}
+                handleSelect={handleSelect}
+              />
+            )}
 
             {/* Form view for adding and editing gigs */}
             {view === 'form' && <GigForm fetchGigs={fetchGigs} gigs={gigs} />}

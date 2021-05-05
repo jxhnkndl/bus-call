@@ -1,0 +1,10 @@
+// Import theme
+@import '../../theme.scss';
+
+.tour-date {
+  border-top-width: 1px !important;
+
+  &:hover {
+    border-color: $primary;
+  }
+}

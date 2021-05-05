@@ -23,7 +23,7 @@ export default function Tour(props) {
             <CardBody spacing={'p-4 p-md-4 m-2 m-md-0'}>
               <div className="container-lg p-0">
                 {props.gigs.length ? (
-                  <ListGroup key="tour" variant="flush">
+                  <ListGroup key="tour" variant="">
                     {/* Map over gigs array and create tour routing table */}
                     {props.gigs.map((gig, index) => {
                       const timeArr = gig.schedule[3].timeString.split(' ');
@@ -32,9 +32,10 @@ export default function Tour(props) {
                       return (
                         <ListGroup.Item
                           key={`${index}-${gig._id}`}
-                          className="daysheet-item"
+                          className="tour-date"
+                          onClick={props.handleSelect}
                         >
-                          <div className="row">
+                          <div id={gig._id} className="row">
                             <div className="col-12 col-md-8 mx-auto">
                               <p className="small-heading pt-2 mb-1">
                                 {props.handleDate(gig.date)}

@@ -29,7 +29,7 @@ export default function MainContent() {
 
   if (!isAuthenticated && !isLoading) {
     return (
-      <main style={bgImage.main} className="">
+      <main style={bgImage.main}>
         <div style={bgImage.overlay}>
           <AnimatePresence exitBeforeEnter>
             <LandingPage />
@@ -51,7 +51,7 @@ export default function MainContent() {
 
   if (isAuthenticated) {
     return (
-      <main style={{ overflow: 'hidden' }} className="">
+      <main style={{ overflow: 'hidden' }}>
         <AnimatePresence exitBeforeEnter>
           <Dashboard />
         </AnimatePresence>

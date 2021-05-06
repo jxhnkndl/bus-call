@@ -19,10 +19,10 @@ export default function MainNav() {
       <Navbar.Brand href="/">Bus Call</Navbar.Brand>
       <Nav className="ml-auto">
         {isAuthenticated ? (
-          <div class="media">
-            <img src={user.picture} class="avatar mr-3 rounded-circle" alt="Profile image" />
-            <div class="media-body mr-3">
-              <p class="h6 my-0">{`Hi ${user.given_name}!`}</p>
+          <div className="media">
+            <img src={user.picture} className="avatar mr-3 rounded-circle" alt="Profile image" />
+            <div className="media-body mr-3">
+              <p className="h6 my-0">{`Hi ${user.given_name}!`}</p>
             </div>
             <LogoutBtn />
           </div>

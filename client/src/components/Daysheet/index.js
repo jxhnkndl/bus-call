@@ -50,7 +50,14 @@ export default function Daysheet(props) {
         <p className="h2">{props.venue}</p>
         <p className="h5 mb-1">{props.street}</p>
         <p className="h5 mb-1">{`${props.city}, ${props.state}. ${props.zip}`}</p>
+        <iframe
+          className="map rounded mt-3"
+          loading="lazy"
+          src={`https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_GOOGLE_API_KEY}
+        &q=${mapQuery}`}
+        ></iframe>
       </div>
+
 
       {/* Tickets */}
       <div className="card-item">
@@ -96,16 +103,6 @@ export default function Daysheet(props) {
             </ListGroup>
           </div>
         </div>
-      </div>
-
-      <div className="card-item">
-        <p className="h5 mb-1 small-heading">Venue Map</p>
-        <iframe
-          className="map rounded"
-          loading="lazy"
-          src={`https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_GOOGLE_API_KEY}
-        &q=${mapQuery}`}
-        ></iframe>
       </div>
 
       {/* Next Up */}

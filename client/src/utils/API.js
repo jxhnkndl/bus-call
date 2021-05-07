@@ -11,5 +11,8 @@ export default {
   },
   deleteGig: function(id) {
     return axios.delete("/api/gigs/" + id);
+  },
+  updateGig: function(id, gigData) {
+    return axios.put("/api/gigs/" + id, gigData);
   }
 }

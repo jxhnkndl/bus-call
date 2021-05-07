@@ -31,5 +31,14 @@ module.exports = {
       console.log(err);
       res.status(500).json({ success: false, msg: err });
     }
+  },
+  update: async function (req, res) {
+    try {
+      const results = await db.Gig.findByIdAndUpdate({ _id: req.params.id }, req.body);
+      res.json({ success: true, msg: results });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({ success: false, msg: err });
+    }
   }
 };

@@ -9,6 +9,7 @@ router.route("/")
 
 // ROUTE: "/api/gigs/:id"
 router.route("/:id")
+  .put(gigsController.update)
   .delete(gigsController.delete);
 
 // Export the router

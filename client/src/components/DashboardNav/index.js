@@ -33,8 +33,11 @@ export default function DashboardNav(props) {
               <Dropdown.Item onSelect={(e) => props.handleView('tour')}>
                 View Tour
               </Dropdown.Item>
-              <Dropdown.Item onSelect={(e) => props.handleView('form')}>
-                Add/Edit Gig
+              <Dropdown.Item onSelect={(e) => props.handleView('add')}>
+                Add Gig
+              </Dropdown.Item>
+              <Dropdown.Item onSelect={(e) => props.handleView('edit')}>
+                Edit Gig
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>

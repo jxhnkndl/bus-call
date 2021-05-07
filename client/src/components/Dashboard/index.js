@@ -13,6 +13,8 @@ import API from '../../utils/API';
 import dayjs from 'dayjs';
 import './index.scss';
 
+import formatObj from '../../utils/formatObj';
+
 // Create and export dashboard page component
 export default function Dashboard() {
   // Set initial state
@@ -46,7 +48,7 @@ export default function Dashboard() {
     } catch (err) {
       console.log(err);
     }
-  }
+  };
 
   // Handle formatting date for display
   const handleDate = (date) => {
@@ -61,19 +63,18 @@ export default function Dashboard() {
     const { id } = event.target;
     const index = gigs.findIndex((gig) => gig._id === id);
 
-    // If the specified gig can't be found, notify the user 
+    // If the specified gig can't be found, notify the user
     // and log the error
     if (index === -1) {
       toast.error('Something went wrong! Please try again.');
       console.log(event.target);
       return;
-
     } else {
       console.log('Accessing gig...');
-  
+
       // Update index state to render selected show
       setIndex(index);
-  
+
       // Update view state to switch back to gig view
       setView('gig');
       window.scrollTo(0, 0);
@@ -165,7 +166,25 @@ export default function Dashboard() {
             )}
 
             {/* Form view for adding and editing gigs */}
-            {view === 'form' && <GigForm fetchGigs={fetchGigs} gigs={gigs} />}
+            {view === 'add' && (
+              <GigForm
+                view={view}
+                handleView={handleView}
+                fetchGigs={fetchGigs}
+                gigs={gigs}
+              />
+            )}
+
+            {/* Form view for adding and editing gigs */}
+            {view === 'edit' && (
+              <GigForm
+                view={view}
+                handleView={handleView}
+                selected={gigs[index]}
+                fetchGigs={fetchGigs}
+                gigs={gigs}
+              />
+            )}
           </div>
         ) : (
           <p className="h2">LOADING</p>

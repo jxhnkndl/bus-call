@@ -14,25 +14,26 @@ import Dropdown from 'react-bootstrap/esm/Dropdown';
 export default function MainNav() {
   const { isAuthenticated, user, logout } = useAuth0();
 
-  console.log(user);
-
   return (
     <Navbar variant="dark" expand="lg">
       <Navbar.Brand href="/">Bus Call</Navbar.Brand>
       <Nav className="ml-auto">
         {isAuthenticated ? (
-          <DropdownButton variant="dark" menuAlign="right" title={<i class="fas fa-cog"></i>}>
-            <Dropdown.Item disabled="true">
-              <div>
-                <i className="fas fa-user-circle mr-2"></i>
-                {`Hi ${user.given_name}`}
+          <div className="media">
+            {user.picture && (
+              <img
+                src={user.picture}
+                className="avatar mr-3 rounded-circle d-none d-md-inline-block"
+                alt="Profile image"
+              />
+            )}
+            {user.given_name && (
+              <div className="media-body mr-3 d-none d-md-inline-block">
+                <p className="h6 my-0">{`Hi ${user.given_name}!`}</p>
               </div>
-            </Dropdown.Item>
-            <Dropdown.Item as="button" onClick={() => logout()}>
-              <i className="fas fa-sign-out-alt mr-2"></i>
-              Logout
-            </Dropdown.Item>
-          </DropdownButton>
+            )}
+            <LogoutBtn />
+          </div>
         ) : (
           <LoginBtn />
         )}

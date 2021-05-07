@@ -14,7 +14,8 @@ import './index.scss';
 export default function GigForm(props) {
   // Init state
   const [formObj, setFormObj] = useState(emptyFormObj);
-
+  const [formView, setFormView] = useState('venue')
+  
   // Amenities array
   const amenities = [
     'catering',
@@ -158,39 +159,122 @@ export default function GigForm(props) {
         <div className="row">
           <div className="col-12">
             <CardBody spacing={'p-4 p-md-4 m-2 m-md-0'}>
-
               <p className="h2 heading">Add/Edit Gig</p>
+
               <Form>
                 <div className="row">
 
-                  {/* Creates all fields for adding venue data to form object */}
-                  {venueFields.map((field, index) => {
-                    return (
-                      <div
-                        key={`inputField-${index}`}
-                        className={`col-${field.col}`}
-                      >
-                        <Form.Group controlId={`${field.name}InputGroup`}>
-                          <Form.Label>
-                            {index === 0
-                              ? `Venue Name`
-                              : `${createLabel(field.name)}`}
-                          </Form.Label>
-                          <Form.Control
-                            name={field.name}
-                            type={field.name === 'date' ? 'date' : 'text'}
-                            placeholder={
-                              field.name === 'date'
-                                ? 'mm/dd/yyyy'
-                                : `Enter ${createLabel(field.name)}`
-                            }
-                            value={formObj[field.name]}
-                            onChange={handleInputChange}
-                          />
-                        </Form.Group>
-                      </div>
-                    );
-                  })}
+                  {/* Venue Name */}
+                  <div className="col-12 col-md-6">
+                    <Form.Group controlId="venueInputGroup">
+                      <Form.Label>Venue Name *</Form.Label>
+                      <Form.Control
+                        name="name"
+                        type="text"
+                        placeholder="Enter Venue Name"
+                        value={formObj.name}
+                        onChange={handleInputChange}
+                      />
+                    </Form.Group>
+                  </div>
+
+                  {/* Address */}
+                  <div className="col-12 col-md-6">
+                    <Form.Group controlId="streetInputGroup">
+                      <Form.Label>Street Address</Form.Label>
+                      <Form.Control
+                        name="street"
+                        type="text"
+                        placeholder="Enter Street Address"
+                        value={formObj.street}
+                        onChange={handleInputChange}
+                      />
+                    </Form.Group>
+                  </div>
+
+                  {/* City */}
+                  <div className="col-6">
+                    <Form.Group controlId="cityInputGroup">
+                      <Form.Label>City *</Form.Label>
+                      <Form.Control
+                        name="city"
+                        type="text"
+                        placeholder="Enter City"
+                        value={formObj.city}
+                        onChange={handleInputChange}
+                      />
+                    </Form.Group>
+                  </div>
+
+                  {/* State */}
+                  <div className="col-6">
+                    <Form.Group controlId="stateInputGroup">
+                      <Form.Label>State *</Form.Label>
+                      <Form.Control
+                        name="state"
+                        type="text"
+                        placeholder="Enter State"
+                        value={formObj.state}
+                        onChange={handleInputChange}
+                      />
+                    </Form.Group>
+                  </div>
+
+                  {/* Zip */}
+                  <div className="col-6 col-md-3">
+                    <Form.Group controlId="zipInputGroup">
+                      <Form.Label>Zip</Form.Label>
+                      <Form.Control
+                        name="zip"
+                        type="text"
+                        placeholder="Enter Zip"
+                        value={formObj.zip}
+                        onChange={handleInputChange}
+                      />
+                    </Form.Group>
+                  </div>
+
+                  {/* Date */}
+                  <div className="col-6 col-md-3">
+                    <Form.Group controlId="dateInputGroup">
+                      <Form.Label>Date *</Form.Label>
+                      <Form.Control
+                        name="date"
+                        type="date"
+                        placeholder="Enter Date"
+                        value={formObj.date}
+                        onChange={handleInputChange}
+                      />
+                    </Form.Group>
+                  </div>
+
+                  {/* Capacity */}
+                  <div className="col-6 col-md-3">
+                    <Form.Group controlId="capacityInputGroup">
+                      <Form.Label>Capacity</Form.Label>
+                      <Form.Control
+                        name="capacity"
+                        type="text"
+                        placeholder="Enter Capacity"
+                        value={formObj.capacity}
+                        onChange={handleInputChange}
+                      />
+                    </Form.Group>
+                  </div>
+
+                  {/* Presale */}
+                  <div className="col-6 col-md-3">
+                    <Form.Group controlId="presaleInputGroup">
+                      <Form.Label>Presale</Form.Label>
+                      <Form.Control
+                        name="presale"
+                        type="text"
+                        placeholder="Enter Presale"
+                        value={formObj.presale}
+                        onChange={handleInputChange}
+                      />
+                    </Form.Group>
+                  </div>
 
                   <div className="col-12">
                     <p className="small-heading">Amenities (Select all that apply):</p>
@@ -212,13 +296,14 @@ export default function GigForm(props) {
                   })}
 
                   <div className="col-12 pt-3">
-                    <p className="small-heading">Insert time strings for each block:</p>
+                    <p className="small-heading mb-0">Update Stage Schedule</p>
+                    <p>You can either use the default times we've provided or update them with your own.</p>
                   </div>
 
                   {/* Create inputs for adding times to stage schedule events */}
-                  {stageBlocks.map((block, index) => {
+                  {formObj.schedule.map((block, index) => {
                     return (
-                      <div key={`block-${block.event}`} className="col-12">
+                      <div key={`block-${block.event}`} className="col-6 col-md-3">
                         <Form.Group>
                           <Form.Label>{block.event}</Form.Label>
                           <Form.Control
@@ -226,7 +311,7 @@ export default function GigForm(props) {
                             name={block.event}
                             type="text"
                             placeholder={`Enter ${block.event} start time`}
-                            value={formObj.schedule.timeString}
+                            value={block.timeString}
                             onChange={handleSchedule}
                             onSubmit={() =>
                               setFormObj({
@@ -250,6 +335,7 @@ export default function GigForm(props) {
                       className="py-2 px-3"
                       onClick={handleSubmit}
                     >
+                      <i className="fas fa-plus mr-2"></i>
                       Add Gig
                     </Button>
                   </div>

@@ -26,7 +26,7 @@ module.exports = {
       console.log(req.params);
       const { id } = req.params;
       const results = await db.Gig.deleteOne({ _id: id });
-      res.json({ success: true, msg: results })
+      res.json({ success: true, msg: results });
     } catch (err) {
       console.log(err);
       res.status(500).json({ success: false, msg: err });
@@ -34,11 +34,15 @@ module.exports = {
   },
   update: async function (req, res) {
     try {
-      const results = await db.Gig.findByIdAndUpdate({ _id: req.params.id }, req.body);
+      const results = await db.Gig.findByIdAndUpdate(
+        { _id: req.params.id },
+        req.body,
+        { new: true }
+      );
       res.json({ success: true, msg: results });
     } catch (err) {
       console.log(err);
       res.status(500).json({ success: false, msg: err });
     }
-  }
+  },
 };

@@ -69,10 +69,6 @@ const seed = [
         event: 'Cartel',
       },
       {
-        timeString: '12:00 AM',
-        event: 'Curfew',
-      },
-      {
         timeString: '2:00 AM',
         event: 'Bus Call',
       },
@@ -126,10 +122,6 @@ const seed = [
         event: 'Cartel',
       },
       {
-        timeString: '12:00 AM',
-        event: 'Curfew',
-      },
-      {
         timeString: '2:00 AM',
         event: 'Bus Call',
       },
@@ -180,10 +172,6 @@ const seed = [
       {
         timeString: '10:00 - 10:55 PM',
         event: 'Cartel',
-      },
-      {
-        timeString: '11:00 AM',
-        event: 'Curfew',
       },
       {
         timeString: '1:00 AM',
@@ -239,10 +227,6 @@ const seed = [
         event: 'Cartel',
       },
       {
-        timeString: '11:00 AM',
-        event: 'Curfew',
-      },
-      {
         timeString: '3:00 AM',
         event: 'Bus Call',
       },
@@ -295,8 +279,56 @@ const seed = [
         event: 'Cartel',
       },
       {
-        timeString: '11:00 AM',
-        event: 'Curfew',
+        timeString: '2:00 AM',
+        event: 'Bus Call',
+      },
+    ],
+  },
+  {
+    date: new Date('2021-11-01'),
+    venue: {
+      name: 'TEST GIG',
+      street: '',
+      city: '',
+      state: '',
+      zip: '',
+      capacity: '0',
+      presale: '0',
+    },
+    catering: true,
+    greenrooms: true,
+    internet: true,
+    showers: true,
+    parking: true,
+    rider: true,
+    schedule: [
+      {
+        timeString: '2:00 PM',
+        event: 'Load in',
+      },
+      {
+        timeString: '4:00 PM',
+        event: 'Sound Check',
+      },
+      {
+        timeString: '6:30 PM',
+        event: 'Doors',
+      },
+      {
+        timeString: '7:00 - 7:30 PM',
+        event: 'The Bigger Lights',
+      },
+      {
+        timeString: '7:45 - 8:15 PM',
+        event: 'Anarbor',
+      },
+      {
+        timeString: '8:30 - 9:15 PM',
+        event: 'This Providence',
+      },
+      {
+        timeString: '9:30 - 10:50 PM',
+        event: 'Cartel',
       },
       {
         timeString: '2:00 AM',

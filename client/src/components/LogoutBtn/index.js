@@ -8,7 +8,11 @@ export default function LogoutBtn() {
   const { logout, user } = useAuth0();
 
   return (
-    <Button className="m-2 px-4 py-2" variant="primary" onClick={() => logout()}>
+    <Button
+      className="m-2 px-4 py-2"
+      variant="primary"
+      onClick={() => logout({ returnTo: window.location.origin })}
+    >
       Log Out
       <i className="fas fa-sign-out-alt ml-2"></i>
     </Button>

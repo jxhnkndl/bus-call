@@ -16,10 +16,11 @@ export default function GigForm(props) {
   // Init state
   const [formObj, setFormObj] = useState(emptyFormObj);
 
+  // If in edit mode, configure the form for updating values
+  // on an existing gig rather than creating a new one
   useEffect(() => {
     if (props.selected) {
       const gigObj = formatObj(props.selected);
-      console.log(gigObj);
       setFormObj(gigObj);
     }
   }, []);
@@ -89,8 +90,16 @@ export default function GigForm(props) {
     const id = props.selected._id;
     try {
       const res = await API.deleteGig(id);
-      props.fetchGigs();
       toast('Gig deleted!');
+
+      // Fetch updated list of gigs, reset gigs index at 0 to prevent
+      // app from trying to load the deleted gig, and switch back to
+      // tour view
+      setTimeout(() => {
+        props.fetchGigs();
+        props.setIndex(0);
+        props.handleView('tour');
+      }, 250);
     } catch (err) {
       toast.error('Uh oh! Something went wrong. Please try again.');
       console.log(err);
@@ -157,7 +166,7 @@ export default function GigForm(props) {
     Array.from(document.querySelectorAll('input')).forEach(
       (input) => (input.value = '')
     );
-    
+
     // Reset form object state back to the empty gig object structure
     setFormObj(emptyFormObj);
   };
@@ -175,21 +184,18 @@ export default function GigForm(props) {
     if (formObj.date) {
       console.log(formObj);
 
-      // Send the new or updated gig to the API
-      if (props.view === 'edit') {
-        updateGig();
-      } else if (props.view === 'add') {
-        addGig();
-      }
+      // Determine whether to send PUT or POST request to API
+      props.view === 'edit' ? updateGig() : addGig();
 
-      // Reset form fields
+      // Reset fields
       handleReset();
 
       // Delay fetching gigs from API for long enough to ensure
       // that the newly added gig has been created and can be
-      // returned to the client
+      // returned to the client and reset the view
       setTimeout(() => {
         props.fetchGigs();
+        props.handleView('tour');
       }, 250);
     }
   };
@@ -402,7 +408,7 @@ export default function GigForm(props) {
                         <Button
                           type="submit"
                           variant="primary"
-                          className="py-2 px-3"
+                          className="py-2 px-3 mr-2"
                           onClick={handleSubmit}
                         >
                           <i className="fas fa-edit mr-2"></i>

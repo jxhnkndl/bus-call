@@ -171,7 +171,6 @@ export default function Dashboard() {
                 view={view}
                 handleView={handleView}
                 fetchGigs={fetchGigs}
-                gigs={gigs}
               />
             )}
 
@@ -180,9 +179,9 @@ export default function Dashboard() {
               <GigForm
                 view={view}
                 handleView={handleView}
+                setIndex={setIndex}
                 selected={gigs[index]}
                 fetchGigs={fetchGigs}
-                gigs={gigs}
               />
             )}
           </div>

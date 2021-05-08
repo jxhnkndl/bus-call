@@ -1,8 +1,9 @@
 // Import dependencies
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { pageVariants, pageTransitions } from '../../utils/transitions';
 import { emptyFormObj } from '../../utils/emptyFormObj';
+import formatObj from '../../utils/formatObj';
 import { toast } from 'react-toastify';
 import API from '../../utils/API';
 import CardBody from '../CardBody';
@@ -14,8 +15,15 @@ import './index.scss';
 export default function GigForm(props) {
   // Init state
   const [formObj, setFormObj] = useState(emptyFormObj);
-  const [formView, setFormView] = useState('venue')
-  
+
+  useEffect(() => {
+    if (props.selected) {
+      const gigObj = formatObj(props.selected);
+      console.log(gigObj);
+      setFormObj(gigObj);
+    }
+  }, []);
+
   // Amenities array
   const amenities = [
     'catering',
@@ -49,11 +57,27 @@ export default function GigForm(props) {
     { timeString: '', event: 'Bus Call' },
   ];
 
+  // Add gig to database
   const addGig = async () => {
     try {
       const res = await API.addGig(formObj);
+      toast('Gig added!');
       console.log(res);
     } catch (err) {
+      toast.error('Uh oh! Something went wrong. Please try again.');
+      console.log(err);
+    }
+  };
+
+  // Update gig in database
+  const updateGig = async () => {
+    const id = props.selected._id;
+    try {
+      const res = await API.updateGig(id, formObj);
+      toast('Gig updated!');
+      console.log(res);
+    } catch (err) {
+      toast.error('Uh oh! Something went wrong. Please try again.');
       console.log(err);
     }
   };
@@ -134,8 +158,15 @@ export default function GigForm(props) {
     // Only submit these properties have values
     if (formObj.date) {
       console.log(formObj);
-      addGig();
-      toast('Gig created!');
+
+      // Send the new or updated gig to the API
+      if (props.view === 'edit') {
+        updateGig();
+      } else if (props.view === 'add') {
+        addGig();
+      }
+
+      // Reset form fields
       handleReset();
 
       // Delay fetching gigs from API for long enough to ensure
@@ -163,7 +194,6 @@ export default function GigForm(props) {
 
               <Form>
                 <div className="row">
-
                   {/* Venue Name */}
                   <div className="col-12 col-md-6">
                     <Form.Group controlId="venueInputGroup">
@@ -172,7 +202,7 @@ export default function GigForm(props) {
                         name="name"
                         type="text"
                         placeholder="Enter Venue Name"
-                        value={formObj.name}
+                        value={formObj.venue.name}
                         onChange={handleInputChange}
                       />
                     </Form.Group>
@@ -186,7 +216,7 @@ export default function GigForm(props) {
                         name="street"
                         type="text"
                         placeholder="Enter Street Address"
-                        value={formObj.street}
+                        value={formObj.venue.street}
                         onChange={handleInputChange}
                       />
                     </Form.Group>
@@ -200,7 +230,7 @@ export default function GigForm(props) {
                         name="city"
                         type="text"
                         placeholder="Enter City"
-                        value={formObj.city}
+                        value={formObj.venue.city}
                         onChange={handleInputChange}
                       />
                     </Form.Group>
@@ -214,7 +244,7 @@ export default function GigForm(props) {
                         name="state"
                         type="text"
                         placeholder="Enter State"
-                        value={formObj.state}
+                        value={formObj.venue.state}
                         onChange={handleInputChange}
                       />
                     </Form.Group>
@@ -228,7 +258,7 @@ export default function GigForm(props) {
                         name="zip"
                         type="text"
                         placeholder="Enter Zip"
-                        value={formObj.zip}
+                        value={formObj.venue.zip}
                         onChange={handleInputChange}
                       />
                     </Form.Group>
@@ -256,7 +286,7 @@ export default function GigForm(props) {
                         name="capacity"
                         type="text"
                         placeholder="Enter Capacity"
-                        value={formObj.capacity}
+                        value={formObj.venue.capacity}
                         onChange={handleInputChange}
                       />
                     </Form.Group>
@@ -270,14 +300,16 @@ export default function GigForm(props) {
                         name="presale"
                         type="text"
                         placeholder="Enter Presale"
-                        value={formObj.presale}
+                        value={formObj.venue.presale}
                         onChange={handleInputChange}
                       />
                     </Form.Group>
                   </div>
 
                   <div className="col-12">
-                    <p className="small-heading">Amenities (Select all that apply):</p>
+                    <p className="small-heading">
+                      Amenities (Select all that apply):
+                    </p>
                   </div>
 
                   {/* Creates checkboxes for each element in the amenities array */}
@@ -297,13 +329,19 @@ export default function GigForm(props) {
 
                   <div className="col-12 pt-3">
                     <p className="small-heading mb-0">Update Stage Schedule</p>
-                    <p>You can either use the default times we've provided or update them with your own.</p>
+                    <p>
+                      You can either use the default times we've provided or
+                      update them with your own.
+                    </p>
                   </div>
 
                   {/* Create inputs for adding times to stage schedule events */}
                   {formObj.schedule.map((block, index) => {
                     return (
-                      <div key={`block-${block.event}`} className="col-6 col-md-3">
+                      <div
+                        key={`block-${block.event}`}
+                        className="col-6 col-md-3"
+                      >
                         <Form.Group>
                           <Form.Label>{block.event}</Form.Label>
                           <Form.Control
@@ -329,15 +367,32 @@ export default function GigForm(props) {
                 {/* Submit */}
                 <div className="row pt-3">
                   <div className="col-12">
-                    <Button
-                      type="submit"
-                      variant="primary"
-                      className="py-2 px-3"
-                      onClick={handleSubmit}
-                    >
-                      <i className="fas fa-plus mr-2"></i>
-                      Add Gig
-                    </Button>
+
+                    {/* Add gig */}
+                    {props.view === 'add' && (
+                      <Button
+                        type="submit"
+                        variant="primary"
+                        className="py-2 px-3"
+                        onClick={handleSubmit}
+                      >
+                        <i className="fas fa-plus mr-2"></i>
+                        Add Gig
+                      </Button>
+                    )}
+
+                    {/* Update gig */}
+                    {props.view === 'edit' && (
+                      <Button
+                        type="submit"
+                        variant="primary"
+                        className="py-2 px-3"
+                        onClick={handleSubmit}
+                      >
+                        <i className="fas fa-edit mr-2"></i>
+                        Update Gig
+                      </Button>
+                    )}
                   </div>
                 </div>
               </Form>

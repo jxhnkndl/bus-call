@@ -3,8 +3,6 @@ import dayjs from 'dayjs';
 import { emptyFormObj } from './emptyFormObj';
 
 export default function formatObj(obj) {
-  console.log(obj);
-
   return {
     date: dayjs(obj.date).format('YYYY-MM-DD'),
     venue: {

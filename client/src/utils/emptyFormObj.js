@@ -25,8 +25,6 @@ export const emptyFormObj = {
     { timeString: '7:45 - 8:15 PM', event: 'Second' },
     { timeString: '8:30 - 9:15 PM', event: 'Direct' },
     { timeString: '9:30 - 10:50 PM', event: 'Headliner' },
-    // { timeString: '11:00 PM', event: 'Curfew' },
     { timeString: '2:00 AM', event: 'Bus Call' },
   ]
 }
-

@@ -161,6 +161,25 @@ export default function GigForm(props) {
     });
   };
 
+  // Handle updating artist's assigned to stage schedule
+  // blocks 3-6
+  const handleArtist = (event) => {
+    const { name, value } = event.target;
+    const { index } = event.target.dataset;
+
+    const schedule = [...formObj.schedule];
+    const currentBlock = schedule[index];
+
+    currentBlock.event = value;
+    schedule.splice(index, 1, currentBlock);
+   
+    // Reset state
+    setFormObj({
+      ...formObj,
+      schedule: schedule,
+    });
+  }
+
   // Handle resetting all input fields in UI on submit
   const handleReset = () => {
     Array.from(document.querySelectorAll('input')).forEach(
@@ -348,6 +367,99 @@ export default function GigForm(props) {
                       </div>
                     );
                   })}
+
+                  {/* Artist inputs tied to stage schedule bocks 3, 4, 5, and 6 */}
+                  <div className="col-12 pt-3">
+                    <p className="small-heading mb-0">Artists</p>
+                    <p>
+                      You can either use the default times we've provided or
+                      update them with your own.
+                    </p>
+                  </div>
+
+                  {/* Opener */}
+                  <div className="col-6 col-md-3">
+                    <Form.Group>
+                      <Form.Label>Opener</Form.Label>
+                      <Form.Control
+                        name="opener"
+                        data-index={3}
+                        type="text"
+                        placeholder="Enter Opener"
+                        value={formObj.schedule[3].event}
+                        onChange={handleArtist}
+                        onSubmit={() =>
+                          setFormObj({
+                            ...formObj,
+                            schedule: stageBlocks,
+                          })
+                        }
+                      />
+                    </Form.Group>
+                  </div>
+
+                  {/* Second */}
+                  <div className="col-6 col-md-3">
+                    <Form.Group>
+                      <Form.Label>Second</Form.Label>
+                      <Form.Control
+                        name="second"
+                        data-index={4}
+                        type="text"
+                        placeholder="Enter Second"
+                        value={formObj.schedule[4].event}
+                        onChange={handleArtist}
+                        onSubmit={() =>
+                          setFormObj({
+                            ...formObj,
+                            schedule: stageBlocks,
+                          })
+                        }
+                      />
+                    </Form.Group>
+                  </div>
+
+                  {/* Direct */}
+                  <div className="col-6 col-md-3">
+                    <Form.Group>
+                      <Form.Label>Direct</Form.Label>
+                      <Form.Control
+                        name="direct"
+                        data-index={5}
+                        type="text"
+                        placeholder="Enter Direct"
+                        value={formObj.schedule[5].event}
+                        onChange={handleArtist}
+                        onSubmit={() =>
+                          setFormObj({
+                            ...formObj,
+                            schedule: stageBlocks,
+                          })
+                        }
+                      />
+                    </Form.Group>
+                  </div>
+
+                  {/* Headliner */}
+                  <div className="col-6 col-md-3">
+                    <Form.Group>
+                      <Form.Label>Headliner</Form.Label>
+                      <Form.Control
+                        name="opener"
+                        data-index={6}
+                        type="text"
+                        placeholder="Enter Opener"
+                        value={formObj.schedule[6].event}
+                        onChange={handleArtist}
+                        onSubmit={() =>
+                          setFormObj({
+                            ...formObj,
+                            schedule: stageBlocks,
+                          })
+                        }
+                      />
+                    </Form.Group>
+                  </div>
 
                   <div className="col-12 pt-3">
                     <p className="small-heading mb-0">Update Stage Schedule</p>

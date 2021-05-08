@@ -59,7 +59,7 @@ export default function Tour(props) {
                             </div>
                             <div className="col-12 col-md-8 mx-auto">
                               <p className="list-label mb-1">
-                                {`w/ Cartel, This Providence, Anarbor`}
+                                {`${gig.schedule[6].event} + ${gig.schedule[5].event} + ${gig.schedule[4].event} + ${gig.schedule[3].event}`}
                               </p>
                             </div>
                             <div className="col-12 col-md-8 mx-auto">

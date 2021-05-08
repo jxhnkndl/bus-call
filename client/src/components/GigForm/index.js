@@ -231,7 +231,9 @@ export default function GigForm(props) {
         <div className="row">
           <div className="col-12">
             <CardBody spacing={'p-4 p-md-4 m-2 m-md-0'}>
-              <p className="h2 heading">Add/Edit Gig</p>
+              <p className="h2 heading">
+                {props.view === 'add' ? 'Add Gig' : 'Edit Gig'}
+              </p>
 
               <Form>
                 <div className="row">

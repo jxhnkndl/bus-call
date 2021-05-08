@@ -71,11 +71,26 @@ export default function GigForm(props) {
 
   // Update gig in database
   const updateGig = async () => {
+    console.log('Updating gig...');
     const id = props.selected._id;
     try {
       const res = await API.updateGig(id, formObj);
       toast('Gig updated!');
       console.log(res);
+    } catch (err) {
+      toast.error('Uh oh! Something went wrong. Please try again.');
+      console.log(err);
+    }
+  };
+
+  // Delete gig from database and fetch updated gigs data from API
+  const deleteGig = async () => {
+    console.log('Deleting gig...');
+    const id = props.selected._id;
+    try {
+      const res = await API.deleteGig(id);
+      props.fetchGigs();
+      toast('Gig deleted!');
     } catch (err) {
       toast.error('Uh oh! Something went wrong. Please try again.');
       console.log(err);
@@ -142,7 +157,8 @@ export default function GigForm(props) {
     Array.from(document.querySelectorAll('input')).forEach(
       (input) => (input.value = '')
     );
-
+    
+    // Reset form object state back to the empty gig object structure
     setFormObj(emptyFormObj);
   };
 
@@ -367,13 +383,12 @@ export default function GigForm(props) {
                 {/* Submit */}
                 <div className="row pt-3">
                   <div className="col-12">
-
                     {/* Add gig */}
                     {props.view === 'add' && (
                       <Button
                         type="submit"
                         variant="primary"
-                        className="py-2 px-3"
+                        className="py-2 px-3 mr-2"
                         onClick={handleSubmit}
                       >
                         <i className="fas fa-plus mr-2"></i>
@@ -383,15 +398,25 @@ export default function GigForm(props) {
 
                     {/* Update gig */}
                     {props.view === 'edit' && (
-                      <Button
-                        type="submit"
-                        variant="primary"
-                        className="py-2 px-3"
-                        onClick={handleSubmit}
-                      >
-                        <i className="fas fa-edit mr-2"></i>
-                        Update Gig
-                      </Button>
+                      <div>
+                        <Button
+                          type="submit"
+                          variant="primary"
+                          className="py-2 px-3"
+                          onClick={handleSubmit}
+                        >
+                          <i className="fas fa-edit mr-2"></i>
+                          Update Gig
+                        </Button>
+                        <Button
+                          variant="danger"
+                          className="py-2 px-3 mr-2"
+                          onClick={deleteGig}
+                        >
+                          <i className="fas fa-trash-alt mr-2"></i>
+                          Delete Gig
+                        </Button>
+                      </div>
                     )}
                   </div>
                 </div>

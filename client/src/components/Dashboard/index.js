@@ -161,7 +161,7 @@ export default function Dashboard() {
                 gigs={gigs}
                 handleDate={handleDate}
                 handleSelect={handleSelect}
-                handleDelete={handleDelete}
+                // handleDelete={handleDelete}
               />
             )}
 

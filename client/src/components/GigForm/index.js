@@ -30,7 +30,7 @@ export default function GigForm(props) {
     'catering',
     'internet',
     'showers',
-    'greenrooms',
+    'lounge',
     'parking',
     'rider',
   ];

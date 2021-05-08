@@ -79,15 +79,6 @@ export default function Tour(props) {
                                 <i className="fas fa-info-circle mr-2"></i>
                                 View Details
                               </Button>
-                              <Button
-                                id={gig._id}
-                                variant="danger"
-                                className="my-2 mr-2"
-                                onClick={() => props.handleDelete(gig._id)}
-                              >
-                                <i className="fas fa-trash-alt mr-2"></i>
-                                Delete Gig
-                              </Button>
                             </div>
                           </div>
                         </ListGroup.Item>

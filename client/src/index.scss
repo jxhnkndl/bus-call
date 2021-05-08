@@ -1,4 +1,13 @@
+// Import base
+@import './theme.scss';
+
+html {
+  background: $base-900;
+  margin-left: calc(100vw - 100%);
+}
+
 body {
   margin: 0;
-  padding: 0;
+  padding: 0; 
+  
 }

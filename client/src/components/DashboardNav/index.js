@@ -16,13 +16,12 @@ const styles = {
 
 // Create and export cycle control component
 export default function DashboardNav(props) {
-
   return (
     <div className="row mb-2 dashboard-nav">
       <div className="col-12">
         <CardBody
           flex={'d-flex align-items-center justify-content-between'}
-          spacing={'px-4 py-2 m-2 m-md-0'}
+          spacing={'px-4 py-3 m-2 m-md-0'}
         >
           <Dropdown className="d-inline-block">
             <Dropdown.Toggle id="dropdown-basic">Options</Dropdown.Toggle>
@@ -33,21 +32,53 @@ export default function DashboardNav(props) {
               <Dropdown.Item onSelect={(e) => props.handleView('tour')}>
                 View Tour
               </Dropdown.Item>
-              <Dropdown.Item onSelect={(e) => props.handleView('add')}>
-                Add Gig
-              </Dropdown.Item>
-              <Dropdown.Item onSelect={(e) => props.handleView('edit')}>
-                Edit Gig
-              </Dropdown.Item>
+              {(props.view === 'tour' || props.view === 'gig') && (
+                <Dropdown.Item onSelect={(e) => props.handleView('add')}>
+                  Add Gig
+                </Dropdown.Item>
+              )}
+              {props.view === 'gig' && (
+                <Dropdown.Item onSelect={(e) => props.handleView('edit')}>
+                  Edit Gig
+                </Dropdown.Item>
+              )}
             </Dropdown.Menu>
           </Dropdown>
           {props.view === 'gig' && (
             <div>
-              <p className="nav-icon mb-0 mr-2" onClick={props.prev}>
+              <p className="nav-icon mb-0 mr-3" onClick={props.prev}>
                 <i className="fas fa-arrow-circle-left"></i>
               </p>
-              <p className="nav-icon mb-0 ml-2" onClick={props.next}>
+              <p className="nav-icon mb-0 mr-3" onClick={props.next}>
                 <i className="fas fa-arrow-circle-right"></i>
+              </p>
+              <p
+                className="nav-icon mb-0"
+                onClick={(e) => props.handleView('edit')}
+              >
+                <i className="fas fa-edit"></i>
+              </p>
+            </div>
+          )}
+
+          {props.view === 'tour' && (
+            <div>
+              <p
+                className="nav-icon mb-0"
+                onClick={(e) => props.handleView('add')}
+              >
+                <i className="fas fa-plus"></i>
+              </p>
+            </div>
+          )}
+
+          {(props.view === 'add' || props.view === 'edit') && (
+            <div>
+              <p
+                className="nav-icon mb-0"
+                onClick={(e) => props.handleView('tour')}
+              >
+                <i className="far fa-window-close"></i>
               </p>
             </div>
           )}

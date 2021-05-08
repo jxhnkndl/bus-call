@@ -16,8 +16,9 @@
 
   .nav-icon {
     color: $base-400;
+    cursor: pointer;
     display: inline-block;
-    font-size: 2rem;
+    font-size: 1.75rem;
   
     &:hover {
       color: $base-500;

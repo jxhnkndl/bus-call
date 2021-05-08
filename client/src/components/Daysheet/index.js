@@ -58,7 +58,6 @@ export default function Daysheet(props) {
         ></iframe>
       </div>
 
-
       {/* Tickets */}
       <div className="card-item">
         <p className="h5 mb-1 small-heading">
@@ -111,10 +110,15 @@ export default function Daysheet(props) {
           <i className="fas fa-road mr-2"></i>
           Next up
         </p>
-        <p className="h2 mb-1">{props.nextVenue}</p>
-        <p className="h5 mb-1">{props.nextDate}</p>
-        <p className="h5 mb-1">{`${props.nextCity}, ${props.nextState}.`}</p>
-        <p className="h4 mb-1">{props.distance}</p>
+        {props.nextVenue ? (
+          <div>
+            <p className="h2 mb-1">{props.nextVenue}</p>
+            <p className="h5 mb-1">{props.nextDate}</p>
+            <p className="h5 mb-1">{`${props.nextCity}, ${props.nextState}.`}</p>
+          </div>
+        ) : (
+          <p className="h2 mb-1">Nothing Scheduled</p>
+        )}
       </div>
     </div>
   );

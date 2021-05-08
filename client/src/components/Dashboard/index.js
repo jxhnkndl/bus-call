@@ -141,13 +141,13 @@ export default function Dashboard() {
                 showers={gigs[index].showers}
                 internet={gigs[index].internet}
                 nextDate={
-                  gigs[index + 1] ? handleDate(gigs[index + 1].date) : 'N/A'
+                  gigs[index + 1] ? handleDate(gigs[index + 1].date) : false
                 }
-                nextCity={gigs[index + 1] ? gigs[index + 1].venue.city : 'N/A'}
+                nextCity={gigs[index + 1] ? gigs[index + 1].venue.city : false}
                 nextState={
-                  gigs[index + 1] ? gigs[index + 1].venue.state : 'N/A'
+                  gigs[index + 1] ? gigs[index + 1].venue.state : false
                 }
-                nextVenue={gigs[index + 1] ? gigs[index + 1].venue.name : 'N/A'}
+                nextVenue={gigs[index + 1] ? gigs[index + 1].venue.name : false}
                 distance={'315 miles'}
                 schedule={gigs[index].schedule}
                 prev={handlePrev}

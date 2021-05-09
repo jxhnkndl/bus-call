@@ -136,7 +136,7 @@ export default function Dashboard() {
                 zip={gigs[index].venue.zip}
                 capacity={gigs[index].venue.capacity}
                 presale={gigs[index].venue.presale}
-                greenrooms={gigs[index].greenrooms}
+                lounge={gigs[index].lounge}
                 catering={gigs[index].catering}
                 showers={gigs[index].showers}
                 internet={gigs[index].internet}

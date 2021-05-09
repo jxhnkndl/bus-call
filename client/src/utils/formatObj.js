@@ -15,7 +15,7 @@ export default function formatObj(obj) {
       presale: obj.venue.presale
     },
     catering: obj.catering,
-    greenrooms: obj.greenrooms,
+    lounge: obj.lounge,
     internet: obj.internet,
     parking: obj.parking,
     showers: obj.showers,

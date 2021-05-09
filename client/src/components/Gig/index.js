@@ -30,7 +30,7 @@ export default function Gig(props) {
                 zip={props.zip}
                 capacity={props.capacity}
                 presale={props.presale}
-                greenrooms={props.greenrooms}
+                lounge={props.lounge}
                 catering={props.catering}
                 showers={props.showers}
                 internet={props.internet}

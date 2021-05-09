@@ -13,7 +13,7 @@ export const emptyFormObj = {
   catering: false,
   internet: false,
   showers: false,
-  greenrooms: false,
+  lounge: false,
   parking: false,
   rider: false,
   distance: 'N/A',

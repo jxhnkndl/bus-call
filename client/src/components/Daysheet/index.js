@@ -9,7 +9,7 @@ import './index.scss';
 export default function Daysheet(props) {
   // Create amenities array from props for rendering
   const amenities = [
-    { name: 'Lounge', icon: 'fas fa-couch', value: props.greenrooms },
+    { name: 'Lounge', icon: 'fas fa-couch', value: props.lounge },
     { name: 'Catering', icon: 'fas fa-pizza-slice', value: props.catering },
     { name: 'Internet', icon: 'fas fa-wifi', value: props.internet },
     { name: 'Parking', icon: 'fas fa-parking', value: props.parking },

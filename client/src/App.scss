@@ -24,4 +24,23 @@
     color: $primary;
     font-family: $font-stack-secondary;
   }
+
+  // React Toastify overwrites
+  .Toastify__toast--default {
+    background: #424242;
+    color: $base-300;
+  }
+
+  .Toastify__toast--success {
+    background: linear-gradient(
+      270deg,
+      rgba(102, 187, 106, 1) 0%,
+      rgba(81, 150, 87, 1) 100%
+    );
+  }
+
+  .Toastify__progress-bar--default {
+    // background: linear-gradient(90deg, #5ac8fa, #007aff, #34aadc, #5856d6);
+    background: linear-gradient(90deg, $primary-light, $primary, $primary-dark);
+  }
 }

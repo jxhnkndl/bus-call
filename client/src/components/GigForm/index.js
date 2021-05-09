@@ -35,17 +35,6 @@ export default function GigForm(props) {
     'rider',
   ];
 
-  const venueFields = [
-    { name: 'name', col: 12, required: true },
-    { name: 'street', col: 12, required: false },
-    { name: 'city', col: 6, required: true },
-    { name: 'state', col: 6, required: true },
-    { name: 'zip', col: 6, required: false },
-    { name: 'date', col: 6, required: true },
-    { name: 'capacity', col: 6, required: false },
-    { name: 'presale', col: 6, required: false },
-  ];
-
   const stageBlocks = [
     { timeString: '', event: 'Load In' },
     { timeString: '', event: 'Soundcheck' },
@@ -62,10 +51,10 @@ export default function GigForm(props) {
   const addGig = async () => {
     try {
       const res = await API.addGig(formObj);
-      toast('Gig added!');
+      toast.success('And the crowd goes wild! 🤘🏼');
       console.log(res);
     } catch (err) {
-      toast.error('Uh oh! Something went wrong. Please try again.');
+      toast.error('Uh oh! Something went wrong. Try again! 🧐');
       console.log(err);
     }
   };
@@ -76,10 +65,10 @@ export default function GigForm(props) {
     const id = props.selected._id;
     try {
       const res = await API.updateGig(id, formObj);
-      toast('Gig updated!');
+      toast.success(`Gig updated! Don't forget extra strings... 🎸`);
       console.log(res);
     } catch (err) {
-      toast.error('Uh oh! Something went wrong. Please try again.');
+      toast.error('Uh oh! Something went wrong. Try again! 🧐');
       console.log(err);
     }
   };
@@ -90,7 +79,7 @@ export default function GigForm(props) {
     const id = props.selected._id;
     try {
       const res = await API.deleteGig(id);
-      toast('Gig deleted!');
+      toast.success(`Aw, too bad! You'll be back before you know it! 🚀`);
 
       // Fetch updated list of gigs, reset gigs index at 0 to prevent
       // app from trying to load the deleted gig, and switch back to
@@ -101,7 +90,7 @@ export default function GigForm(props) {
         props.handleView('tour');
       }, 250);
     } catch (err) {
-      toast.error('Uh oh! Something went wrong. Please try again.');
+      toast.error('Uh oh! Something went wrong. Try again! 🧐');
       console.log(err);
     }
   };
@@ -172,13 +161,13 @@ export default function GigForm(props) {
 
     currentBlock.event = value;
     schedule.splice(index, 1, currentBlock);
-   
+
     // Reset state
     setFormObj({
       ...formObj,
       schedule: schedule,
     });
-  }
+  };
 
   // Handle resetting all input fields in UI on submit
   const handleReset = () => {
@@ -199,24 +188,49 @@ export default function GigForm(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // Only submit these properties have values
-    if (formObj.date) {
-      console.log(formObj);
-
-      // Determine whether to send PUT or POST request to API
-      props.view === 'edit' ? updateGig() : addGig();
-
-      // Reset fields
-      handleReset();
-
-      // Delay fetching gigs from API for long enough to ensure
-      // that the newly added gig has been created and can be
-      // returned to the client and reset the view
-      setTimeout(() => {
-        props.fetchGigs();
-        props.handleView('tour');
-      }, 250);
+    if (!formObj.venue.name) {
+      toast.error(
+        `Uh oh! Wrong chord! Check the venue name and try again. 🧐`
+      );
+      return;
     }
+
+    if (!formObj.venue.city) {
+      toast.error(
+        `Uh oh! Wrong chord! Check the city and try again. 🧐`
+      );
+      return;
+    }
+
+    if (!formObj.venue.state) {
+      toast.error(
+        `Uh oh! Wrong chord! Check the state and try again. 🧐`
+      );
+      return;
+    }
+
+    if (!formObj.date) {
+      toast.error(
+        `Uh oh! Wrong chord! Check the date and try again. 🧐`
+      );
+      return;
+    }
+
+    console.log(formObj);
+
+    // Determine whether to send PUT or POST request to API
+    props.view === 'edit' ? updateGig() : addGig();
+
+    // Reset fields
+    handleReset();
+
+    // Delay fetching gigs from API for long enough to ensure
+    // that the newly added gig has been created and can be
+    // returned to the client and reset the view
+    setTimeout(() => {
+      props.fetchGigs();
+      props.handleView('tour');
+    }, 250);
   };
 
   return (
@@ -374,8 +388,8 @@ export default function GigForm(props) {
                   <div className="col-12 pt-3">
                     <p className="small-heading mb-0">Artists</p>
                     <p>
-                      You can either use the default times we've provided or
-                      update them with your own.
+                      Add artists or use default slot titles. You can always
+                      come back and update these later!
                     </p>
                   </div>
 
@@ -466,8 +480,8 @@ export default function GigForm(props) {
                   <div className="col-12 pt-3">
                     <p className="small-heading mb-0">Update Stage Schedule</p>
                     <p>
-                      You can either use the default times we've provided or
-                      update them with your own.
+                      Add custom times or use default stage schedule. This can
+                      always be updated later!
                     </p>
                   </div>
 
@@ -475,16 +489,16 @@ export default function GigForm(props) {
                   {formObj.schedule.map((block, index) => {
                     return (
                       <div
-                        key={`block-${block.event}`}
+                        key={`block-${stageBlocks[index].event}`}
                         className="col-6 col-md-3"
                       >
                         <Form.Group>
-                          <Form.Label>{block.event}</Form.Label>
+                          <Form.Label>{stageBlocks[index].event}</Form.Label>
                           <Form.Control
                             data-index={index}
                             name={block.event}
                             type="text"
-                            placeholder={`Enter ${block.event} start time`}
+                            placeholder={`Enter ${stageBlocks[index].event} start time`}
                             value={block.timeString}
                             onChange={handleSchedule}
                             onSubmit={() =>

@@ -1,9 +1,10 @@
 // Import dependencies
-import React from 'react';
+import React, { useState } from 'react';
 import Badge from 'react-bootstrap/Badge';
 import Button from 'react-bootstrap/Button';
 import CardBody from '../CardBody';
 import Dropdown from 'react-bootstrap/Dropdown';
+import ConfirmModal from '../ConfirmModal';
 import './index.scss';
 
 // Overwrite CardBody component styles for this component only
@@ -16,6 +17,11 @@ const styles = {
 
 // Create and export cycle control component
 export default function DashboardNav(props) {
+  const [show, setShow] = useState(false);
+
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
+
   return (
     <div className="row mb-2 dashboard-nav">
       <div className="col-12">
@@ -76,7 +82,7 @@ export default function DashboardNav(props) {
             <div>
               <p
                 className="nav-icon mb-0"
-                onClick={(e) => props.handleView('tour')}
+                onClick={handleShow}
               >
                 <i className="far fa-window-close"></i>
               </p>
@@ -84,6 +90,18 @@ export default function DashboardNav(props) {
           )}
         </CardBody>
       </div>
+
+      <ConfirmModal
+        show={show}
+        message="Are you sure you want to discard your changes?"
+        confirm={{ color: 'danger', message: 'Discard' }}
+        cancel={{ color: 'primary', message: 'Cancel' }}
+        handleConfirm={(e) => {
+          handleClose();
+          props.handleView('tour');
+        }}
+        handleCancel={handleClose}
+      />
     </div>
   );
 }

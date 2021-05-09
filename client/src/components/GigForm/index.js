@@ -9,12 +9,13 @@ import API from '../../utils/API';
 import CardBody from '../CardBody';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import ConfirmModal from '../ConfirmModal';
 import './index.scss';
 
 // Create and export dashboard page component
 export default function GigForm(props) {
-  // Init state
   const [formObj, setFormObj] = useState(emptyFormObj);
+  const [show, setShow] = useState(false);
 
   // If in edit mode, configure the form for updating values
   // on an existing gig rather than creating a new one
@@ -79,7 +80,8 @@ export default function GigForm(props) {
     const id = props.selected._id;
     try {
       const res = await API.deleteGig(id);
-      toast.success(`Aw, too bad! You'll be back before you know it! 🚀`);
+      handleClose();
+      toast.success(`Too bad! You'll be back before you know it! 🚀`);
 
       // Fetch updated list of gigs, reset gigs index at 0 to prevent
       // app from trying to load the deleted gig, and switch back to
@@ -189,30 +191,22 @@ export default function GigForm(props) {
     event.preventDefault();
 
     if (!formObj.venue.name) {
-      toast.error(
-        `Uh oh! Wrong chord! Check the venue name and try again. 🧐`
-      );
+      toast.error(`Uh oh! Wrong chord! Check the venue name and try again. 🧐`);
       return;
     }
 
     if (!formObj.venue.city) {
-      toast.error(
-        `Uh oh! Wrong chord! Check the city and try again. 🧐`
-      );
+      toast.error(`Uh oh! Wrong chord! Check the city and try again. 🧐`);
       return;
     }
 
     if (!formObj.venue.state) {
-      toast.error(
-        `Uh oh! Wrong chord! Check the state and try again. 🧐`
-      );
+      toast.error(`Uh oh! Wrong chord! Check the state and try again. 🧐`);
       return;
     }
 
     if (!formObj.date) {
-      toast.error(
-        `Uh oh! Wrong chord! Check the date and try again. 🧐`
-      );
+      toast.error(`Uh oh! Wrong chord! Check the date and try again. 🧐`);
       return;
     }
 
@@ -232,6 +226,9 @@ export default function GigForm(props) {
       props.handleView('tour');
     }, 250);
   };
+
+  const handleShow = () => setShow(true);
+  const handleClose = () => setShow(false);
 
   return (
     <motion.div
@@ -545,7 +542,7 @@ export default function GigForm(props) {
                         <Button
                           variant="danger"
                           className="py-2 px-3 mr-2"
-                          onClick={deleteGig}
+                          onClick={handleShow}
                         >
                           <i className="fas fa-trash-alt mr-2"></i>
                           Delete Gig
@@ -557,6 +554,16 @@ export default function GigForm(props) {
               </Form>
             </CardBody>
           </div>
+
+          <ConfirmModal 
+            show={show}
+            message="Looks like you're deleting a gig. Are you sure you want to continue?"
+            confirm={{ color: 'danger', message: 'Delete Gig' }}
+            cancel={{ color: 'primary', message: 'Keep Gig' }}
+            handleConfirm={deleteGig}
+            handleCancel={handleClose}
+          />
+
         </div>
       </section>
     </motion.div>

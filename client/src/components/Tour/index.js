@@ -7,9 +7,8 @@ import Button from 'react-bootstrap/Button';
 import CardBody from '../CardBody';
 import ListGroup from 'react-bootstrap/ListGroup';
 import ListGroupItem from 'react-bootstrap/ListGroupItem';
-import './index.scss';
 
-// Create and export dashboard page component
+// Create and export Tour component
 export default function Tour(props) {
   return (
     <motion.div
@@ -27,9 +26,11 @@ export default function Tour(props) {
                 <h3 className="heading">Full Tour Dates</h3>
                 <p>Click a date to view show details</p>
 
+                {/* If API has returned a full gigs array to the Dashboard component */}
                 {props.gigs.length ? (
-                  <ListGroup key="tour" variant="">
-                    {/* Map over gigs array and create tour routing table */}
+                  <ListGroup key="tour">
+
+                    {/* Map over gigs array and create a new block for each gig */}
                     {props.gigs.map((gig, index) => {
                       const timeArr = gig.schedule[3].timeString.split(' ');
                       const showtime = timeArr[0];
@@ -40,6 +41,8 @@ export default function Tour(props) {
                           className="tour-date row"
                         >
                           <div className="row">
+
+                            {/* Date + Location */}
                             <div className="col-12 col-md-8 mx-auto">
                               <p className="small-heading pt-2 mb-1">
                                 <i className="fas fa-calendar mr-2"></i>
@@ -50,6 +53,8 @@ export default function Tour(props) {
                                 <span className="d-block d-lg-inline-block">{`@ ${gig.venue.name}`}</span>
                               </p>
                             </div>
+
+                            {/* Time */}
                             <div className="col-12 col-md-8 mx-auto">
                               <p className="list-label mb-1">
                                 {`Doors @ ${gig.schedule[2].timeString}`}
@@ -57,11 +62,15 @@ export default function Tour(props) {
                                 <span className="d-block d-md-inline-block">{`Show @ ${showtime} PM`}</span>
                               </p>
                             </div>
+
+                            {/* Artists */}
                             <div className="col-12 col-md-8 mx-auto">
                               <p className="list-label mb-1">
                                 {`${gig.schedule[6].event} + ${gig.schedule[5].event} + ${gig.schedule[4].event} + ${gig.schedule[3].event}`}
                               </p>
                             </div>
+
+                            {/* View details button */}
                             <div className="col-12 col-md-8 mx-auto">
                               <Button
                                 id={gig._id}

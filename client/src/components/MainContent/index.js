@@ -2,9 +2,10 @@
 import React from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useAuth0 } from '@auth0/auth0-react';
-import LandingPage from '../LandingPage';
 import Dashboard from '../Dashboard';
+import LandingPage from '../LandingPage';
 
+// Create inline styles required to add hero image with gradient overlay
 const bgImage = {
   main: {
     backgroundImage: `url(${process.env.PUBLIC_URL + '/imgs/stage.jpg'})`,
@@ -24,9 +25,11 @@ const bgImage = {
   }
 };
 
+// Create and export MainContent container component
 export default function MainContent() {
   const { isLoading, isAuthenticated } = useAuth0();
 
+  // If user isn't logging/logged in, render the landing page
   if (!isAuthenticated && !isLoading) {
     return (
       <main style={bgImage.main}>
@@ -39,6 +42,7 @@ export default function MainContent() {
     );
   }
 
+  // If user is in the process of logging in, show loading message
   if (isLoading) {
     return (
       <main style={{ overflow: 'hidden' }}>
@@ -49,6 +53,7 @@ export default function MainContent() {
     );
   }
 
+  // If user is logged in, render the dashboard component
   if (isAuthenticated) {
     return (
       <main style={{ overflow: 'hidden' }}>

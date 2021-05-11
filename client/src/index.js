@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, useLocation } from 'react-router-dom';
 import { Auth0Provider } from '@auth0/auth0-react';
-import './index.scss';
 import App from './App';
+import './index.scss';
 
 // Config Auth0
 const domain = process.env.REACT_APP_AUTH0_DOMAIN;
@@ -16,9 +15,7 @@ ReactDOM.render(
     clientId={clientId}
     redirectUri={window.location.origin}
   >
-    <Router>
-      <App />
-    </Router>
+    <App />
   </Auth0Provider>,
   document.getElementById('root')
 );

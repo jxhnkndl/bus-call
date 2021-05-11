@@ -1,19 +1,20 @@
 // Import dependencies
 import React, { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { pageVariants, pageTransitions } from '../../utils/transitions';
 import { emptyFormObj } from '../../utils/emptyFormObj';
-import formatObj from '../../utils/formatObj';
+import { motion } from 'framer-motion';
+import { pageVariants, pageTransitions } from '../../utils/transitions'
 import { toast } from 'react-toastify';
 import API from '../../utils/API';
-import CardBody from '../CardBody';
-import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
+import CardBody from '../CardBody';
 import ConfirmModal from '../ConfirmModal';
+import Form from 'react-bootstrap/Form';
+import formatObj from '../../utils/formatObj';
 import './index.scss';
 
-// Create and export dashboard page component
+// Create and export Dashboard component
 export default function GigForm(props) {
+  // Init state
   const [formObj, setFormObj] = useState(emptyFormObj);
   const [show, setShow] = useState(false);
 
@@ -26,7 +27,7 @@ export default function GigForm(props) {
     }
   }, []);
 
-  // Amenities array
+  // Amenities array used to create check boxes inputs
   const amenities = [
     'catering',
     'internet',
@@ -36,6 +37,8 @@ export default function GigForm(props) {
     'rider',
   ];
 
+  // Clean stage blocks to use when user adds or updates
+  // an artist name or event time string
   const stageBlocks = [
     { timeString: '', event: 'Load In' },
     { timeString: '', event: 'Soundcheck' },
@@ -48,7 +51,7 @@ export default function GigForm(props) {
     { timeString: '', event: 'Bus Call' },
   ];
 
-  // Add gig to database
+  // Add new gig to database
   const addGig = async () => {
     try {
       const res = await API.addGig(formObj);
@@ -60,7 +63,7 @@ export default function GigForm(props) {
     }
   };
 
-  // Update gig in database
+  // Update existing gig in database
   const updateGig = async () => {
     console.log('Updating gig...');
     const id = props.selected._id;
@@ -141,7 +144,7 @@ export default function GigForm(props) {
     const schedule = [...formObj.schedule];
     const currentBlock = schedule[index];
 
-    // Update the block's and put it back in the schedule
+    // Update the block's time string and put it back in the schedule
     currentBlock.timeString = value;
     schedule.splice(index, 1, currentBlock);
 
@@ -152,15 +155,17 @@ export default function GigForm(props) {
     });
   };
 
-  // Handle updating artist's assigned to stage schedule
-  // blocks 3-6
+  // Handle updating artists assigned to stage schedule blocks 3-6
   const handleArtist = (event) => {
+    // Capture event parameters
     const { name, value } = event.target;
     const { index } = event.target.dataset;
 
+    // Extract matching object from schedule in state
     const schedule = [...formObj.schedule];
     const currentBlock = schedule[index];
 
+    // Update the block's event title and put it back in the schedule
     currentBlock.event = value;
     schedule.splice(index, 1, currentBlock);
 
@@ -190,27 +195,29 @@ export default function GigForm(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    // Check that user provided a venue name
     if (!formObj.venue.name) {
       toast.error(`Uh oh! Wrong chord! Check the venue name and try again. 🧐`);
       return;
     }
 
+    // Check that user provided a city
     if (!formObj.venue.city) {
       toast.error(`Uh oh! Wrong chord! Check the city and try again. 🧐`);
       return;
     }
 
+    // Check that user provided a state
     if (!formObj.venue.state) {
       toast.error(`Uh oh! Wrong chord! Check the state and try again. 🧐`);
       return;
     }
 
+    // Check that user provided a date
     if (!formObj.date) {
       toast.error(`Uh oh! Wrong chord! Check the date and try again. 🧐`);
       return;
     }
-
-    console.log(formObj);
 
     // Determine whether to send PUT or POST request to API
     props.view === 'edit' ? updateGig() : addGig();
@@ -227,6 +234,7 @@ export default function GigForm(props) {
     }, 250);
   };
 
+  // Handle toggling confirmation modal's visibility
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
 
@@ -248,6 +256,7 @@ export default function GigForm(props) {
 
               <Form>
                 <div className="row">
+
                   {/* Venue Name */}
                   <div className="col-12 col-md-6">
                     <Form.Group controlId="venueInputGroup">
@@ -482,7 +491,7 @@ export default function GigForm(props) {
                     </p>
                   </div>
 
-                  {/* Create inputs for adding times to stage schedule events */}
+                  {/* Create inputs for adding times to stage schedule blocks */}
                   {formObj.schedule.map((block, index) => {
                     return (
                       <div
@@ -555,11 +564,12 @@ export default function GigForm(props) {
             </CardBody>
           </div>
 
+          {/* Confirmation modal */}
           <ConfirmModal 
             show={show}
             message="Looks like you're deleting a gig. Are you sure you want to continue?"
             confirm={{ color: 'danger', message: 'Delete Gig' }}
-            cancel={{ color: 'primary', message: 'Keep Gig' }}
+            cancel={{ color: 'dark', message: 'Keep Gig' }}
             handleConfirm={deleteGig}
             handleCancel={handleClose}
           />

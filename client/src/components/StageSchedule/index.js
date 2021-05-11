@@ -2,14 +2,14 @@
 import React from 'react';
 import ListGroup from 'react-bootstrap/ListGroup';
 import ListGroupItem from 'react-bootstrap/ListGroupItem';
-import './index.scss';
 
-// Create and export reusable card component
+// Create and export StageSchedule component
 export default function StageSchedule(props) {
   return (
     <div className="info-container">
       <p className="dashboard-heading small-heading h5 mb-2">Day Schedule</p>
 
+      {/* If the gig contains a schedule, map over it and render each block */}
       {props.schedule.length ? (
         <ListGroup key="schedule" variant="flush">
           {props.schedule.map((block, index) => {

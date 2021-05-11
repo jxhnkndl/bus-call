@@ -1,4 +1,4 @@
-// Create and export empty form object
+// Create and export empty form object for initializing state
 export const emptyFormObj = {
   date: '',
   venue: {

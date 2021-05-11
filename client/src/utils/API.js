@@ -1,7 +1,7 @@
 // Import Axios
 import axios from 'axios';
 
-// Create and export request methods
+// Create and export API request methods
 export default {
   getGigs: function() {
     return axios.get("/api/gigs");

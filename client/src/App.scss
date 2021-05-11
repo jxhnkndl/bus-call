@@ -1,10 +1,9 @@
-// Import base
+// Import custom theme
 @import './theme.scss';
 
-// Import Bootstrap
+// Import Bootstrap so that theme variables will overwrite defaults
 @import '~bootstrap/scss/bootstrap';
 
-// Ensure app stretches full viewport height
 .app-container {
   background: $base-900;
   color: $base-000;
@@ -13,22 +12,14 @@
   font-family: $font-stack-primary;
   min-height: 100vh;
 
-  // Ensure main content fills up the viewport between header and footer
   main {
     flex: auto;
   }
 
-  // App wide heading styles
   .heading,
   .small-heading {
     color: $primary;
     font-family: $font-stack-secondary;
-  }
-
-  // React Toastify overwrites
-  .Toastify__toast--default {
-    background: #424242;
-    color: $base-300;
   }
 
   .Toastify__toast--success {
@@ -40,7 +31,6 @@
   }
 
   .Toastify__progress-bar--default {
-    // background: linear-gradient(90deg, #5ac8fa, #007aff, #34aadc, #5856d6);
     background: linear-gradient(90deg, $primary-light, $primary, $primary-dark);
   }
 }

@@ -3,21 +3,18 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { pageVariants, pageTransitions } from '../../utils/transitions';
 import { toast } from 'react-toastify';
-import Button from 'react-bootstrap/Button';
-import CardBody from '../CardBody';
-import DashboardNav from '../DashboardNav';
-import Gig from '../Gig';
-import Tour from '../Tour';
-import GigForm from '../GigForm';
 import API from '../../utils/API';
+import Button from 'react-bootstrap/Button';
+import DashboardNav from '../DashboardNav';
 import dayjs from 'dayjs';
+import Gig from '../Gig';
+import GigForm from '../GigForm';
+import Tour from '../Tour';
 import './index.scss';
 
-import formatObj from '../../utils/formatObj';
-
-// Create and export dashboard page component
+// Create and export Dashboard component
 export default function Dashboard() {
-  // Set initial state
+  // Init state
   const [gigs, setGigs] = useState([]);
   const [index, setIndex] = useState(0);
   const [view, setView] = useState('tour');
@@ -34,18 +31,7 @@ export default function Dashboard() {
       const res = await API.getGigs();
       setGigs(res.data);
     } catch (err) {
-      console.log(err);
-    }
-  };
-
-  // Delete gig from database and fetch updated gigs data from API
-  const handleDelete = async (id) => {
-    console.log('Deleting gig...');
-    try {
-      const res = await API.deleteGig(id);
-      fetchGigs();
-      toast('Gig deleted!');
-    } catch (err) {
+      toast.error('Uh oh! Something went wrong. Try again! 🧐');
       console.log(err);
     }
   };
@@ -66,7 +52,7 @@ export default function Dashboard() {
     // If the specified gig can't be found, notify the user
     // and log the error
     if (index === -1) {
-      toast.error('Something went wrong! Please try again.');
+      toast.error(`Uh oh! We can't find that gig. Try again! 🧐`);
       console.log(event.target);
       return;
     } else {
@@ -125,7 +111,7 @@ export default function Dashboard() {
               handleView={handleView}
             />
 
-            {/* Daysheet and stage schedule view */}
+            {/* View gig details, day sheet, and stage schedule */}
             {view === 'gig' && (
               <Gig
                 date={handleDate(gigs[index].date)}
@@ -155,17 +141,16 @@ export default function Dashboard() {
               />
             )}
 
-            {/* Tour view for viewing full tour routing */}
+            {/* Tour view for displaying full tour routing */}
             {view === 'tour' && (
               <Tour
                 gigs={gigs}
                 handleDate={handleDate}
                 handleSelect={handleSelect}
-                // handleDelete={handleDelete}
               />
             )}
 
-            {/* Form view for adding and editing gigs */}
+            {/* Form view with state configured for adding new gigs */}
             {view === 'add' && (
               <GigForm
                 view={view}
@@ -174,7 +159,7 @@ export default function Dashboard() {
               />
             )}
 
-            {/* Form view for adding and editing gigs */}
+            {/* Form view with state configured to edit/delete an existing gig */}
             {view === 'edit' && (
               <GigForm
                 view={view}
@@ -186,7 +171,7 @@ export default function Dashboard() {
             )}
           </div>
         ) : (
-          <p className="h2">LOADING</p>
+          <p className="h2">LOADING...</p>
         )}
       </section>
     </motion.div>

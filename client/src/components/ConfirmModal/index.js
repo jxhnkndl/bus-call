@@ -1,14 +1,14 @@
 // Import dependencies
 import React from 'react';
-import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
-// Create and export Modal component
+// Create and export ConfirmModal component
 export default function ConfirmModal(props) {
   return (
     <Modal show={props.show} onHide={props.handleCancel}>
       <Modal.Header closeButton>
-        <Modal.Title>Hey! Virtual tour manager here!</Modal.Title>
+        <Modal.Title>Hey! Virtual tour manager here! 🤖</Modal.Title>
       </Modal.Header>
       <Modal.Body>
         {props.message}

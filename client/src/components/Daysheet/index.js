@@ -1,12 +1,13 @@
 // Import dependencies
-import React, { useContext } from 'react';
+import React from 'react';
+import dayjs from 'dayjs';
 import ListGroup from 'react-bootstrap/ListGroup';
 import ListGroupItem from 'react-bootstrap/ListGroupItem';
-import dayjs from 'dayjs';
 import './index.scss';
 
-// Create and export reusable card component
+// Create and export Daysheet component
 export default function Daysheet(props) {
+
   // Create amenities array from props for rendering
   const amenities = [
     { name: 'Lounge', icon: 'fas fa-couch', value: props.lounge },
@@ -17,12 +18,12 @@ export default function Daysheet(props) {
     { name: 'Full Rider', icon: 'fas fa-cocktail', value: props.rider },
   ];
 
+  // Create query string for making request to Google Maps API
   const mapQuery = `${props.street} ${props.city}, ${props.state} ${props.zip}`;
-
-  console.log(mapQuery);
 
   return (
     <div className="info-container">
+
       {/* Date */}
       <div className="card-item">
         <p className="h5 mb-1 small-heading">
@@ -41,7 +42,7 @@ export default function Daysheet(props) {
         <p className="h2">{`${props.city}, ${props.state}.`}</p>
       </div>
 
-      {/* Tonight's show */}
+      {/* Tonight's show and location */}
       <div className="card-item">
         <p className="h5 mb-1 small-heading">
           <i className="fas fa-headphones-alt mr-2"></i>
@@ -69,7 +70,7 @@ export default function Daysheet(props) {
         </p>
       </div>
 
-      {/* Amenities badges */}
+      {/* Amenity badges */}
       <div className="card-item">
         <p className="h5 mb-3 small-heading">Amenities</p>
         <div className="row">

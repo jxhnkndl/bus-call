@@ -1,13 +1,12 @@
 // Import dependencies
 import React from 'react';
-import { pageVariants, pageTransitions } from '../../utils/transitions';
 import { useAuth0 } from '@auth0/auth0-react';
 import Button from 'react-bootstrap/Button';
-import CardBody from '../CardBody';
 import './index.scss';
 
 // Create and export LandingPage component
 export default function LandingPage() {
+  // Extract login method to add to CTA button
   const { loginWithRedirect } = useAuth0();
 
   return (
@@ -26,11 +25,11 @@ export default function LandingPage() {
           <hr />
           <Button
             variant="primary"
-            className="mt-3 px-4 py-2"
+            className="mt-3 px-4 py-2 shadow"
             onClick={() => loginWithRedirect()}
           >
-            <i className="fas fa-headphones-alt mr-2"></i>
             Get Started
+            <i className="fas fa-play-circle ml-2"></i>
           </Button>
         </div>
       </div>

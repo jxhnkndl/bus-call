@@ -33,3 +33,13 @@
     } 
   }
 }
+
+.modal {
+  &-header {
+    font-family: $font-stack-secondary;
+  }
+
+  &-body {
+    font-family: $font-stack-primary;
+  }
+}

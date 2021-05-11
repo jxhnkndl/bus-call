@@ -1,14 +1,11 @@
 // Import dependencies
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
-import DropdownButton from 'react-bootstrap/DropdownButton';
-import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
 import LoginBtn from '../LoginBtn';
 import LogoutBtn from '../LogoutBtn';
 import './index.scss';
-import Dropdown from 'react-bootstrap/esm/Dropdown';
 
 // Create and export MainNav component
 export default function MainNav() {
@@ -17,6 +14,8 @@ export default function MainNav() {
   return (
     <Navbar variant="dark" expand="lg">
       <Navbar.Brand href="/">Bus Call</Navbar.Brand>
+
+      {/* Conditionally render navbar components based on user's login status */}
       <Nav className="ml-auto">
         {isAuthenticated ? (
           <div className="media">

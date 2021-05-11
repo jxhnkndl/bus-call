@@ -2,6 +2,9 @@
 import dayjs from 'dayjs';
 import { emptyFormObj } from './emptyFormObj';
 
+// Create and export formatting function so that the same form used to add
+// new gigs can be auto-populated with the details of an existing gig returned
+// by the API allowing a user to easily update it
 export default function formatObj(obj) {
   return {
     date: dayjs(obj.date).format('YYYY-MM-DD'),

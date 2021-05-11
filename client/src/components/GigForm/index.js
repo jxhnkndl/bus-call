@@ -47,7 +47,6 @@ export default function GigForm(props) {
     { timeString: '', event: 'Second' },
     { timeString: '', event: 'Direct' },
     { timeString: '', event: 'Headliner' },
-    { timeString: '', event: 'Curfew' },
     { timeString: '', event: 'Bus Call' },
   ];
 

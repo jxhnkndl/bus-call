@@ -38,7 +38,7 @@ export default function Dashboard() {
 
   // Handle formatting date for display
   const handleDate = (date) => {
-    return dayjs(date).format('ddd. MMMM D, YYYY');
+    return dayjs(date).add(1, 'day').format('ddd. MMMM D, YYYY');
   };
 
   // Handle finding and rendering matching show details from click event in tour view

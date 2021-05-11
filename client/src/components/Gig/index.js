@@ -35,6 +35,8 @@ export default function Gig(props) {
                 catering={props.catering}
                 showers={props.showers}
                 internet={props.internet}
+                parking={props.parking}
+                rider={props.rider}
                 nextDate={props.nextDate}
                 nextCity={props.nextCity}
                 nextState={props.nextState}

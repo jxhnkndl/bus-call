@@ -126,6 +126,8 @@ export default function Dashboard() {
                 catering={gigs[index].catering}
                 showers={gigs[index].showers}
                 internet={gigs[index].internet}
+                parking={gigs[index].parking}
+                rider={gigs[index].rider}
                 nextDate={
                   gigs[index + 1] ? handleDate(gigs[index + 1].date) : false
                 }

@@ -7,7 +7,6 @@ import './index.scss';
 
 // Create and export Daysheet component
 export default function Daysheet(props) {
-
   // Create amenities array from props for rendering
   const amenities = [
     { name: 'Lounge', icon: 'fas fa-couch', value: props.lounge },
@@ -18,12 +17,14 @@ export default function Daysheet(props) {
     { name: 'Full Rider', icon: 'fas fa-cocktail', value: props.rider },
   ];
 
+  // Determine whether to render amenities or not
+  const hasNoAmenities = amenities.every((amenity) => !amenity.value);
+
   // Create query string for making request to Google Maps API
   const mapQuery = `${props.street} ${props.city}, ${props.state} ${props.zip}`;
 
   return (
     <div className="info-container">
-
       {/* Date */}
       <div className="card-item">
         <p className="h5 mb-1 small-heading">
@@ -76,30 +77,38 @@ export default function Daysheet(props) {
         <div className="row">
           <div className="col-12">
             <ListGroup key="amenities" variant="flush">
-              {/* Map over amenities and render only those that evaluate to true */}
-              {amenities.map((amenity, index) => {
-                if (amenity.value) {
-                  return (
-                    <ListGroup.Item
-                      key={`${index}-${amenity.name}`}
-                      className="daysheet-item"
-                    >
-                      <div className="row">
-                        <div className="col-3 col-md-2">
-                          <p className="list-item text-center mb-1">
-                            <i
-                              className={`amenity-icon mr-2 ${amenity.icon}`}
-                            ></i>
-                          </p>
-                        </div>
-                        <div className="col-9 col-md-10 daysheet-item">
-                          <p className="list-item mb-1">{amenity.name}</p>
-                        </div>
-                      </div>
-                    </ListGroup.Item>
-                  );
-                }
-              })}
+
+              {/* If venue provides no amenities, notify user */}
+              {/* Otherwise, map over amenities and render only those that evaluate to true */}
+              {hasNoAmenities ? (
+                <p className="h2 mb-1">No Amenities Guaranteed</p>
+              ) : (
+                <div>
+                  {amenities.map((amenity, index) => {
+                    if (amenity.value) {
+                      return (
+                        <ListGroup.Item
+                          key={`${index}-${amenity.name}`}
+                          className="daysheet-item"
+                        >
+                          <div className="row">
+                            <div className="col-3 col-md-2">
+                              <p className="list-item text-center mb-1">
+                                <i
+                                  className={`amenity-icon mr-2 ${amenity.icon}`}
+                                ></i>
+                              </p>
+                            </div>
+                            <div className="col-9 col-md-10 daysheet-item">
+                              <p className="list-item mb-1">{amenity.name}</p>
+                            </div>
+                          </div>
+                        </ListGroup.Item>
+                      );
+                    }
+                  })}
+                </div>
+              )}
             </ListGroup>
           </div>
         </div>

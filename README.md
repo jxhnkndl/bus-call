@@ -129,12 +129,14 @@ New gigs can be added by either clicking the **plus icon** in the dashboard navb
 **Updating Gigs**  
 One of the most important features of Bus Call is how easy it makes the process of updating a gig's details when something changes. Users can edit a gig using the **edit icon** in gig view or by selected **Edit Gig** from the options menu in the dashboard navbar. Bus Call will auto-populate the form with the selected gig's details allowing the user to simply update the desired fields and save. The changes will be immediately visible when the user returns to either tour view or gig view.  
 
-
+<img src="assets/update-gig.gif" alt="Updating a gig" width="800">  
+<br>
 
 **Deleting Gigs**  
 No artist ever likes to cancel a show but sometimes it happens. Bus Call wants to make that process as painless as it can. Find the canceled gig and open the editor. Click the delete button in the form and confirm the deletion in the modal. Both tour view and gig view will immediately reflect the changes.  
 
-
+<img src="assets/delete-gig.gif" alt="Deleting a gig" width="800">  
+<br>
 
 ## Build
 

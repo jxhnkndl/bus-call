@@ -111,7 +111,6 @@ Note that both authentication strategies leverage Auth0's respected, versatile, 
 
 <img src="assets/login.gif" alt="Logging in using Auth0" width="800">  
 <br>
-<br>
 
 ## Usage
 
@@ -120,13 +119,11 @@ Gigs can be viewed in one of two ways. In **tour view**, gigs are displayed simi
 
 <img src="assets/navigation.gif" alt="Navigating the user interface" width="800">  
 <br>
-<br>
 
 **Adding Gigs**  
 New gigs can be added by either clicking the **plus icon** in the dashboard navbar or by selecting **Add Gig** from the options menu. Bus Call intuitively auto-populates the artist inputs and the stage schedule time blocks with the last values provided by the user (a helpful feature for adding multiple shows on the same tour). Users can specify these values when adding a gig or come back and update them later. The application will alert the user if a required field has been left blank on submission.  
 
 <img src="assets/add-gig.gif" alt="Adding a new gig" width="800">  
-<br>
 <br>
 
 **Updating Gigs**  

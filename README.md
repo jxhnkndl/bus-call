@@ -109,20 +109,25 @@ Bus Call uses [Auth0](https://www.npmjs.com/package/@auth0/auth0-react) for clie
 
 Note that both authentication strategies leverage Auth0's respected, versatile, and secure login system. Bus Call will not receive any sensitive information regarding a user's email account or Google account. 
 
-<img src="assets/login.gif" alt="Logging in to Bus Call using Auth0" width="1000">  
-
+<img src="assets/login.gif" alt="Logging in using Auth0" width="800">  
+<br>
+<br>
 
 ## Usage
 
 **Viewing Gigs**  
 Gigs can be viewed in one of two ways. In **tour view**, gigs are displayed similar to how a venue would display a calendar of upcoming events. This view is also representative of the type of tour itineraries a booking agency provides a tour manage prior to advancing the dates. Alternatively, **gig view** can be used to isolate a specific show and view information about the venue and the amenities it provides, capacity and presale ticket figures, and the gig's stage schedule.  
 
-
+<img src="assets/navigation.gif" alt="Navigating the user interface" width="800">  
+<br>
+<br>
 
 **Adding Gigs**  
 New gigs can be added by either clicking the **plus icon** in the dashboard navbar or by selecting **Add Gig** from the options menu. Bus Call intuitively auto-populates the artist inputs and the stage schedule time blocks with the last values provided by the user (a helpful feature for adding multiple shows on the same tour). Users can specify these values when adding a gig or come back and update them later. The application will alert the user if a required field has been left blank on submission.  
 
-
+<img src="assets/add-gig.gif" alt="Adding a new gig" width="800">  
+<br>
+<br>
 
 **Updating Gigs**  
 One of the most important features of Bus Call is how easy it makes the process of updating a gig's details when something changes. Users can edit a gig using the **edit icon** in gig view or by selected **Edit Gig** from the options menu in the dashboard navbar. Bus Call will auto-populate the form with the selected gig's details allowing the user to simply update the desired fields and save. The changes will be immediately visible when the user returns to either tour view or gig view.  

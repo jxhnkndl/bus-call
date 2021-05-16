@@ -9,7 +9,7 @@ import StageSchedule from '../StageSchedule';
 
 // Create and export Gig component
 export default function Gig(props) {
-  console.log(props.final);
+  console.log(props.gig);
 
   return (
     <motion.div

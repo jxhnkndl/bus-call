@@ -114,30 +114,9 @@ export default function Dashboard() {
             {/* View gig details, day sheet, and stage schedule */}
             {view === 'gig' && (
               <Gig
-                date={handleDate(gigs[index].date)}
-                city={gigs[index].venue.city}
-                state={gigs[index].venue.state}
-                venue={gigs[index].venue.name}
-                street={gigs[index].venue.street}
-                zip={gigs[index].venue.zip}
-                capacity={gigs[index].venue.capacity}
-                presale={gigs[index].venue.presale}
-                lounge={gigs[index].lounge}
-                catering={gigs[index].catering}
-                showers={gigs[index].showers}
-                internet={gigs[index].internet}
-                parking={gigs[index].parking}
-                rider={gigs[index].rider}
-                nextDate={
-                  gigs[index + 1] ? handleDate(gigs[index + 1].date) : false
-                }
-                nextCity={gigs[index + 1] ? gigs[index + 1].venue.city : false}
-                nextState={
-                  gigs[index + 1] ? gigs[index + 1].venue.state : false
-                }
-                nextVenue={gigs[index + 1] ? gigs[index + 1].venue.name : false}
-                distance={'315 miles'}
-                schedule={gigs[index].schedule}
+                gig={gigs[index]}
+                nextGig={gigs[index + 1]}
+                handleDate={handleDate}
                 prev={handlePrev}
                 next={handleNext}
               />

@@ -7,21 +7,24 @@ import './index.scss';
 
 // Create and export Daysheet component
 export default function Daysheet(props) {
+
+  const { gig, nextGig } = props;
+
   // Create amenities array from props for rendering
   const amenities = [
-    { name: 'Lounge', icon: 'fas fa-couch', value: props.lounge },
-    { name: 'Catering', icon: 'fas fa-pizza-slice', value: props.catering },
-    { name: 'Internet', icon: 'fas fa-wifi', value: props.internet },
-    { name: 'Parking', icon: 'fas fa-parking', value: props.parking },
-    { name: 'Showers', icon: 'fas fa-shower', value: props.showers },
-    { name: 'Full Rider', icon: 'fas fa-cocktail', value: props.rider },
+    { name: 'Lounge', icon: 'fas fa-couch', value: gig.lounge },
+    { name: 'Catering', icon: 'fas fa-pizza-slice', value: gig.catering },
+    { name: 'Internet', icon: 'fas fa-wifi', value: gig.internet },
+    { name: 'Parking', icon: 'fas fa-parking', value: gig.parking },
+    { name: 'Showers', icon: 'fas fa-shower', value: gig.showers },
+    { name: 'Full Rider', icon: 'fas fa-cocktail', value: gig.rider },
   ];
 
   // Determine whether to render amenities or not
   const hasNoAmenities = amenities.every((amenity) => !amenity.value);
 
   // Create query string for making request to Google Maps API
-  const mapQuery = `${props.street} ${props.city}, ${props.state} ${props.zip}`;
+  const mapQuery = `${gig.street} ${gig.city}, ${gig.state} ${gig.zip}`;
 
   return (
     <div className="info-container">
@@ -31,7 +34,7 @@ export default function Daysheet(props) {
           {/* <i className="far fa-calendar mr-2"></i> */}
           Today
         </p>
-        <p className="info-text-main">{props.date}</p>
+        <p className="info-text-main">{props.handleDate(gig.date)}</p>
       </div>
 
       {/* Location */}
@@ -40,7 +43,7 @@ export default function Daysheet(props) {
           {/* <i className="fas fa-map-marker-alt mr-2"></i> */}
           Location
         </p>
-        <p className="info-text-main">{`${props.city}, ${props.state}.`}</p>
+        <p className="info-text-main">{`${gig.venue.city}, ${gig.venue.state}.`}</p>
       </div>
 
       {/* Tonight's show and location */}
@@ -49,9 +52,9 @@ export default function Daysheet(props) {
           {/* <i className="fas fa-headphones-alt mr-2"></i> */}
           Venue
         </p>
-        <p className="info-text-main mb-1">{props.venue}</p>
-        <p className="info-text-sub mb-1">{props.street}</p>
-        <p className="info-text-sub mb-1">{`${props.city}, ${props.state}. ${props.zip}`}</p>
+        <p className="info-text-main mb-1">{gig.venue.venue}</p>
+        <p className="info-text-sub mb-1">{gig.venue.street}</p>
+        <p className="info-text-sub mb-1">{`${gig.venue.city}, ${gig.venue.state}. ${gig.venue.zip}`}</p>
         <iframe
           className="map rounded mt-3"
           loading="lazy"
@@ -110,11 +113,11 @@ export default function Daysheet(props) {
           <i className="fas fa-road mr-2"></i>
           Next
         </p>
-        {props.nextVenue ? (
+        {nextGig.venue.name ? (
           <div>
-            <p className="info-text-main mb-1">{props.nextVenue}</p>
-            <p className="info-text-sub mb-1">{props.nextDate}</p>
-            <p className="info-text-sub mb-1">{`${props.nextCity}, ${props.nextState}.`}</p>
+            <p className="info-text-main mb-1">{nextGig.venue.name}</p>
+            <p className="info-text-sub mb-1">{props.handleDate(nextGig.date)}</p>
+            <p className="info-text-sub mb-1">{`${nextGig.venue.city}, ${nextGig.venue.state}.`}</p>
           </div>
         ) : (
           <p className="info-text-main mb-1">Nothing Scheduled</p>

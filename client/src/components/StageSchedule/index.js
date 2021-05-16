@@ -5,13 +5,15 @@ import ListGroupItem from 'react-bootstrap/ListGroupItem';
 
 // Create and export StageSchedule component
 export default function StageSchedule(props) {
+  console.log(props.gig);
+
   return (
     <div className="info-container">
 
       {/* If the gig contains a schedule, map over it and render each block */}
-      {props.schedule.length ? (
+      {props.gig.schedule.length ? (
         <ListGroup key="schedule" variant="flush">
-          {props.schedule.map((block, index) => {
+          {props.gig.schedule.map((block, index) => {
             return (
               <ListGroup.Item
                 key={`${index}-${block._id}`}

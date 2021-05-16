@@ -12,7 +12,7 @@ const localdb = `mongodb://${process.env.LOCALDB_HOST}/${process.env.LOCALDB_NAM
 const atlasdb = `mongodb+srv://${process.env.ATLASDB_USER}:${process.env.ATLASDB_PASS}@jxhnkndl-dbs.d5dpb.mongodb.net/${process.env.ATLASDB_NAME}?retryWrites=true&w=majority`;
 
 // Connect to database
-mongoose.connect(process.env.MONGODB_URI || atlasdb, {
+mongoose.connect(process.env.MONGODB_URI || localdb, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
@@ -23,14 +23,13 @@ mongoose.connect(process.env.MONGODB_URI || atlasdb, {
 const seed = [
   {
     date: new Date('2021-10-23'),
+    closed: true,
     venue: {
       name: 'Bourbon Street Quarter',
       street: '316 Guilford Avenue',
       city: 'Baltimore',
       state: 'MD',
       zip: '21212',
-      capacity: '450',
-      presale: '388',
     },
     catering: true,
     internet: true,
@@ -72,17 +71,27 @@ const seed = [
         event: 'Bus Call',
       },
     ],
+    final: {
+      capacity: '450',
+      presale: '388',
+      doors: '51',
+      guarantee: '750',
+      bonus: '100',
+      split: {
+        artist: '90',
+        venue: '10'
+      }
+    }
   },
   {
     date: new Date('2021-10-24'),
+    closed: true,
     venue: {
       name: 'School of Rock',
       street: '31 Schrieffer St.',
       city: 'South Hackensack',
       state: 'NJ',
       zip: '07606',
-      capacity: '480',
-      presale: '416',
     },
     catering: true,
     lounge: true,
@@ -124,17 +133,27 @@ const seed = [
         event: 'Bus Call',
       },
     ],
+    final: {
+      capacity: '480',
+      presale: '416',
+      doors: '51',
+      guarantee: '750',
+      bonus: '100',
+      split: {
+        artist: '90',
+        venue: '10'
+      }
+    }
   },
   {
     date: new Date('2021-10-25'),
+    closed: false,
     venue: {
       name: 'Trocadero',
       street: '1003 Arch St.',
       city: 'Philadelphia',
       state: 'PA',
       zip: '19107',
-      capacity: '1200',
-      presale: '1125',
     },
     catering: true,
     lounge: true,
@@ -176,17 +195,27 @@ const seed = [
         event: 'Bus Call',
       },
     ],
+    final: {
+      capacity: '1200',
+      presale: '1125',
+      doors: '51',
+      guarantee: '750',
+      bonus: '100',
+      split: {
+        artist: '90',
+        venue: '10'
+      }
+    }
   },
   {
     date: new Date('2021-10-27'),
+    closed: false,
     venue: {
       name: 'Gramercy Theatre',
       street: '127 E. 23rd St.',
       city: 'New York',
       state: 'NY',
       zip: '10010',
-      capacity: '650',
-      presale: '650',
     },
     catering: true,
     lounge: true,
@@ -228,17 +257,27 @@ const seed = [
         event: 'Bus Call',
       },
     ],
+    final: {
+      capacity: '650',
+      presale: '650',
+      doors: '51',
+      guarantee: '750',
+      bonus: '100',
+      split: {
+        artist: '90',
+        venue: '10'
+      }
+    }
   },
   {
     date: new Date('2021-10-28'),
+    closed: false,
     venue: {
       name: 'Harpers Ferry',
       street: '158 Brighton Ave.',
       city: 'Allston',
       state: 'MA',
       zip: '02134',
-      capacity: '400',
-      presale: '385',
     },
     catering: true,
     lounge: true,
@@ -280,6 +319,17 @@ const seed = [
         event: 'Bus Call',
       },
     ],
+    final: {
+      capacity: '400',
+      presale: '385',
+      doors: '51',
+      guarantee: '750',
+      bonus: '100',
+      split: {
+        artist: '90',
+        venue: '10'
+      }
+    }
   }
 ];
 

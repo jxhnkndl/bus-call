@@ -26,32 +26,32 @@ export default function Daysheet(props) {
   return (
     <div className="info-container">
       {/* Date */}
-      <div className="card-item">
+      <div className="info-item">
         <p className="h5 mb-1 small-heading">
-          <i className="far fa-calendar mr-2"></i>
-          Today is
+          {/* <i className="far fa-calendar mr-2"></i> */}
+          Today
         </p>
-        <p className="h2">{props.date}</p>
+        <p className="info-text-main">{props.date}</p>
       </div>
 
       {/* Location */}
-      <div className="card-item">
+      <div className="info-item">
         <p className="h5 mb-1 small-heading">
-          <i className="fas fa-map-marker-alt mr-2"></i>
-          You are in
+          {/* <i className="fas fa-map-marker-alt mr-2"></i> */}
+          Location
         </p>
-        <p className="h2">{`${props.city}, ${props.state}.`}</p>
+        <p className="info-text-main">{`${props.city}, ${props.state}.`}</p>
       </div>
 
       {/* Tonight's show and location */}
-      <div className="card-item">
+      <div className="info-item">
         <p className="h5 mb-1 small-heading">
-          <i className="fas fa-headphones-alt mr-2"></i>
-          Tonight's show
+          {/* <i className="fas fa-headphones-alt mr-2"></i> */}
+          Venue
         </p>
-        <p className="h2">{props.venue}</p>
-        <p className="h5 mb-1">{props.street}</p>
-        <p className="h5 mb-1">{`${props.city}, ${props.state}. ${props.zip}`}</p>
+        <p className="info-text-main mb-1">{props.venue}</p>
+        <p className="info-text-sub mb-1">{props.street}</p>
+        <p className="info-text-sub mb-1">{`${props.city}, ${props.state}. ${props.zip}`}</p>
         <iframe
           className="map rounded mt-3"
           loading="lazy"
@@ -60,28 +60,18 @@ export default function Daysheet(props) {
         ></iframe>
       </div>
 
-      {/* Tickets */}
-      <div className="card-item">
-        <p className="h5 mb-1 small-heading">
-          <i className="fas fa-ticket-alt mr-2"></i>
-          Presale / Capacity
-        </p>
-        <p className="h2">
-          {props.presale} / {props.capacity}
-        </p>
-      </div>
-
       {/* Amenity badges */}
-      <div className="card-item">
-        <p className="h5 mb-3 small-heading">Amenities</p>
+      <div className="info-item">
+        <p className="h5 mb-3 small-heading">
+          Amenities
+        </p>
         <div className="row">
           <div className="col-12">
             <ListGroup key="amenities" variant="flush">
-
               {/* If venue provides no amenities, notify user */}
               {/* Otherwise, map over amenities and render only those that evaluate to true */}
               {hasNoAmenities ? (
-                <p className="h2 mb-1">No Amenities Guaranteed</p>
+                <p className="info-text-main mb-1">No Amenities Guaranteed</p>
               ) : (
                 <div>
                   {amenities.map((amenity, index) => {
@@ -115,19 +105,19 @@ export default function Daysheet(props) {
       </div>
 
       {/* Next Up */}
-      <div className="card-item">
+      <div className="info-item">
         <p className="h5 mb-1 small-heading">
           <i className="fas fa-road mr-2"></i>
-          Next up
+          Next
         </p>
         {props.nextVenue ? (
           <div>
-            <p className="h2 mb-1">{props.nextVenue}</p>
-            <p className="h5 mb-1">{props.nextDate}</p>
-            <p className="h5 mb-1">{`${props.nextCity}, ${props.nextState}.`}</p>
+            <p className="info-text-main mb-1">{props.nextVenue}</p>
+            <p className="info-text-sub mb-1">{props.nextDate}</p>
+            <p className="info-text-sub mb-1">{`${props.nextCity}, ${props.nextState}.`}</p>
           </div>
         ) : (
-          <p className="h2 mb-1">Nothing Scheduled</p>
+          <p className="info-text-main mb-1">Nothing Scheduled</p>
         )}
       </div>
     </div>

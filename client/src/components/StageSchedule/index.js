@@ -7,7 +7,6 @@ import ListGroupItem from 'react-bootstrap/ListGroupItem';
 export default function StageSchedule(props) {
   return (
     <div className="info-container">
-      <p className="dashboard-heading small-heading h5 mb-2">Day Schedule</p>
 
       {/* If the gig contains a schedule, map over it and render each block */}
       {props.schedule.length ? (

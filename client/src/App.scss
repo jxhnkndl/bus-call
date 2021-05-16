@@ -16,10 +16,19 @@
     flex: auto;
   }
 
+  hr {
+    border-top: 1px solid $base-400;
+  }
+
   .heading,
   .small-heading {
     color: $primary;
     font-family: $font-stack-secondary;
+  }
+
+  .emphasis {
+    color: $base-000;
+    font-weight: 600;
   }
 
   .Toastify__toast--success {

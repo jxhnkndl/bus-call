@@ -22,34 +22,14 @@ export default function Gig(props) {
           {/* Daysheet container (pass props from Dashboard through) */}
           <div className="col-12 col-md-6 mb-4">
             <CardBody spacing={'p-4 p-md-4 m-2 m-md-0'}>
-              <Daysheet
-                date={props.date}
-                city={props.city}
-                state={props.state}
-                venue={props.venue}
-                street={props.street}
-                zip={props.zip}
-                capacity={props.capacity}
-                presale={props.presale}
-                lounge={props.lounge}
-                catering={props.catering}
-                showers={props.showers}
-                internet={props.internet}
-                parking={props.parking}
-                rider={props.rider}
-                nextDate={props.nextDate}
-                nextCity={props.nextCity}
-                nextState={props.nextState}
-                nextVenue={props.nextVenue}
-                distance={props.distance}
-              />
+              <Daysheet {...props} />
             </CardBody>
           </div>
 
           {/* Stage schedule container (pass props from Dashboard through) */}
           <div className="col-12 col-md-6 mb-4">
             <CardBody spacing={'p-4 p-md-4 m-2 m-md-0'}>
-              <StageSchedule schedule={props.schedule} />
+              <StageSchedule {...props} />
             </CardBody>
           </div>
         </div>

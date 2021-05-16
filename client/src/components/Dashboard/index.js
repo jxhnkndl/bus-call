@@ -104,9 +104,9 @@ export default function Dashboard() {
           <div>
             {/* Dashboard navigation controls */}
             <DashboardNav
+              gig={gigs[index]}
               prev={handlePrev}
               next={handleNext}
-              gigs={gigs}
               view={view}
               handleView={handleView}
             />

@@ -5,14 +5,6 @@ import ConfirmModal from '../ConfirmModal';
 import Dropdown from 'react-bootstrap/Dropdown';
 import './index.scss';
 
-// Overwrite CardBody component styles for this component only
-const styles = {
-  cardBody: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-};
-
 // Create and export DashboardNav component
 export default function DashboardNav(props) {
   // Modal visibility state
@@ -29,7 +21,6 @@ export default function DashboardNav(props) {
           flex={'d-flex align-items-center justify-content-between'}
           spacing={'px-4 py-3 m-2 m-md-0'}
         >
-
           {/* Dropdown view options */}
           <Dropdown className="d-inline-block">
             <Dropdown.Toggle id="dropdown-basic">Options</Dropdown.Toggle>
@@ -50,6 +41,11 @@ export default function DashboardNav(props) {
                   Edit Gig
                 </Dropdown.Item>
               )}
+              {props.view === 'gig' && (
+                <Dropdown.Item onSelect={(e) => props.handleView('report')}>
+                  Complete Gig
+                </Dropdown.Item>
+              )}
             </Dropdown.Menu>
           </Dropdown>
 
@@ -62,12 +58,21 @@ export default function DashboardNav(props) {
               <p className="nav-icon mb-0 mr-3" onClick={props.next}>
                 <i className="fas fa-arrow-circle-right"></i>
               </p>
+
               <p
-                className="nav-icon mb-0"
+                className="nav-icon mb-0 mr-3"
                 onClick={(e) => props.handleView('edit')}
               >
                 <i className="fas fa-edit"></i>
               </p>
+
+              <p
+                className="nav-icon mb-0"
+                onClick={(e) => props.handleView('report')}
+              >
+                <i className="fas fa-dollar-sign"></i>
+              </p>
+
             </div>
           )}
 
@@ -86,10 +91,7 @@ export default function DashboardNav(props) {
           {/* Show close icon when in either add or edit view */}
           {(props.view === 'add' || props.view === 'edit') && (
             <div>
-              <p
-                className="nav-icon mb-0"
-                onClick={handleShow}
-              >
+              <p className="nav-icon mb-0" onClick={handleShow}>
                 <i className="far fa-window-close"></i>
               </p>
             </div>

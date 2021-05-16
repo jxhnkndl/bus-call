@@ -18,9 +18,8 @@ export default function Gig(props) {
       exit="out"
       variants={pageVariants}
       transition={pageTransitions}
-      className="mt-2"
     >
-      <CardBody spacing={`px-5 py-3 m-2 m-md-0`}>
+      <CardBody spacing={`px-5 py-3 mx-2 my-3 m-md-0`}>
         <div className="row">
           {/* Left Column - Daysheet */}
           <div className="col-12 col-lg-6 p-2 p-md-4 mb-4">

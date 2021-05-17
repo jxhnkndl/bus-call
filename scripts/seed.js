@@ -30,6 +30,9 @@ const seed = [
       city: 'Baltimore',
       state: 'MD',
       zip: '21212',
+      capacity: 450,
+      promoter: 'Paul Manna',
+      email: 'paul@booking.com'
     },
     catering: true,
     internet: true,
@@ -71,15 +74,15 @@ const seed = [
         event: 'Bus Call',
       },
     ],
-    final: {
-      capacity: '450',
-      presale: '388',
-      doors: '51',
-      guarantee: '750',
-      bonus: '100',
-      split: {
-        artist: '90',
-        venue: '10'
+    closingNumbers: {
+      presale: 388,
+      doors: 51,
+      comps: 17,
+      guarantee: 750.00,
+      merch: {
+        gross: 500.00,
+        split: 1.00,
+        soundscan: 29
       }
     }
   },
@@ -92,6 +95,9 @@ const seed = [
       city: 'South Hackensack',
       state: 'NJ',
       zip: '07606',
+      capacity: 480,
+      promoter: 'Heath Miller',
+      email: 'heath@booking.com'
     },
     catering: true,
     lounge: true,
@@ -133,15 +139,15 @@ const seed = [
         event: 'Bus Call',
       },
     ],
-    final: {
-      capacity: '480',
-      presale: '416',
-      doors: '51',
-      guarantee: '750',
-      bonus: '100',
-      split: {
-        artist: '90',
-        venue: '10'
+    closingNumbers: {
+      presale: 403,
+      doors: 63,
+      comps: 23,
+      guarantee: 750.00,
+      merch: {
+        gross: 600.00,
+        split: 0.85,
+        soundscan: 41
       }
     }
   },
@@ -154,6 +160,9 @@ const seed = [
       city: 'Philadelphia',
       state: 'PA',
       zip: '19107',
+      capacity: 1200,
+      promoter: 'Jon Hampton',
+      email: 'jon@booking.com'
     },
     catering: true,
     lounge: true,
@@ -195,15 +204,15 @@ const seed = [
         event: 'Bus Call',
       },
     ],
-    final: {
-      capacity: '1200',
-      presale: '1125',
-      doors: '51',
-      guarantee: '750',
-      bonus: '100',
-      split: {
-        artist: '90',
-        venue: '10'
+    closingNumbers: {
+      presale: 867,
+      doors: 201,
+      comps: 21,
+      guarantee: 750.00,
+      merch: {
+        gross: 1200.00,
+        split: 0.85,
+        soundscan: 72
       }
     }
   },
@@ -216,6 +225,9 @@ const seed = [
       city: 'New York',
       state: 'NY',
       zip: '10010',
+      capacity: 650,
+      promoter: 'Sean McDonough',
+      email: 'sean@booking.com'
     },
     catering: true,
     lounge: true,
@@ -257,15 +269,15 @@ const seed = [
         event: 'Bus Call',
       },
     ],
-    final: {
-      capacity: '650',
-      presale: '650',
-      doors: '51',
-      guarantee: '750',
-      bonus: '100',
-      split: {
-        artist: '90',
-        venue: '10'
+    closingNumbers: {
+      presale: 650,
+      doors: 0,
+      comps: 35,
+      guarantee: 750.00,
+      merch: {
+        gross: 1200.00,
+        split: 0.85,
+        soundscan: 72
       }
     }
   },
@@ -278,6 +290,9 @@ const seed = [
       city: 'Allston',
       state: 'MA',
       zip: '02134',
+      capacity: 400,
+      promoter: 'Mike Delehanty',
+      email: 'mike@booking.com'
     },
     catering: true,
     lounge: true,
@@ -319,15 +334,15 @@ const seed = [
         event: 'Bus Call',
       },
     ],
-    final: {
-      capacity: '400',
-      presale: '385',
-      doors: '51',
-      guarantee: '750',
-      bonus: '100',
-      split: {
-        artist: '90',
-        venue: '10'
+    closingNumbers: {
+      presale: 181,
+      doors: 43,
+      comps: 29,
+      guarantee: 750.00,
+      merch: {
+        gross: 350.00,
+        split: 1.00,
+        soundscan: 19
       }
     }
   }

@@ -14,6 +14,9 @@ const gigSchema = new Schema({
     city: { type: String },
     state: { type: String },
     zip: { type: String },
+    capacity: { type: Number, default: 0 },
+    promoter: { type: String },
+    email: { type: String }
   },
   catering: { type: Boolean, default: false },
   internet: { type: Boolean, default: false },
@@ -25,16 +28,16 @@ const gigSchema = new Schema({
     timeString: { type: String },
     event: { type: String }
   }],
-  final: {
-    capacity: { type: String, default: '0' },
-    presale: { type: String, default: '0' },
-    doors: { type: String, default: '0' },
-    guarantee: { type: String, default: '0' },
-    bonus: { type: String, default: '0' },
-    split: {
-      artist: { type: String, default: '100' },
-      venue: { type: String, default: '0' }
-    },
+  closingNumbers: {
+    presale: { type: Number, default: 0 },
+    doors: { type: Number, default: 0 },
+    comps: { type: Number, default: 0 },
+    guarantee: { type: Number, default: 0 },
+    merch: {
+      gross: { type: Number, default: 0 },
+      split: { type: Number, default: 0 },
+      soundscan: { type: Number, default: 0 }
+    }
   }
 });
 

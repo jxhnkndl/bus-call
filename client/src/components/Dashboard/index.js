@@ -115,7 +115,7 @@ export default function Dashboard() {
             {view === 'gig' && (
               <Gig
                 gig={gigs[index]}
-                nextGig={gigs[index + 1]}
+                nextGig={gigs[index + 1] ? gigs[index + 1] : false}
                 handleDate={handleDate}
                 prev={handlePrev}
                 next={handleNext}

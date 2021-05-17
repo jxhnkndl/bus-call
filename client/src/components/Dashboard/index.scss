@@ -36,6 +36,16 @@
   }
 }
 
+.info-link,
+.info-link:visited {
+  color: $base-300;
+
+  &:hover,
+  &:active {
+    color: $base-500;
+  }
+}
+
 .list-group-item {
   border-radius: .25rem;
   margin: 10px 0;

@@ -7,7 +7,6 @@ import './index.scss';
 
 // Create and export Daysheet component
 export default function Daysheet(props) {
-
   const { gig, nextGig } = props;
 
   // Create amenities array from props for rendering
@@ -52,7 +51,7 @@ export default function Daysheet(props) {
           {/* <i className="fas fa-headphones-alt mr-2"></i> */}
           Venue
         </p>
-        <p className="info-text-main mb-1">{gig.venue.venue}</p>
+        <p className="info-text-main mb-1">{gig.venue.name}</p>
         <p className="info-text-sub mb-1">{gig.venue.street}</p>
         <p className="info-text-sub mb-1">{`${gig.venue.city}, ${gig.venue.state}. ${gig.venue.zip}`}</p>
         <iframe
@@ -63,11 +62,19 @@ export default function Daysheet(props) {
         ></iframe>
       </div>
 
+      {/* Promoter + Contact Email */}
+      <div className="info-item">
+        <p className="h5 mb-1 small-heading">
+          {/* <i className="fas fa-headphones-alt mr-2"></i> */}
+          Promoter
+        </p>
+        <p className="info-text-main mb-1">{gig.venue.promoter}</p>
+        <a className="info-text-sub info-link mb-1" href={`mailto:${gig.venue.email}`}>{gig.venue.email}</a>
+      </div>
+
       {/* Amenity badges */}
       <div className="info-item">
-        <p className="h5 mb-3 small-heading">
-          Amenities
-        </p>
+        <p className="h5 mb-3 small-heading">Amenities</p>
         <div className="row">
           <div className="col-12">
             <ListGroup key="amenities" variant="flush">
@@ -113,10 +120,12 @@ export default function Daysheet(props) {
           <i className="fas fa-road mr-2"></i>
           Next
         </p>
-        {nextGig.venue.name ? (
+        {nextGig ? (
           <div>
             <p className="info-text-main mb-1">{nextGig.venue.name}</p>
-            <p className="info-text-sub mb-1">{props.handleDate(nextGig.date)}</p>
+            <p className="info-text-sub mb-1">
+              {props.handleDate(nextGig.date)}
+            </p>
             <p className="info-text-sub mb-1">{`${nextGig.venue.city}, ${nextGig.venue.state}.`}</p>
           </div>
         ) : (

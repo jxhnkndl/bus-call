@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { pageVariants, pageTransitions } from '../../utils/transitions';
 import CardBody from '../CardBody';
 import Daysheet from '../Daysheet';
-import ImpactReport from '../ImpactReport';
+import ClosingNumbers from '../ClosingNumbers';
 import StageSchedule from '../StageSchedule';
 
 // Create and export Gig component
@@ -31,9 +31,9 @@ export default function Gig(props) {
           {/* Right Column - Impact Report OR Stage Schedule */}
           {props.gig.closed ? (
             <div className="col-12 col-lg-6 p-2 p-md-4 mb-4">
-              <h2 className="heading">Impact Report</h2>
+              <h2 className="heading">Closing Numbers</h2>
               <hr />
-              <ImpactReport {...props} />
+              <ClosingNumbers {...props} />
             </div>
           ) : (
             <div className="col-12 col-lg-6 p-2 p-md-4 mb-4">

@@ -14,7 +14,6 @@ import './index.scss';
 
 // Create and export Dashboard component
 export default function GigForm(props) {
-  // Init state
   const [formObj, setFormObj] = useState(emptyFormObj);
   const [show, setShow] = useState(false);
 
@@ -135,7 +134,6 @@ export default function GigForm(props) {
 
   // Handle updating state's nested schedule array
   const handleSchedule = (event) => {
-    // Capture event parameters
     const { name, value } = event.target;
     const { index } = event.target.dataset;
 
@@ -156,7 +154,6 @@ export default function GigForm(props) {
 
   // Handle updating artists assigned to stage schedule blocks 3-6
   const handleArtist = (event) => {
-    // Capture event parameters
     const { name, value } = event.target;
     const { index } = event.target.dataset;
 
@@ -175,13 +172,12 @@ export default function GigForm(props) {
     });
   };
 
-  // Handle resetting all input fields in UI on submit
+  // Handle resetting all input fields and form object state in UI
   const handleReset = () => {
     Array.from(document.querySelectorAll('input')).forEach(
       (input) => (input.value = '')
     );
 
-    // Reset form object state back to the empty gig object structure
     setFormObj(emptyFormObj);
   };
 
@@ -285,7 +281,7 @@ export default function GigForm(props) {
                   </div>
 
                   {/* City */}
-                  <div className="col-6">
+                  <div className="col-12 col-md-6">
                     <Form.Group controlId="cityInputGroup">
                       <Form.Label>City *</Form.Label>
                       <Form.Control
@@ -299,7 +295,7 @@ export default function GigForm(props) {
                   </div>
 
                   {/* State */}
-                  <div className="col-6">
+                  <div className="col-6 col-md-3">
                     <Form.Group controlId="stateInputGroup">
                       <Form.Label>State *</Form.Label>
                       <Form.Control
@@ -326,22 +322,36 @@ export default function GigForm(props) {
                     </Form.Group>
                   </div>
 
-                  {/* Date */}
-                  <div className="col-6 col-md-3">
-                    <Form.Group controlId="dateInputGroup">
-                      <Form.Label>Date *</Form.Label>
+                  {/* Promoter */}
+                  <div className="col-12 col-md-6 col-lg-3">
+                    <Form.Group controlId="promoterInputGroup">
+                      <Form.Label>Promoter</Form.Label>
                       <Form.Control
-                        name="date"
-                        type="date"
-                        placeholder="Enter Date"
-                        value={formObj.date}
+                        name="promoter"
+                        type="text"
+                        placeholder="Enter Promoter"
+                        value={formObj.venue.promoter}
+                        onChange={handleInputChange}
+                      />
+                    </Form.Group>
+                  </div>
+
+                  {/* Email */}
+                  <div className="col-12 col-md-6 col-lg-3">
+                    <Form.Group controlId="emailInputGroup">
+                      <Form.Label>Contact Email</Form.Label>
+                      <Form.Control
+                        name="email"
+                        type="email"
+                        placeholder="Enter Email"
+                        value={formObj.venue.email}
                         onChange={handleInputChange}
                       />
                     </Form.Group>
                   </div>
 
                   {/* Capacity */}
-                  <div className="col-6 col-md-3">
+                  <div className="col-12 col-md-6 col-lg-3">
                     <Form.Group controlId="capacityInputGroup">
                       <Form.Label>Capacity</Form.Label>
                       <Form.Control
@@ -354,20 +364,21 @@ export default function GigForm(props) {
                     </Form.Group>
                   </div>
 
-                  {/* Presale */}
-                  <div className="col-6 col-md-3">
-                    <Form.Group controlId="presaleInputGroup">
-                      <Form.Label>Presale</Form.Label>
+                  {/* Date */}
+                  <div className="col-12 col-md-6 col-lg-3">
+                    <Form.Group controlId="dateInputGroup">
+                      <Form.Label>Date *</Form.Label>
                       <Form.Control
-                        name="presale"
-                        type="text"
-                        placeholder="Enter Presale"
-                        value={formObj.venue.presale}
+                        name="date"
+                        type="date"
+                        placeholder="Enter Date"
+                        value={formObj.date}
                         onChange={handleInputChange}
                       />
                     </Form.Group>
                   </div>
 
+                  {/* Amenity check boxes */}
                   <div className="col-12">
                     <p className="small-heading">
                       Amenities (Select all that apply):
@@ -394,41 +405,20 @@ export default function GigForm(props) {
                     <p className="small-heading mb-0">Artists</p>
                     <p>
                       Add artists or use default slot titles. You can always
-                      come back and update these later!
+                      come back and update these later.
                     </p>
                   </div>
 
-                  {/* Opener */}
-                  <div className="col-6 col-md-3">
+                  {/* Headliner */}
+                  <div className="col-12 col-md-6 col-lg-3">
                     <Form.Group>
-                      <Form.Label>Opener</Form.Label>
+                      <Form.Label>Headliner</Form.Label>
                       <Form.Control
-                        name="opener"
-                        data-index={3}
+                        name="headliner"
+                        data-index={6}
                         type="text"
-                        placeholder="Enter Opener"
-                        value={formObj.schedule[3].event}
-                        onChange={handleArtist}
-                        onSubmit={() =>
-                          setFormObj({
-                            ...formObj,
-                            schedule: stageBlocks,
-                          })
-                        }
-                      />
-                    </Form.Group>
-                  </div>
-
-                  {/* Second */}
-                  <div className="col-6 col-md-3">
-                    <Form.Group>
-                      <Form.Label>Second</Form.Label>
-                      <Form.Control
-                        name="second"
-                        data-index={4}
-                        type="text"
-                        placeholder="Enter Second"
-                        value={formObj.schedule[4].event}
+                        placeholder="Enter Headliner"
+                        value={formObj.schedule[6].event}
                         onChange={handleArtist}
                         onSubmit={() =>
                           setFormObj({
@@ -441,7 +431,7 @@ export default function GigForm(props) {
                   </div>
 
                   {/* Direct */}
-                  <div className="col-6 col-md-3">
+                  <div className="col-12 col-md-6 col-lg-3">
                     <Form.Group>
                       <Form.Label>Direct</Form.Label>
                       <Form.Control
@@ -461,16 +451,16 @@ export default function GigForm(props) {
                     </Form.Group>
                   </div>
 
-                  {/* Headliner */}
-                  <div className="col-6 col-md-3">
+                  {/* Second */}
+                  <div className="col-12 col-md-6 col-lg-3">
                     <Form.Group>
-                      <Form.Label>Headliner</Form.Label>
+                      <Form.Label>Second</Form.Label>
                       <Form.Control
-                        name="opener"
-                        data-index={6}
+                        name="second"
+                        data-index={4}
                         type="text"
-                        placeholder="Enter Opener"
-                        value={formObj.schedule[6].event}
+                        placeholder="Enter Second"
+                        value={formObj.schedule[4].event}
                         onChange={handleArtist}
                         onSubmit={() =>
                           setFormObj({
@@ -482,11 +472,33 @@ export default function GigForm(props) {
                     </Form.Group>
                   </div>
 
+                  {/* Opener */}
+                  <div className="col-12 col-md-6 col-lg-3">
+                    <Form.Group>
+                      <Form.Label>Opener</Form.Label>
+                      <Form.Control
+                        name="opener"
+                        data-index={3}
+                        type="text"
+                        placeholder="Enter Opener"
+                        value={formObj.schedule[3].event}
+                        onChange={handleArtist}
+                        onSubmit={() =>
+                          setFormObj({
+                            ...formObj,
+                            schedule: stageBlocks,
+                          })
+                        }
+                      />
+                    </Form.Group>
+                  </div>
+
+                  {/* Stage schedule inputs */}
                   <div className="col-12 pt-3">
                     <p className="small-heading mb-0">Update Stage Schedule</p>
                     <p>
                       Add custom times or use default stage schedule. This can
-                      always be updated later!
+                      always be updated later.
                     </p>
                   </div>
 
@@ -519,9 +531,10 @@ export default function GigForm(props) {
                   })}
                 </div>
 
-                {/* Submit */}
+                {/* Submit Buttons */}
                 <div className="row pt-3">
                   <div className="col-12">
+
                     {/* Add gig */}
                     {props.view === 'add' && (
                       <Button

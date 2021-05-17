@@ -8,6 +8,7 @@ import { emptyFormObj } from './emptyFormObj';
 export default function formatObj(obj) {
   return {
     date: dayjs(obj.date).format('YYYY-MM-DD'),
+    closed: obj.closed,
     venue: {
       name: obj.venue.name,
       street: obj.venue.street,
@@ -15,7 +16,8 @@ export default function formatObj(obj) {
       state: obj.venue.state,
       zip: obj.venue.zip,
       capacity: obj.venue.capacity,
-      presale: obj.venue.presale
+      promoter: obj.venue.promoter,
+      email: obj.venue.email
     },
     catering: obj.catering,
     lounge: obj.lounge,
@@ -32,6 +34,17 @@ export default function formatObj(obj) {
       { timeString: obj.schedule[5].timeString, event: obj.schedule[5].event },
       { timeString: obj.schedule[6].timeString, event: obj.schedule[6].event },
       { timeString: obj.schedule[7].timeString, event: "Bus Call" },
-    ]
+    ],
+    closingNumbers: {
+      presale: obj.closingNumbers.presale,
+      doors: obj.closingNumbers.doors,
+      comps: obj.closingNumbers.comps,
+      guarantee: obj.closingNumbers.guarantee,
+      merch: {
+        gross: obj.closingNumbers.merch.gross,
+        split: obj.closingNumbers.merch.split,
+        soundscan: obj.closingNumbers.merch.soundscan
+      }
+    }
   }
 }

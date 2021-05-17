@@ -1,14 +1,16 @@
 // Create and export empty form object for initializing state
 export const emptyFormObj = {
   date: '',
+  closed: false,
   venue: {
     name: '',
     street: '',
     city: '',
     state: '',
     zip: '',
-    capacity: '0',
-    presale: '0',
+    capacity: 0,
+    promoter: '',
+    email: ''
   },
   catering: false,
   internet: false,
@@ -26,5 +28,16 @@ export const emptyFormObj = {
     { timeString: '8:30 - 9:15 PM', event: 'Direct' },
     { timeString: '9:30 - 10:50 PM', event: 'Headliner' },
     { timeString: '2:00 AM', event: 'Bus Call' },
-  ]
+  ],
+  closingNumbers: {
+    presale: 0,
+    doors: 0,
+    comps: 0,
+    guarantee: 0,
+    merch: {
+      gross: 0,
+      split: 1.00,
+      soundscan: 0
+    }
+  }
 }

@@ -5,6 +5,7 @@ import { pageVariants, pageTransitions } from '../../utils/transitions';
 import { toast } from 'react-toastify';
 import API from '../../utils/API';
 import Button from 'react-bootstrap/Button';
+import ClosingForm from '../ClosingForm';
 import DashboardNav from '../DashboardNav';
 import dayjs from 'dayjs';
 import Gig from '../Gig';
@@ -140,9 +141,20 @@ export default function Dashboard() {
               />
             )}
 
-            {/* Form view with state configured to edit/delete an existing gig */}
+            {/* Form view with state configured to edit/delete selected gig */}
             {view === 'edit' && (
               <GigForm
+                view={view}
+                handleView={handleView}
+                setIndex={setIndex}
+                selected={gigs[index]}
+                fetchGigs={fetchGigs}
+              />
+            )}
+
+            {/* Closing form view with state configured to add closing numbers to selected gig */}
+            {view === 'report' && (
+              <ClosingForm 
                 view={view}
                 handleView={handleView}
                 setIndex={setIndex}

@@ -2,7 +2,7 @@
 @import '../../theme.scss';
 
 input[type="text"],
-input[type="date"],
+input[type="number"],
 input[type="email"] {
   background-color: $base-700;
   border: none;

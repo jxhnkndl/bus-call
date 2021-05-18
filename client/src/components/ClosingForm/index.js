@@ -14,13 +14,16 @@ import './index.scss';
 
 // Create and export ClosingForm component
 export default function ClosingForm(props) {
-  const [formObj, setFormObj] = useState([]);
+  const [formObj, setFormObj] = useState(emptyFormObj);
 
   // Configure the form for updating values on the selected gig
   useEffect(() => {
-    const gigObj = formatObj(props.selected);
-    setFormObj(gigObj);
-  }, [])
+    if (props.selected) {
+      const gigObj = formatObj(props.selected);
+      console.log(gigObj);
+      setFormObj(gigObj);
+    }
+  }, []);
 
   // Update existing gig in database
   const updateGig = async () => {
@@ -36,19 +39,45 @@ export default function ClosingForm(props) {
     }
   };
 
-  // Handle input changes
+  // Handle changes made to properties in closingNumbers
+  // nested object
   const handleInputChange = (event) => {
     const closingNumbers = formObj.closingNumbers;
-    const { name, value } = event.target;
+    const merch = formObj.closingNumbers.merch;
+    const { name, value, type } = event.target;
 
-    
+    if (name === 'split') {
+      console.log('SPLIT');
+      merch.split = value * 1;
+    }
+
+    if (name === 'gross') {
+      console.log('GROSS');
+      merch.gross = value * 1;
+    }
+
+    if (name === 'scans') {
+      merch.scans = value * 1;
+    }
+
+    if (name === 'giveaways') {
+      merch.giveaways = value * 1;
+    }
+
     setFormObj({
       ...formObj,
       closingNumbers: {
         ...closingNumbers,
-        [name]: value,
-      }
+        [name]: type === 'number' ? value * 1 : value
+      },
     });
+  };
+
+  // Submit closing numbers to API
+  const handleUpdate = (event) => {
+    event.preventDefault();
+
+    console.log(formObj);
   };
 
   return (
@@ -65,7 +94,186 @@ export default function ClosingForm(props) {
             <CardBody spacing={'p-4 p-md-4 m-2 m-md-0'}>
               <p className="h2 heading">Add Closing Metrics</p>
 
+              <Form>
+                <div className="row">
 
+                  {/* Attendance  */}
+                  <div className="col-12 col-md-4 pt-3">
+                    <p className="small-heading mb-3">Head Counts</p>
+
+                    <div className="row">
+                      
+                      {/* Presale */}
+                      <div className="col-12">
+                        <Form.Group controlId="presaleInputGroup">
+                          <Form.Label>Presale</Form.Label>
+                          <Form.Control
+                            name="presale"
+                            type="number"
+                            tabIndex="1"
+                            placeholder="Enter Presale Count"
+                            value={formObj.closingNumbers.presale}
+                            onChange={handleInputChange}
+                          />
+                        </Form.Group>
+                      </div>
+
+                      {/* Doors */}
+                      <div className="col-12">
+                        <Form.Group controlId="doorsInputGroup">
+                          <Form.Label>Doors</Form.Label>
+                          <Form.Control
+                            name="doors"
+                            type="number"
+                            tabIndex="2"
+                            placeholder="Enter Door Count"
+                            value={formObj.closingNumbers.doors}
+                            onChange={handleInputChange}
+                          />
+                        </Form.Group>
+                      </div>
+
+                      {/* Comps */}
+                      <div className="col-12">
+                        <Form.Group controlId="compsInputGroup">
+                          <Form.Label>Comps</Form.Label>
+                          <Form.Control
+                            name="comps"
+                            type="number"
+                            tabIndex="3"
+                            placeholder="Enter Comp Count"
+                            value={formObj.closingNumbers.comps}
+                            onChange={handleInputChange}
+                          />
+                        </Form.Group>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  {/* Revenue */}
+                  <div className="col-12 col-md-4 pt-3">
+                    <p className="small-heading mb-3">Revenue Streams</p>
+
+                    <div className="row">
+
+                      {/* Guarantee */}
+                      <div className="col-12">
+                        <Form.Group controlId="guaranteeInputGroup">
+                          <Form.Label>Performance Guarantee</Form.Label>
+                          <Form.Control
+                            name="guarantee"
+                            type="number"
+                            tabIndex="4"
+                            placeholder="Enter Guarantee"
+                            value={formObj.closingNumbers.guarantee}
+                            onChange={handleInputChange}
+                          />
+                        </Form.Group>
+                      </div>
+
+                      {/* Gross Merch */}
+                      <div className="col-12">
+                        <Form.Group controlId="grossInputGroup">
+                          <Form.Label>Gross Merch Revenue</Form.Label>
+                          <Form.Control
+                            name="gross"
+                            type="number"
+                            tabIndex="5"
+                            placeholder="Enter Gross Merch Revenue"
+                            value={formObj.closingNumbers.merch.gross}
+                            onChange={handleInputChange}
+                          />
+                        </Form.Group>
+                      </div>
+
+                      {/* Bonus */}
+                      <div className="col-12">
+                        <Form.Group controlId="bonusInputGroup">
+                          <Form.Label>Performance Bonus</Form.Label>
+                          <Form.Control
+                            name="bonus"
+                            type="number"
+                            tabIndex="6"
+                            placeholder="Enter Bonus"
+                            value={formObj.closingNumbers.bonus}
+                            onChange={handleInputChange}
+                          />
+                        </Form.Group>
+                      </div>
+
+                    </div>
+                  </div>
+
+                  {/* Merchandise */}
+                  <div className="col-12 col-md-4 pt-3">
+                    <p className="small-heading mb-3">Merch</p>
+
+                    <div className="row">
+
+                      {/* Merch Split */}
+                      <div className="col-12">
+                        <Form.Group controlId="splitInputGroup">
+                          <Form.Label>Artist Split</Form.Label>
+                          <Form.Control
+                            name="split"
+                            type="number"
+                            tabIndex="7"
+                            placeholder="Enter Artist Split"
+                            value={formObj.closingNumbers.merch.split}
+                            onChange={handleInputChange}
+                          />
+                        </Form.Group>
+                      </div>
+
+                      {/* Comped Merch */}
+                      <div className="col-12">
+                        <Form.Group controlId="giveawaysInputGroup">
+                          <Form.Label>Comped Merch</Form.Label>
+                          <Form.Control
+                            name="giveaways"
+                            type="number"
+                            tabIndex="8"
+                            placeholder="Enter Total Comped"
+                            value={formObj.closingNumbers.merch.giveaways}
+                            onChange={handleInputChange}
+                          />
+                        </Form.Group>
+                      </div>
+
+                      {/* Scans */}
+                      <div className="col-12">
+                        <Form.Group controlId="scansInputGroup">
+                          <Form.Label>Soundscans</Form.Label>
+                          <Form.Control
+                            name="scans"
+                            type="number"
+                            tabIndex="9"
+                            placeholder="Enter Total Scans"
+                            value={formObj.closingNumbers.merch.scans}
+                            onChange={handleInputChange}
+                          />
+                        </Form.Group>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div className="col-12">
+                    <Button
+                      type="submit"
+                      variant="primary"
+                      className="py-2 px-3 mr-2"
+                      onClick={handleUpdate}
+                    >
+                      <i className="fas fa-edit mr-2"></i>
+                      Update Gig
+                    </Button>
+                  </div>
+
+
+                </div>
+              </Form>
             </CardBody>
           </div>
         </div>

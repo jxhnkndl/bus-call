@@ -40,10 +40,12 @@ export default function formatObj(obj) {
       doors: obj.closingNumbers.doors,
       comps: obj.closingNumbers.comps,
       guarantee: obj.closingNumbers.guarantee,
+      bonus: obj.closingNumbers.bonus,
       merch: {
         gross: obj.closingNumbers.merch.gross,
+        comped: obj.closingNumbers.merch.comped,
         split: obj.closingNumbers.merch.split,
-        soundscan: obj.closingNumbers.merch.soundscan
+        scans: obj.closingNumbers.merch.scans
       }
     }
   }

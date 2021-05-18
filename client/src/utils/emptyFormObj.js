@@ -34,10 +34,12 @@ export const emptyFormObj = {
     doors: 0,
     comps: 0,
     guarantee: 0,
+    bonus: 0,
     merch: {
       gross: 0,
+      comped: 0,
       split: 1.00,
-      soundscan: 0
+      scans: 0
     }
   }
 }

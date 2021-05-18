@@ -79,10 +79,12 @@ const seed = [
       doors: 51,
       comps: 17,
       guarantee: 750.00,
+      bonus: 100.00,
       merch: {
         gross: 500.00,
+        comped: 75.00,
         split: 1.00,
-        soundscan: 29
+        scans: 29
       }
     }
   },
@@ -144,10 +146,12 @@ const seed = [
       doors: 63,
       comps: 23,
       guarantee: 750.00,
+      bonus: 0,
       merch: {
         gross: 600.00,
+        comped: 45.00,
         split: 0.85,
-        soundscan: 41
+        scans: 41
       }
     }
   },
@@ -209,10 +213,12 @@ const seed = [
       doors: 201,
       comps: 21,
       guarantee: 750.00,
+      bonus: 250.00,
       merch: {
         gross: 1200.00,
+        comped: 150.00,
         split: 0.85,
-        soundscan: 72
+        scans: 72
       }
     }
   },
@@ -274,10 +280,12 @@ const seed = [
       doors: 0,
       comps: 35,
       guarantee: 750.00,
+      bonus: 250.00,
       merch: {
         gross: 1200.00,
+        comped: 150.00,
         split: 0.85,
-        soundscan: 72
+        scans: 72
       }
     }
   },
@@ -339,10 +347,12 @@ const seed = [
       doors: 43,
       comps: 29,
       guarantee: 750.00,
+      bonus: 0,
       merch: {
         gross: 350.00,
+        comped: 25.00,
         split: 1.00,
-        soundscan: 19
+        scans: 19
       }
     }
   }

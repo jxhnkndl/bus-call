@@ -33,10 +33,12 @@ const gigSchema = new Schema({
     doors: { type: Number, default: 0 },
     comps: { type: Number, default: 0 },
     guarantee: { type: Number, default: 0 },
+    bonus: { type: Number, default: 0 },
     merch: {
       gross: { type: Number, default: 0 },
+      comped: { type: Number, default: 0 },
       split: { type: Number, default: 0 },
-      soundscan: { type: Number, default: 0 }
+      scans: { type: Number, default: 0 }
     }
   }
 });

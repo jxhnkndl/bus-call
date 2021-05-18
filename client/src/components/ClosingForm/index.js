@@ -60,8 +60,8 @@ export default function ClosingForm(props) {
       merch.scans = value * 1;
     }
 
-    if (name === 'giveaways') {
-      merch.giveaways = value * 1;
+    if (name === 'comped') {
+      merch.comped = value * 1;
     }
 
     setFormObj({
@@ -228,14 +228,14 @@ export default function ClosingForm(props) {
 
                       {/* Comped Merch */}
                       <div className="col-12">
-                        <Form.Group controlId="giveawaysInputGroup">
+                        <Form.Group controlId="compedInputGroup">
                           <Form.Label>Comped Merch</Form.Label>
                           <Form.Control
-                            name="giveaways"
+                            name="comped"
                             type="number"
                             tabIndex="8"
                             placeholder="Enter Total Comped"
-                            value={formObj.closingNumbers.merch.giveaways}
+                            value={formObj.closingNumbers.merch.comped}
                             onChange={handleInputChange}
                           />
                         </Form.Group>

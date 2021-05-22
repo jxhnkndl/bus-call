@@ -84,7 +84,7 @@ export default function ClosingNumbers(props) {
         </div>
 
         {/* Labels */}
-        <div className="col-8">
+        <div className="col-7">
           <p className="info-text-main mb-0">Capacity</p>
           <p className="info-text-main mb-0">Presale</p>
           <p className="info-text-main mb-0">Doors</p>
@@ -92,7 +92,7 @@ export default function ClosingNumbers(props) {
         </div>
 
         {/* Values */}
-        <div className="col-4">
+        <div className="col-5">
           <p className="info-text-main px-2 mb-0">{props.gig.venue.capacity}</p>
           <p className="info-text-main px-2 mb-0">{presale}</p>
           <p className="info-text-main px-2 mb-0">{doors}</p>
@@ -101,11 +101,11 @@ export default function ClosingNumbers(props) {
         </div>
 
         {/* Insights */}
-        <div className="col-8">
+        <div className="col-7">
           <p className="info-text-main mb-0">Total</p>
           <p className="info-text-main mb-0">% Cap</p>
         </div>
-        <div className="col-4">
+        <div className="col-5">
           <p className="info-text-main px-2 mb-0">{totalAttendance}</p>
           <p
             className={`info-text-main px-2 mb-0 ${colorPercentCap()}`}
@@ -120,14 +120,14 @@ export default function ClosingNumbers(props) {
         </div>
 
         {/* Labels */}
-        <div className="col-8">
+        <div className="col-7">
           <p className="info-text-main mb-0">Artist Split</p>
           <p className="info-text-main mb-0">Gross Sales</p>
           <p className="info-text-main mb-0">Venue Cut</p>
         </div>
 
         {/* Values */}
-        <div className="col-4">
+        <div className="col-5">
           <p className="info-text-main px-2 mb-0">{`${getPercentage(split)}%`}</p>
           <p className="info-text-main px-2 mb-0">{`$${getDecimals(gross)}`}</p>
           <p className="info-text-main px-2 mb-0">{`$${venueCut}`}</p>
@@ -135,11 +135,11 @@ export default function ClosingNumbers(props) {
         </div>
 
         {/* Insights */}
-        <div className="col-8">
+        <div className="col-7">
           <p className="info-text-main mb-0">Net Revenue</p>
           <p className="info-text-main mb-0">Per Head</p>
         </div>
-        <div className="col-4">
+        <div className="col-5">
           <p className="info-text-main px-2 mb-0">{`$${getDecimals(netMerch)}`}</p>
           <p className={`info-text-main px-2 mb-0 ${colorPerHead()}`}>{`$${getDecimals(merchPerHead)}`}</p>
         </div>
@@ -152,14 +152,14 @@ export default function ClosingNumbers(props) {
         </div>
 
         {/* Labels */}
-        <div className="col-8">
+        <div className="col-7">
           <p className="info-text-main mb-0">Guarantee</p>
           <p className="info-text-main mb-0">Net Merch</p>
           <p className="info-text-main mb-0">Bonus</p>
         </div>
 
         {/* Values */}
-        <div className="col-4">
+        <div className="col-5">
           <p className="info-text-main px-2 mb-0">{`$${getDecimals(guarantee)}`}</p>
           <p className="info-text-main px-2 mb-0">{`$${getDecimals(netMerch)}`}</p>
           <p className="info-text-main px-2 mb-0">$0.00</p>
@@ -167,10 +167,10 @@ export default function ClosingNumbers(props) {
         </div>
 
         {/* Insights */}
-        <div className="col-8">
+        <div className="col-7">
           <p className="info-text-main mb-0">Net Revenue</p>
         </div>
-        <div className="col-4">
+        <div className="col-5">
           <p className="info-text-main px-2 mb-0">{`$${getDecimals(netRevenue)}`}</p>
         </div>
       </div>

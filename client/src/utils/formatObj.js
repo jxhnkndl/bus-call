@@ -5,10 +5,16 @@ import { emptyFormObj } from './emptyFormObj';
 // Create and export formatting function so that the same form used to add
 // new gigs can be auto-populated with the details of an existing gig returned
 // by the API allowing a user to easily update it
-export default function formatObj(obj) {
+export default function formatObj(obj, view) {
+  let isClosed = false;
+
+  if (view) {
+    isClosed = true;
+  }
+
   return {
-    date: dayjs(obj.date).format('YYYY-MM-DD'),
-    closed: obj.closed,
+    date: dayjs(obj.date).format('MM-DD-YYYY'),
+    closed: isClosed,
     venue: {
       name: obj.venue.name,
       street: obj.venue.street,

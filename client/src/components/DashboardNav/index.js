@@ -67,6 +67,17 @@ export default function DashboardNav(props) {
           {/* If application is in gig view */}
           {props.view === 'gig' && (
             <div>
+              {props.gig.closed && (
+                <OverlayTrigger
+                  placement="bottom"
+                  overlay={renderTooltip('Gig has been completed')}
+                >
+                  <p className="nav-icon mb-0 mr-3 text-success">
+                    <i className="fas fa-check"></i>
+                  </p>
+                </OverlayTrigger>
+              )}
+
               {/* Nav Icon -> Edit gig details */}
               <OverlayTrigger
                 placement="bottom"

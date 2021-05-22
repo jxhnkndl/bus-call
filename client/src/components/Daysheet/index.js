@@ -113,25 +113,6 @@ export default function Daysheet(props) {
           </div>
         </div>
       </div>
-
-      {/* Next Up */}
-      <div className="info-item">
-        <p className="h5 mb-1 small-heading">
-          <i className="fas fa-road mr-2"></i>
-          Next
-        </p>
-        {nextGig ? (
-          <div>
-            <p className="info-text-main mb-1">{nextGig.venue.name}</p>
-            <p className="info-text-sub mb-1">
-              {props.handleDate(nextGig.date)}
-            </p>
-            <p className="info-text-sub mb-1">{`${nextGig.venue.city}, ${nextGig.venue.state}.`}</p>
-          </div>
-        ) : (
-          <p className="info-text-main mb-1">Nothing Scheduled</p>
-        )}
-      </div>
     </div>
   );
 }

@@ -19,7 +19,7 @@ export default function ClosingForm(props) {
   // Configure the form for updating values on the selected gig
   useEffect(() => {
     if (props.selected) {
-      const gigObj = formatObj(props.selected);
+      const gigObj = formatObj(props.selected, 'report');
       console.log(gigObj);
       setFormObj(gigObj);
     }
@@ -46,13 +46,12 @@ export default function ClosingForm(props) {
     const merch = formObj.closingNumbers.merch;
     const { name, value, type } = event.target;
 
+    // Convert strings to numbers 
     if (name === 'split') {
-      console.log('SPLIT');
       merch.split = value * 1;
     }
 
     if (name === 'gross') {
-      console.log('GROSS');
       merch.gross = value * 1;
     }
 
@@ -64,11 +63,12 @@ export default function ClosingForm(props) {
       merch.comped = value * 1;
     }
 
+    // Reset form object with input values
     setFormObj({
       ...formObj,
       closingNumbers: {
         ...closingNumbers,
-        [name]: type === 'number' ? value * 1 : value
+        [name]: value * 1
       },
     });
   };
@@ -77,7 +77,14 @@ export default function ClosingForm(props) {
   const handleUpdate = (event) => {
     event.preventDefault();
 
-    console.log(formObj);
+    // Post updated data to API
+    updateGig();
+
+    // Update gigs in state and toggle back to gig view
+    setTimeout(() => {
+      props.fetchGigs();
+      props.handleView('gig');
+    }, 250);
   };
 
   return (
@@ -109,7 +116,7 @@ export default function ClosingForm(props) {
                           <Form.Label>Presale</Form.Label>
                           <Form.Control
                             name="presale"
-                            type="number"
+                            type="text"
                             tabIndex="1"
                             placeholder="Enter Presale Count"
                             value={formObj.closingNumbers.presale}
@@ -124,7 +131,7 @@ export default function ClosingForm(props) {
                           <Form.Label>Doors</Form.Label>
                           <Form.Control
                             name="doors"
-                            type="number"
+                            type="text"
                             tabIndex="2"
                             placeholder="Enter Door Count"
                             value={formObj.closingNumbers.doors}
@@ -139,7 +146,7 @@ export default function ClosingForm(props) {
                           <Form.Label>Comps</Form.Label>
                           <Form.Control
                             name="comps"
-                            type="number"
+                            type="text"
                             tabIndex="3"
                             placeholder="Enter Comp Count"
                             value={formObj.closingNumbers.comps}
@@ -163,7 +170,7 @@ export default function ClosingForm(props) {
                           <Form.Label>Performance Guarantee</Form.Label>
                           <Form.Control
                             name="guarantee"
-                            type="number"
+                            type="text"
                             tabIndex="4"
                             placeholder="Enter Guarantee"
                             value={formObj.closingNumbers.guarantee}
@@ -178,7 +185,7 @@ export default function ClosingForm(props) {
                           <Form.Label>Gross Merch Revenue</Form.Label>
                           <Form.Control
                             name="gross"
-                            type="number"
+                            type="text"
                             tabIndex="5"
                             placeholder="Enter Gross Merch Revenue"
                             value={formObj.closingNumbers.merch.gross}
@@ -193,7 +200,7 @@ export default function ClosingForm(props) {
                           <Form.Label>Performance Bonus</Form.Label>
                           <Form.Control
                             name="bonus"
-                            type="number"
+                            type="text"
                             tabIndex="6"
                             placeholder="Enter Bonus"
                             value={formObj.closingNumbers.bonus}
@@ -217,7 +224,7 @@ export default function ClosingForm(props) {
                           <Form.Label>Artist Split</Form.Label>
                           <Form.Control
                             name="split"
-                            type="number"
+                            type="text"
                             tabIndex="7"
                             placeholder="Enter Artist Split"
                             value={formObj.closingNumbers.merch.split}
@@ -232,7 +239,7 @@ export default function ClosingForm(props) {
                           <Form.Label>Comped Merch</Form.Label>
                           <Form.Control
                             name="comped"
-                            type="number"
+                            type="text"
                             tabIndex="8"
                             placeholder="Enter Total Comped"
                             value={formObj.closingNumbers.merch.comped}
@@ -247,7 +254,7 @@ export default function ClosingForm(props) {
                           <Form.Label>Soundscans</Form.Label>
                           <Form.Control
                             name="scans"
-                            type="number"
+                            type="text"
                             tabIndex="9"
                             placeholder="Enter Total Scans"
                             value={formObj.closingNumbers.merch.scans}

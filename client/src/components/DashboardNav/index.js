@@ -3,16 +3,25 @@ import React, { useState } from 'react';
 import CardBody from '../CardBody';
 import ConfirmModal from '../ConfirmModal';
 import Dropdown from 'react-bootstrap/Dropdown';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
 import './index.scss';
 
 // Create and export DashboardNav component
 export default function DashboardNav(props) {
+  const { handleView } = props;
+
   // Modal visibility state
   const [show, setShow] = useState(false);
 
   // Handle toggling confirmation modal's visibility
   const handleShow = () => setShow(true);
   const handleClose = () => setShow(false);
+
+  // Render tooltip
+  const renderTooltip = (message) => (
+    <Tooltip id="icon-tooltip">{message}</Tooltip>
+  );
 
   return (
     <div className="row mb-2 dashboard-nav">
@@ -25,71 +34,100 @@ export default function DashboardNav(props) {
           <Dropdown className="d-inline-block">
             <Dropdown.Toggle id="dropdown-basic">Options</Dropdown.Toggle>
             <Dropdown.Menu>
-              <Dropdown.Item onSelect={(e) => props.handleView('gig')}>
-                View Gigs
+              {/* View tour dates */}
+              <Dropdown.Item onSelect={() => handleView('tour')}>
+                View Tour Dates
               </Dropdown.Item>
-              <Dropdown.Item onSelect={(e) => props.handleView('tour')}>
-                View Tour
-              </Dropdown.Item>
-              {(props.view === 'tour' || props.view === 'gig') && (
-                <Dropdown.Item onSelect={(e) => props.handleView('add')}>
+
+              {/* Add new gig */}
+              {props.view === 'tour' && (
+                <Dropdown.Item onSelect={() => handleView('add')}>
                   Add Gig
                 </Dropdown.Item>
               )}
+
+              {/* Edit gig details */}
               {props.view === 'gig' && (
-                <Dropdown.Item onSelect={(e) => props.handleView('edit')}>
-                  Edit Gig
+                <Dropdown.Item onSelect={() => handleView('edit')}>
+                  Edit Gig Details
                 </Dropdown.Item>
               )}
+
+              {/* Add/Edit closing numbers */}
               {props.view === 'gig' && (
-                <Dropdown.Item onSelect={(e) => props.handleView('report')}>
-                  Complete Gig
+                <Dropdown.Item onSelect={() => handleView('report')}>
+                  {props.gig.closed
+                    ? 'Edit Closing Numbers'
+                    : 'Add Closing Numbers'}
                 </Dropdown.Item>
               )}
             </Dropdown.Menu>
           </Dropdown>
 
-          {/* Show cycle and edit buttons when in gig view */}
+          {/* If application is in gig view */}
           {props.view === 'gig' && (
             <div>
-              <p className="nav-icon mb-0 mr-3" onClick={props.prev}>
-                <i className="fas fa-arrow-circle-left"></i>
-              </p>
-              <p className="nav-icon mb-0 mr-3" onClick={props.next}>
-                <i className="fas fa-arrow-circle-right"></i>
-              </p>
-
-              <p
-                className="nav-icon mb-0 mr-3"
-                onClick={(e) => props.handleView('edit')}
+              {/* Nav Icon -> Edit gig details */}
+              <OverlayTrigger
+                placement="bottom"
+                overlay={renderTooltip('Edit gig details')}
               >
-                <i className="fas fa-edit"></i>
-              </p>
+                <p
+                  className="nav-icon mb-0 mr-3"
+                  onClick={() => handleView('edit')}
+                >
+                  <i className="fas fa-edit"></i>
+                </p>
+              </OverlayTrigger>
 
-              <p
-                className="nav-icon mb-0"
-                onClick={(e) => props.handleView('report')}
+              {/* Nav Icon -> Edit Closing Numbers */}
+              <OverlayTrigger
+                placement="bottom"
+                overlay={renderTooltip(
+                  props.gig.closed
+                    ? 'Edit closing numbers'
+                    : 'Add closing numbers'
+                )}
               >
-                <i className="fas fa-dollar-sign"></i>
-              </p>
+                <p
+                  className="nav-icon mb-0 mr-3"
+                  onClick={() => handleView('report')}
+                >
+                  <i className="fas fa-chart-pie"></i>
+                </p>
+              </OverlayTrigger>
 
+              {/* Nav Icon -> View tour dates */}
+              <OverlayTrigger
+                placement="bottom"
+                overlay={renderTooltip('View tour dates')}
+              >
+                <p className="nav-icon mb-0" onClick={() => handleView('tour')}>
+                  <i className="fas fa-list"></i>
+                </p>
+              </OverlayTrigger>
             </div>
           )}
 
-          {/* Show add new gig button when in tour view */}
+          {/* If application is in tour view */}
           {props.view === 'tour' && (
             <div>
-              <p
-                className="nav-icon mb-0"
-                onClick={(e) => props.handleView('add')}
+              {/* Nav Icon -> Add new gig */}
+              <OverlayTrigger
+                placement="bottom"
+                overlay={renderTooltip('Add New Gig')}
               >
-                <i className="fas fa-plus"></i>
-              </p>
+                <p className="nav-icon mb-0" onClick={() => handleView('add')}>
+                  <i className="fas fa-plus"></i>
+                </p>
+              </OverlayTrigger>
             </div>
           )}
 
-          {/* Show close icon when in either add or edit view */}
-          {(props.view === 'add' || props.view === 'edit') && (
+          {/* If application is in any variant of form view */}
+          {(props.view === 'add' ||
+            props.view === 'edit' ||
+            props.view === 'report') && (
             <div>
               <p className="nav-icon mb-0" onClick={handleShow}>
                 <i className="far fa-window-close"></i>

@@ -29,7 +29,6 @@ export default function Tour(props) {
                 {/* If API has returned a full gigs array to the Dashboard component */}
                 {props.gigs.length ? (
                   <ListGroup key="tour">
-
                     {/* Map over gigs array and create a new block for each gig */}
                     {props.gigs.map((gig, index) => {
                       const timeArr = gig.schedule[3].timeString.split(' ');
@@ -42,12 +41,19 @@ export default function Tour(props) {
                         >
                           <div className="row">
 
-                            {/* Date + Location */}
+                            {/* Date */}
                             <div className="col-12 col-md-8 mx-auto">
                               <p className="small-heading pt-2 mb-1">
                                 <i className="fas fa-calendar mr-2"></i>
                                 {props.handleDate(gig.date)}
+
+                                {/* If gig has closing numbers, display green check */}
+                                {gig.closed && (
+                                  <i className="fas fa-check text-success ml-2"></i>
+                                )}
                               </p>
+
+                              {/* Location */}
                               <p className="list-item mb-1 d-lg-inline-block">
                                 {`${gig.venue.city}, ${gig.venue.state}. `}
                                 <span className="d-block d-lg-inline-block">{`@ ${gig.venue.name}`}</span>
@@ -79,9 +85,10 @@ export default function Tour(props) {
                                 onClick={(event) => {
                                   if (props.gigs.length) {
                                     props.handleSelect(event);
-
                                   } else {
-                                    toast.error('Oh no! Something went wrong. Try again!');
+                                    toast.error(
+                                      'Oh no! Something went wrong. Try again!'
+                                    );
                                   }
                                 }}
                               >

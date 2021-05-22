@@ -29,6 +29,10 @@
 .info-text {
   &-main {
     font-size: 1.5rem;
+
+    @media screen and (max-width: $small) {
+      font-size: 1.25rem;
+    }
   }
 
   &-sub {
@@ -47,7 +51,7 @@
 }
 
 .list-group-item {
-  border-radius: .25rem;
+  border-radius: 0.25rem;
   margin: 10px 0;
 
   &:nth-child(odd) {
@@ -66,12 +70,12 @@
     font-size: 1.5rem;
 
     @media screen and (max-width: $small) {
-       font-size: 1.3rem;
+      font-size: 1.3rem;
     }
-  
+
     @media screen and (min-width: $small) and (max-width: $medium) {
       font-size: 1.75rem;
-    } 
+    }
   }
 }
 

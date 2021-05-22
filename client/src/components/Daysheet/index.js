@@ -23,14 +23,14 @@ export default function Daysheet(props) {
   const hasNoAmenities = amenities.every((amenity) => !amenity.value);
 
   // Create query string for making request to Google Maps API
-  const mapQuery = `${gig.street} ${gig.city}, ${gig.state} ${gig.zip}`;
+  const mapQuery = `${gig.venue.street} ${gig.venue.city}, ${gig.venue.state} ${gig.venue.zip}`;
 
   return (
     <div className="info-container">
       {/* Date */}
       <div className="info-item">
         <p className="h5 mb-1 small-heading">
-          {/* <i className="far fa-calendar mr-2"></i> */}
+          <i className="far fa-calendar mr-2"></i>
           Today
         </p>
         <p className="info-text-main">{props.handleDate(gig.date)}</p>
@@ -39,7 +39,7 @@ export default function Daysheet(props) {
       {/* Location */}
       <div className="info-item">
         <p className="h5 mb-1 small-heading">
-          {/* <i className="fas fa-map-marker-alt mr-2"></i> */}
+          <i className="fas fa-map-marker-alt mr-2"></i>
           Location
         </p>
         <p className="info-text-main">{`${gig.venue.city}, ${gig.venue.state}.`}</p>
@@ -48,7 +48,7 @@ export default function Daysheet(props) {
       {/* Tonight's show and location */}
       <div className="info-item">
         <p className="h5 mb-1 small-heading">
-          {/* <i className="fas fa-headphones-alt mr-2"></i> */}
+          <i className="fas fa-headphones-alt mr-2"></i>
           Venue
         </p>
         <p className="info-text-main mb-1">{gig.venue.name}</p>
@@ -65,16 +65,24 @@ export default function Daysheet(props) {
       {/* Promoter + Contact Email */}
       <div className="info-item">
         <p className="h5 mb-1 small-heading">
-          {/* <i className="fas fa-headphones-alt mr-2"></i> */}
+          <i className="far fa-id-card mr-2"></i>
           Promoter
         </p>
         <p className="info-text-main mb-1">{gig.venue.promoter}</p>
-        <a className="info-text-sub info-link mb-1" href={`mailto:${gig.venue.email}`}>{gig.venue.email}</a>
+        <a
+          className="info-text-sub info-link mb-1"
+          href={`mailto:${gig.venue.email}`}
+        >
+          {gig.venue.email}
+        </a>
       </div>
 
       {/* Amenity badges */}
       <div className="info-item">
-        <p className="h5 mb-3 small-heading">Amenities</p>
+        <p className="h5 mb-3 small-heading">
+          <i className="fas fa-concierge-bell mr-2"></i>
+          Amenities
+        </p>
         <div className="row">
           <div className="col-12">
             <ListGroup key="amenities" variant="flush">

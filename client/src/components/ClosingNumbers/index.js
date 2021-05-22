@@ -20,12 +20,10 @@ export default function ClosingNumbers(props) {
   function colorPercentCap() {
     if (percentCap >= 80) {
       return 'bg-success text-dark rounded';
-
     } else if (percentCap < 80 && percentCap >= 50) {
       return 'bg-warning text-dark rounded';
-
     } else if (percentCap < 50) {
-      return 'bg-danger rounded'
+      return 'bg-danger rounded';
     }
   }
 
@@ -38,10 +36,8 @@ export default function ClosingNumbers(props) {
   function colorPerHead() {
     if (merchPerHead >= 1) {
       return 'bg-success text-dark rounded';
-
     } else if (merchPerHead < 1 && merchPerHead > 0.75) {
       return 'bg-warning text-dark rounded';
-
     } else if (percentCap < 0.75) {
       return 'bg-danger rounded';
     }
@@ -78,9 +74,12 @@ export default function ClosingNumbers(props) {
   return (
     <div>
       {/* Attendance Breakdown */}
-      <div className="info-item row">
+      <div className="info-item row pb-5">
         <div className="col-12">
-          <p className="h5 mb-1 small-heading">Attendance</p>
+          <p className="h5 mb-1 small-heading">
+            <i className="fas fa-users mr-2"></i>
+            Attendance
+          </p>
         </div>
 
         {/* Labels */}
@@ -114,9 +113,12 @@ export default function ClosingNumbers(props) {
       </div>
 
       {/* Merch Revenue */}
-      <div className="info-item row">
+      <div className="info-item row pb-5">
         <div className="col-12">
-          <p className="h5 mb-1 small-heading">Merchandise</p>
+          <p className="h5 mb-1 small-heading">
+            <i className="fas fa-record-vinyl mr-2"></i>
+            Merchandise
+          </p>
         </div>
 
         {/* Labels */}
@@ -128,7 +130,9 @@ export default function ClosingNumbers(props) {
 
         {/* Values */}
         <div className="col-5">
-          <p className="info-text-main px-2 mb-0">{`${getPercentage(split)}%`}</p>
+          <p className="info-text-main px-2 mb-0">{`${getPercentage(
+            split
+          )}%`}</p>
           <p className="info-text-main px-2 mb-0">{`$${getDecimals(gross)}`}</p>
           <p className="info-text-main px-2 mb-0">{`$${venueCut}`}</p>
           <hr />
@@ -140,15 +144,22 @@ export default function ClosingNumbers(props) {
           <p className="info-text-main mb-0">Per Head</p>
         </div>
         <div className="col-5">
-          <p className="info-text-main px-2 mb-0">{`$${getDecimals(netMerch)}`}</p>
-          <p className={`info-text-main px-2 mb-0 ${colorPerHead()}`}>{`$${getDecimals(merchPerHead)}`}</p>
+          <p className="info-text-main px-2 mb-0">{`$${getDecimals(
+            netMerch
+          )}`}</p>
+          <p
+            className={`info-text-main px-2 mb-0 ${colorPerHead()}`}
+          >{`$${getDecimals(merchPerHead)}`}</p>
         </div>
       </div>
 
       {/* Net Revenue */}
-      <div className="info-item row">
+      <div className="info-item row pb-5">
         <div className="col-12">
-          <p className="h5 mb-1 small-heading">Net Revenue</p>
+          <p className="h5 mb-1 small-heading">
+            <i class="fas fa-comment-dollar mr-2"></i>
+            Net Revenue
+          </p>
         </div>
 
         {/* Labels */}
@@ -160,8 +171,12 @@ export default function ClosingNumbers(props) {
 
         {/* Values */}
         <div className="col-5">
-          <p className="info-text-main px-2 mb-0">{`$${getDecimals(guarantee)}`}</p>
-          <p className="info-text-main px-2 mb-0">{`$${getDecimals(netMerch)}`}</p>
+          <p className="info-text-main px-2 mb-0">{`$${getDecimals(
+            guarantee
+          )}`}</p>
+          <p className="info-text-main px-2 mb-0">{`$${getDecimals(
+            netMerch
+          )}`}</p>
           <p className="info-text-main px-2 mb-0">$0.00</p>
           <hr />
         </div>
@@ -171,7 +186,9 @@ export default function ClosingNumbers(props) {
           <p className="info-text-main mb-0">Net Revenue</p>
         </div>
         <div className="col-5">
-          <p className="info-text-main px-2 mb-0">{`$${getDecimals(netRevenue)}`}</p>
+          <p className="info-text-main px-2 mb-0">{`$${getDecimals(
+            netRevenue
+          )}`}</p>
         </div>
       </div>
     </div>

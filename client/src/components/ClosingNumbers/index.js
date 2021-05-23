@@ -7,8 +7,9 @@ import './index.scss';
 
 // Create and export ClosingNumbers component
 export default function ClosingNumbers(props) {
-  const { presale, doors, comps, guarantee } = props.gig.closingNumbers;
-  const { gross, split, soundscan } = props.gig.closingNumbers.merch;
+  // Destructure props
+  const { presale, doors, comps, guarantee, bonus } = props.gig.closingNumbers;
+  const { gross, split, scans, comped } = props.gig.closingNumbers.merch;
   const { capacity } = props.gig.venue;
 
   // Calculate attendance insights
@@ -17,7 +18,7 @@ export default function ClosingNumbers(props) {
   const percentCap = getPercentage(totalTickets, capacity);
 
   // Add semantic color class based to percent cap figure
-  function colorPercentCap() {
+  function paintPercentCap() {
     if (percentCap >= 80) {
       return 'bg-success text-dark rounded';
     } else if (percentCap < 80 && percentCap >= 50) {
@@ -32,26 +33,26 @@ export default function ClosingNumbers(props) {
   const netMerch = gross - venueCut;
   const merchPerHead = netMerch / totalAttendance;
 
+  // Calculate venue cut of merch revenue
+  function getVenueCut() {
+    let venueSplit = (100 - split) / 100;
+    let venueCut = (gross * venueSplit).toFixed(2);
+    return venueCut;
+  }
+
   // Add semantic color class to per head figure
-  function colorPerHead() {
+  function paintMerchPerHead() {
     if (merchPerHead >= 1) {
       return 'bg-success text-dark rounded';
     } else if (merchPerHead < 1 && merchPerHead > 0.75) {
       return 'bg-warning text-dark rounded';
-    } else if (percentCap < 0.75) {
+    } else if (merchPerHead < 0.75) {
       return 'bg-danger rounded';
     }
   }
 
   // Calculate net revnue
-  const netRevenue = guarantee + netMerch;
-
-  // Helper -> Calculate venue's cut of merch revenue
-  function getVenueCut() {
-    let venueSplit = (1 - split).toFixed(2);
-    let venueCut = (gross * venueSplit).toFixed(2);
-    return venueCut;
-  }
+  const netRevenue = guarantee + netMerch + bonus;
 
   // Helper -> Set decimal places
   function getDecimals(num) {
@@ -101,13 +102,15 @@ export default function ClosingNumbers(props) {
 
         {/* Insights */}
         <div className="col-7">
-          <p className="info-text-main mb-0">Total</p>
+          <p className="info-text-main mb-0">Total Heads</p>
+          <p className="info-text-main mb-0">Total Tickets</p>
           <p className="info-text-main mb-0">% Cap</p>
         </div>
         <div className="col-5">
           <p className="info-text-main px-2 mb-0">{totalAttendance}</p>
+          <p className="info-text-main px-2 mb-0">{totalTickets}</p>
           <p
-            className={`info-text-main px-2 mb-0 ${colorPercentCap()}`}
+            className={`info-text-main px-2 mb-0 ${paintPercentCap()}`}
           >{`${percentCap}%`}</p>
         </div>
       </div>
@@ -130,9 +133,7 @@ export default function ClosingNumbers(props) {
 
         {/* Values */}
         <div className="col-5">
-          <p className="info-text-main px-2 mb-0">{`${getPercentage(
-            split
-          )}%`}</p>
+          <p className="info-text-main px-2 mb-0">{`${split}%`}</p>
           <p className="info-text-main px-2 mb-0">{`$${getDecimals(gross)}`}</p>
           <p className="info-text-main px-2 mb-0">{`$${venueCut}`}</p>
           <hr />
@@ -148,7 +149,7 @@ export default function ClosingNumbers(props) {
             netMerch
           )}`}</p>
           <p
-            className={`info-text-main px-2 mb-0 ${colorPerHead()}`}
+            className={`info-text-main px-2 mb-0 ${paintMerchPerHead()}`}
           >{`$${getDecimals(merchPerHead)}`}</p>
         </div>
       </div>
@@ -157,7 +158,7 @@ export default function ClosingNumbers(props) {
       <div className="info-item row pb-5">
         <div className="col-12">
           <p className="h5 mb-1 small-heading">
-            <i class="fas fa-comment-dollar mr-2"></i>
+            <i className="fas fa-comment-dollar mr-2"></i>
             Net Revenue
           </p>
         </div>
@@ -177,7 +178,7 @@ export default function ClosingNumbers(props) {
           <p className="info-text-main px-2 mb-0">{`$${getDecimals(
             netMerch
           )}`}</p>
-          <p className="info-text-main px-2 mb-0">$0.00</p>
+          <p className="info-text-main px-2 mb-0">{`$${getDecimals(bonus)}`}</p>
           <hr />
         </div>
 
@@ -186,7 +187,7 @@ export default function ClosingNumbers(props) {
           <p className="info-text-main mb-0">Net Revenue</p>
         </div>
         <div className="col-5">
-          <p className="info-text-main px-2 mb-0">{`$${getDecimals(
+          <p className="info-text-main px-2 mb-0 bg-success text-dark">{`$${getDecimals(
             netRevenue
           )}`}</p>
         </div>

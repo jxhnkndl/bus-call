@@ -48,19 +48,19 @@ export default function ClosingForm(props) {
 
     // Convert strings to numbers 
     if (name === 'split') {
-      merch.split = value * 1;
+      merch.split = value;
     }
 
     if (name === 'gross') {
-      merch.gross = value * 1;
+      merch.gross = value;
     }
 
     if (name === 'scans') {
-      merch.scans = value * 1;
+      merch.scans = value;
     }
 
     if (name === 'comped') {
-      merch.comped = value * 1;
+      merch.comped = value;
     }
 
     // Reset form object with input values
@@ -68,7 +68,8 @@ export default function ClosingForm(props) {
       ...formObj,
       closingNumbers: {
         ...closingNumbers,
-        [name]: value * 1
+        // [name]: value * 1,
+        [name]: value
       },
     });
   };
@@ -116,7 +117,7 @@ export default function ClosingForm(props) {
                           <Form.Label>Presale</Form.Label>
                           <Form.Control
                             name="presale"
-                            type="text"
+                            type="number"
                             tabIndex="1"
                             placeholder="Enter Presale Count"
                             value={formObj.closingNumbers.presale}
@@ -131,7 +132,7 @@ export default function ClosingForm(props) {
                           <Form.Label>Doors</Form.Label>
                           <Form.Control
                             name="doors"
-                            type="text"
+                            type="number"
                             tabIndex="2"
                             placeholder="Enter Door Count"
                             value={formObj.closingNumbers.doors}
@@ -146,7 +147,7 @@ export default function ClosingForm(props) {
                           <Form.Label>Comps</Form.Label>
                           <Form.Control
                             name="comps"
-                            type="text"
+                            type="number"
                             tabIndex="3"
                             placeholder="Enter Comp Count"
                             value={formObj.closingNumbers.comps}
@@ -170,7 +171,7 @@ export default function ClosingForm(props) {
                           <Form.Label>Performance Guarantee</Form.Label>
                           <Form.Control
                             name="guarantee"
-                            type="text"
+                            type="number"
                             tabIndex="4"
                             placeholder="Enter Guarantee"
                             value={formObj.closingNumbers.guarantee}
@@ -185,7 +186,7 @@ export default function ClosingForm(props) {
                           <Form.Label>Gross Merch Revenue</Form.Label>
                           <Form.Control
                             name="gross"
-                            type="text"
+                            type="number"
                             tabIndex="5"
                             placeholder="Enter Gross Merch Revenue"
                             value={formObj.closingNumbers.merch.gross}
@@ -200,7 +201,7 @@ export default function ClosingForm(props) {
                           <Form.Label>Performance Bonus</Form.Label>
                           <Form.Control
                             name="bonus"
-                            type="text"
+                            type="number"
                             tabIndex="6"
                             placeholder="Enter Bonus"
                             value={formObj.closingNumbers.bonus}
@@ -224,7 +225,7 @@ export default function ClosingForm(props) {
                           <Form.Label>Artist Split</Form.Label>
                           <Form.Control
                             name="split"
-                            type="text"
+                            type="number"
                             tabIndex="7"
                             placeholder="Enter Artist Split"
                             value={formObj.closingNumbers.merch.split}
@@ -239,7 +240,7 @@ export default function ClosingForm(props) {
                           <Form.Label>Comped Merch</Form.Label>
                           <Form.Control
                             name="comped"
-                            type="text"
+                            type="number"
                             tabIndex="8"
                             placeholder="Enter Total Comped"
                             value={formObj.closingNumbers.merch.comped}
@@ -254,7 +255,7 @@ export default function ClosingForm(props) {
                           <Form.Label>Soundscans</Form.Label>
                           <Form.Control
                             name="scans"
-                            type="text"
+                            type="number"
                             tabIndex="9"
                             placeholder="Enter Total Scans"
                             value={formObj.closingNumbers.merch.scans}

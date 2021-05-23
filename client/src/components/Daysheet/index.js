@@ -52,6 +52,7 @@ export default function Daysheet(props) {
           Venue
         </p>
         <p className="info-text-main mb-1">{gig.venue.name}</p>
+        <p className="info-text-sub mb-1">{`Capacity: ${gig.venue.capacity}`}</p>
         <p className="info-text-sub mb-1">{gig.venue.street}</p>
         <p className="info-text-sub mb-1">{`${gig.venue.city}, ${gig.venue.state}. ${gig.venue.zip}`}</p>
         <iframe

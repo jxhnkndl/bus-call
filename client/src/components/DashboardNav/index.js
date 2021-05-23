@@ -157,6 +157,10 @@ export default function DashboardNav(props) {
         handleConfirm={(e) => {
           handleClose();
           props.handleView('tour');
+
+          props.view === 'report' || props.view === 'edit'
+            ? props.handleView('gig')
+            : props.handleView('tour');
         }}
         handleCancel={handleClose}
       />

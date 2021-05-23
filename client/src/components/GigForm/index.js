@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { emptyFormObj } from '../../utils/emptyFormObj';
 import { motion } from 'framer-motion';
-import { pageVariants, pageTransitions } from '../../utils/transitions'
+import { pageVariants, pageTransitions } from '../../utils/transitions';
 import { toast } from 'react-toastify';
 import API from '../../utils/API';
 import Button from 'react-bootstrap/Button';
@@ -225,7 +225,9 @@ export default function GigForm(props) {
     // returned to the client and reset the view
     setTimeout(() => {
       props.fetchGigs();
-      props.handleView('tour');
+      props.view === 'edit'
+        ? props.handleView('gig')
+        : props.handleView('tour');
     }, 250);
   };
 
@@ -251,7 +253,6 @@ export default function GigForm(props) {
 
               <Form>
                 <div className="row">
-
                   {/* Venue Name */}
                   <div className="col-12 col-md-6">
                     <Form.Group controlId="venueInputGroup">
@@ -534,7 +535,6 @@ export default function GigForm(props) {
                 {/* Submit Buttons */}
                 <div className="row pt-3">
                   <div className="col-12">
-
                     {/* Add gig */}
                     {props.view === 'add' && (
                       <Button
@@ -577,7 +577,7 @@ export default function GigForm(props) {
           </div>
 
           {/* Confirmation modal */}
-          <ConfirmModal 
+          <ConfirmModal
             show={show}
             message="Looks like you're deleting a gig. Are you sure you want to continue?"
             confirm={{ color: 'danger', message: 'Delete Gig' }}
@@ -585,7 +585,6 @@ export default function GigForm(props) {
             handleConfirm={deleteGig}
             handleCancel={handleClose}
           />
-
         </div>
       </section>
     </motion.div>

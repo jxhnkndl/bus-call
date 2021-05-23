@@ -8,12 +8,16 @@ import { emptyFormObj } from './emptyFormObj';
 export default function formatObj(obj, view) {
   let isClosed = false;
 
+  // Set gig's closed field to true if a view argument is provided
   if (view) {
     isClosed = true;
   }
 
+  // Format date to account for GMT offset
+  const adjustedDate = dayjs(new Date(obj.date)).add(12, 'hour').format('YYYY-MM-DD');
+
   return {
-    date: dayjs(obj.date).format('MM-DD-YYYY'),
+    date: adjustedDate,
     closed: isClosed,
     venue: {
       name: obj.venue.name,

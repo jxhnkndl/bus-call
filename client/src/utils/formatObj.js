@@ -9,7 +9,7 @@ export default function formatObj(obj, view) {
   let isClosed = false;
 
   // Set gig's closed field to true if a view argument is provided
-  if (view) {
+  if (view || obj.closed) {
     isClosed = true;
   }
 

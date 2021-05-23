@@ -22,7 +22,7 @@ mongoose.connect(process.env.MONGODB_URI || localdb, {
 // Gigs collection seed
 const seed = [
   {
-    date: new Date('2021-10-23'),
+    date: new Date('10-23-2021'),
     closed: true,
     venue: {
       name: 'Bourbon Street Quarter',
@@ -83,13 +83,13 @@ const seed = [
       merch: {
         gross: 500.00,
         comped: 75.00,
-        split: 1.00,
+        split: 85,
         scans: 29
       }
     }
   },
   {
-    date: new Date('2021-10-24'),
+    date: new Date('10-24-2021'),
     closed: true,
     venue: {
       name: 'School of Rock',
@@ -150,14 +150,14 @@ const seed = [
       merch: {
         gross: 600.00,
         comped: 45.00,
-        split: 0.85,
+        split: 85,
         scans: 41
       }
     }
   },
   {
-    date: new Date('2021-10-25'),
-    closed: false,
+    date: new Date('10-25-2021'),
+    closed: true,
     venue: {
       name: 'Trocadero',
       street: '1003 Arch St.',
@@ -217,13 +217,13 @@ const seed = [
       merch: {
         gross: 1200.00,
         comped: 150.00,
-        split: 0.85,
+        split: 85,
         scans: 72
       }
     }
   },
   {
-    date: new Date('2021-10-27'),
+    date: new Date('10-27-2021'),
     closed: false,
     venue: {
       name: 'Gramercy Theatre',
@@ -276,21 +276,21 @@ const seed = [
       },
     ],
     closingNumbers: {
-      presale: 650,
+      presale: 0,
       doors: 0,
-      comps: 35,
-      guarantee: 750.00,
-      bonus: 250.00,
+      comps: 0,
+      guarantee: 0,
+      bonus: 0,
       merch: {
-        gross: 1200.00,
-        comped: 150.00,
-        split: 0.85,
-        scans: 72
+        gross: 0,
+        comped: 0,
+        split: 0,
+        scans: 0
       }
     }
   },
   {
-    date: new Date('2021-10-28'),
+    date: new Date('10-28-2021'),
     closed: false,
     venue: {
       name: 'Harpers Ferry',
@@ -343,16 +343,16 @@ const seed = [
       },
     ],
     closingNumbers: {
-      presale: 181,
-      doors: 43,
-      comps: 29,
-      guarantee: 750.00,
+      presale: 0,
+      doors: 0,
+      comps: 0,
+      guarantee: 0,
       bonus: 0,
       merch: {
-        gross: 350.00,
-        comped: 25.00,
-        split: 1.00,
-        scans: 19
+        gross: 0,
+        comped: 0,
+        split: 0,
+        scans: 0
       }
     }
   }

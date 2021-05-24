@@ -1,5 +1,5 @@
 // Import dependencies
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { pageVariants, pageTransitions } from '../../utils/transitions';
 import CardBody from '../CardBody';
@@ -9,7 +9,11 @@ import StageSchedule from '../StageSchedule';
 
 // Create and export Gig component
 export default function Gig(props) {
-  console.log(props.gig);
+
+  // Reset window position to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <motion.div

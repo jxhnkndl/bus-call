@@ -1,5 +1,5 @@
 // Import dependencies
-import React from 'react';
+import React, { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { pageVariants, pageTransitions } from '../../utils/transitions';
 import { toast } from 'react-toastify';
@@ -10,6 +10,12 @@ import ListGroupItem from 'react-bootstrap/ListGroupItem';
 
 // Create and export Tour component
 export default function Tour(props) {
+
+  // Reset window position to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <motion.div
       initial="initial"

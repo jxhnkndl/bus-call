@@ -29,7 +29,7 @@ Visit the deployed application here: [Bus Call](https://bus-call.herokuapp.com/)
 
 Taking a rock band on tour is no small venture. Between hiring and managing tour crew, coordinating travel and concert details for dozens of shows at a time, and keeping everyone in sync when information changes, it's easy for artists and tour managers to get overwhelmed by the task of keeping the buses running on time. 
 
-That’s the point of **Bus Call** - it remembers the details so that you don’t have to. Created as a mobile-first web application, Bus Call is designed specifically for touring musicians and crew. Users can create and view tour dates, add and edit venue and show details, create virtual day sheets and stage schedules, and more. Users can view all of their schedule performances as an agency style tour routing or view individual concerts to access details. Rather than trying to distribute information through unstructured group texts, email chains, creating and recreating bulky PDF documents or physical tour books, or word of mouth, simply update gig details in the database and the changes will be immediately available to everyone else on your team. 
+That’s the point of **Bus Call** - it remembers the details so that you don’t have to. Created as a mobile-first web application, Bus Call is designed specifically for touring musicians and crew. Users can create and view tour dates, add and edit venue and show details, create virtual day sheets and stage schedules, log closing numbers, generate performance metrics, and more. Users can view all of their schedule performances as an agency style tour routing or view individual concerts to access details, schedules, and closing numbers. Rather than trying to distribute information through unstructured group texts, email chains, creating and recreating bulky PDF documents or physical tour books, or word of mouth, simply update gig details in the database and the changes will be immediately available to everyone else on your team. 
 
 You play the shows. We'll handle the details. Get started today to make sure no one on in your tour family ever misses bus call again.
 
@@ -38,7 +38,8 @@ You play the shows. We'll handle the details. Get started today to make sure no 
 
 - React
 - React-Bootstrap
-- Sass/CSS
+- Sass
+- CSS
 - Node.js
 - Express
 - MongoDB
@@ -114,29 +115,53 @@ Note that both authentication strategies leverage Auth0's respected, versatile, 
 
 ## Usage
 
-**Viewing Gigs**  
-Gigs can be viewed in one of two ways. In **tour view**, gigs are displayed similar to how a venue would display a calendar of upcoming events. This view is also representative of the type of tour itineraries a booking agency provides a tour manage prior to advancing the dates. Alternatively, **gig view** can be used to isolate a specific show and view information about the venue and the amenities it provides, capacity and presale ticket figures, and the gig's stage schedule.  
+**Tour View & Gig Types**  
+On login, gigs are initially loaded in **tour view**. This view is representative of the way tour itineraries provided by an artist's booking agency or management are typically formatted.  
 
-<img src="assets/navigation.gif" alt="Navigating the user interface" width="800">  
-<br>
+Bus Call sorts gigs into two categories: **upcoming gigs** that are yet to be played and **closed gigs** that have been played already. Green check marks in either **tour view** or **gig view** indicate that a gig has been completed and closing numbers have been added.  
+
+**Gig View**  
+Clicking on a gig's details button toggles the application into **gig view**. Gig view lays out details, schedules, and data that an artist or crew member relies on to make sure they're prepared to be wherever they're supposed to be.  
+
+If a gig is still upcoming, gig view will contain the gig's day sheet and stage schedule.  
+
+<img src="assets/view-upcoming-gig.gif" alt="Viewing an upcoming gig's details" width="800">  
+<br>  
+<br>  
+  
+Alternatively, if a gig has been closed, gig view view will contain the gig's day sheet, closing numbers, and automatically generated gig insights.
+  
+<img src="assets/view-closed-gig.gif" alt="Viewing a closed gig's details" width="800">  
+<br>  
+<br>  
 
 **Adding Gigs**  
 New gigs can be added by either clicking the **plus icon** in the dashboard navbar or by selecting **Add Gig** from the options menu. Bus Call intuitively auto-populates the artist inputs and the stage schedule time blocks with the last values provided by the user (a helpful feature for adding multiple shows on the same tour). Users can specify these values when adding a gig or come back and update them later. The application will alert the user if a required field has been left blank on submission.  
 
 <img src="assets/add-gig.gif" alt="Adding a new gig" width="800">  
-<br>
+<br>  
+<br>  
 
 **Updating Gigs**  
 One of the most important features of Bus Call is how easy it makes the process of updating a gig's details when something changes. Users can edit a gig using the **edit icon** in gig view or by selected **Edit Gig** from the options menu in the dashboard navbar. Bus Call will auto-populate the form with the selected gig's details allowing the user to simply update the desired fields and save. The changes will be immediately visible when the user returns to either tour view or gig view.  
 
 <img src="assets/update-gig.gif" alt="Updating a gig" width="800">  
-<br>
+<br>  
+<br>  
+
+**Closing Gigs**  
+Just as it's important for an artist's touring crew to stay on the same page heading into each performance, it's equally important that the artist's business team has access to each gig's closing numbers. To close a gig, click on the **pie chart icon** in gig view. Use the closing form to add final event attendance and ticket counts, performance guarantee and bonus terms, merchandise revenue, and soundscan tallies. Bus Call will automatically calculate, evaluate, and display key performance metrics include the gig's final attendance as a percentage of venue capacity, merchandise revenue in terms of dollars per head, artist and venue cuts of merchandise revenue, and the artist's final net takeaway.  
+
+<img src="assets/close-gig.gif" alt="Closing a gig" width="800">  
+<br>  
+<br>  
 
 **Deleting Gigs**  
 No artist ever likes to cancel a show but sometimes it happens. Bus Call wants to make that process as painless as it can. Find the canceled gig and open the editor. Click the delete button in the form and confirm the deletion in the modal. Both tour view and gig view will immediately reflect the changes.  
 
 <img src="assets/delete-gig.gif" alt="Deleting a gig" width="800">  
-<br>
+<br>  
+<br>  
 
 ## Build
 

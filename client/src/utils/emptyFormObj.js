@@ -8,7 +8,7 @@ export const emptyFormObj = {
     city: '',
     state: '',
     zip: '',
-    capacity: 0,
+    capacity: '',
     promoter: '',
     email: ''
   },
@@ -38,7 +38,7 @@ export const emptyFormObj = {
     merch: {
       gross: 0,
       comped: 0,
-      split: 1.00,
+      split: 100,
       scans: 0
     }
   }

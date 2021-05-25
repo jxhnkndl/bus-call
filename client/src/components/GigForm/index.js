@@ -260,7 +260,6 @@ export default function GigForm(props) {
                       <Form.Control
                         name="name"
                         type="text"
-                        placeholder="Enter Venue Name"
                         value={formObj.venue.name}
                         onChange={handleInputChange}
                       />
@@ -274,7 +273,6 @@ export default function GigForm(props) {
                       <Form.Control
                         name="street"
                         type="text"
-                        placeholder="Enter Street Address"
                         value={formObj.venue.street}
                         onChange={handleInputChange}
                       />
@@ -288,7 +286,6 @@ export default function GigForm(props) {
                       <Form.Control
                         name="city"
                         type="text"
-                        placeholder="Enter City"
                         value={formObj.venue.city}
                         onChange={handleInputChange}
                       />
@@ -302,7 +299,6 @@ export default function GigForm(props) {
                       <Form.Control
                         name="state"
                         type="text"
-                        placeholder="Enter State"
                         value={formObj.venue.state}
                         onChange={handleInputChange}
                       />
@@ -316,7 +312,6 @@ export default function GigForm(props) {
                       <Form.Control
                         name="zip"
                         type="text"
-                        placeholder="Enter Zip"
                         value={formObj.venue.zip}
                         onChange={handleInputChange}
                       />
@@ -330,7 +325,6 @@ export default function GigForm(props) {
                       <Form.Control
                         name="promoter"
                         type="text"
-                        placeholder="Enter Promoter"
                         value={formObj.venue.promoter}
                         onChange={handleInputChange}
                       />
@@ -344,7 +338,6 @@ export default function GigForm(props) {
                       <Form.Control
                         name="email"
                         type="email"
-                        placeholder="Enter Email"
                         value={formObj.venue.email}
                         onChange={handleInputChange}
                       />
@@ -358,7 +351,6 @@ export default function GigForm(props) {
                       <Form.Control
                         name="capacity"
                         type="text"
-                        placeholder="Enter Capacity"
                         value={formObj.venue.capacity}
                         onChange={handleInputChange}
                       />
@@ -372,7 +364,6 @@ export default function GigForm(props) {
                       <Form.Control
                         name="date"
                         type="date"
-                        placeholder="Enter Date"
                         value={formObj.date}
                         onChange={handleInputChange}
                       />
@@ -418,7 +409,6 @@ export default function GigForm(props) {
                         name="headliner"
                         data-index={6}
                         type="text"
-                        placeholder="Enter Headliner"
                         value={formObj.schedule[6].event}
                         onChange={handleArtist}
                         onSubmit={() =>
@@ -439,7 +429,6 @@ export default function GigForm(props) {
                         name="direct"
                         data-index={5}
                         type="text"
-                        placeholder="Enter Direct"
                         value={formObj.schedule[5].event}
                         onChange={handleArtist}
                         onSubmit={() =>
@@ -460,7 +449,6 @@ export default function GigForm(props) {
                         name="second"
                         data-index={4}
                         type="text"
-                        placeholder="Enter Second"
                         value={formObj.schedule[4].event}
                         onChange={handleArtist}
                         onSubmit={() =>
@@ -481,7 +469,6 @@ export default function GigForm(props) {
                         name="opener"
                         data-index={3}
                         type="text"
-                        placeholder="Enter Opener"
                         value={formObj.schedule[3].event}
                         onChange={handleArtist}
                         onSubmit={() =>
@@ -516,7 +503,6 @@ export default function GigForm(props) {
                             data-index={index}
                             name={block.event}
                             type="text"
-                            placeholder={`Enter ${stageBlocks[index].event} start time`}
                             value={block.timeString}
                             onChange={handleSchedule}
                             onSubmit={() =>

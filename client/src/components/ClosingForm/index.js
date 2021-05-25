@@ -119,7 +119,6 @@ export default function ClosingForm(props) {
                             name="presale"
                             type="number"
                             tabIndex="1"
-                            placeholder="Enter Presale Count"
                             value={formObj.closingNumbers.presale}
                             onChange={handleInputChange}
                           />
@@ -134,7 +133,6 @@ export default function ClosingForm(props) {
                             name="doors"
                             type="number"
                             tabIndex="2"
-                            placeholder="Enter Door Count"
                             value={formObj.closingNumbers.doors}
                             onChange={handleInputChange}
                           />
@@ -149,7 +147,6 @@ export default function ClosingForm(props) {
                             name="comps"
                             type="number"
                             tabIndex="3"
-                            placeholder="Enter Comp Count"
                             value={formObj.closingNumbers.comps}
                             onChange={handleInputChange}
                           />
@@ -173,7 +170,6 @@ export default function ClosingForm(props) {
                             name="guarantee"
                             type="number"
                             tabIndex="4"
-                            placeholder="Enter Guarantee"
                             value={formObj.closingNumbers.guarantee}
                             onChange={handleInputChange}
                           />
@@ -188,7 +184,6 @@ export default function ClosingForm(props) {
                             name="gross"
                             type="number"
                             tabIndex="5"
-                            placeholder="Enter Gross Merch Revenue"
                             value={formObj.closingNumbers.merch.gross}
                             onChange={handleInputChange}
                           />
@@ -203,7 +198,6 @@ export default function ClosingForm(props) {
                             name="bonus"
                             type="number"
                             tabIndex="6"
-                            placeholder="Enter Bonus"
                             value={formObj.closingNumbers.bonus}
                             onChange={handleInputChange}
                           />
@@ -227,7 +221,6 @@ export default function ClosingForm(props) {
                             name="split"
                             type="number"
                             tabIndex="7"
-                            placeholder="Enter Artist Split"
                             value={formObj.closingNumbers.merch.split}
                             onChange={handleInputChange}
                           />
@@ -242,7 +235,6 @@ export default function ClosingForm(props) {
                             name="comped"
                             type="number"
                             tabIndex="8"
-                            placeholder="Enter Total Comped"
                             value={formObj.closingNumbers.merch.comped}
                             onChange={handleInputChange}
                           />
@@ -257,7 +249,6 @@ export default function ClosingForm(props) {
                             name="scans"
                             type="number"
                             tabIndex="9"
-                            placeholder="Enter Total Scans"
                             value={formObj.closingNumbers.merch.scans}
                             onChange={handleInputChange}
                           />
@@ -266,7 +257,7 @@ export default function ClosingForm(props) {
                     </div>
                   </div>
 
-
+                  {/* Submit Bitton */}
                   <div className="col-12">
                     <Button
                       type="submit"
@@ -278,8 +269,6 @@ export default function ClosingForm(props) {
                       Update Gig
                     </Button>
                   </div>
-
-
                 </div>
               </Form>
             </CardBody>

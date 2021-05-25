@@ -37,7 +37,7 @@ const gigSchema = new Schema({
     merch: {
       gross: { type: Number, default: 0 },
       comped: { type: Number, default: 0 },
-      split: { type: Number, default: 0 },
+      split: { type: Number, default: 100 },
       scans: { type: Number, default: 0 }
     }
   }

@@ -126,27 +126,23 @@ Clicking on a gig's details button toggles the application into **gig view**. Gi
 If a gig is still upcoming, gig view will contain the gig's day sheet and stage schedule.  
 
 <img src="assets/view-upcoming-gig.gif" alt="Viewing an upcoming gig's details" width="800">  
-<br>  
-<br>  
+<br>   
   
 Alternatively, if a gig has been closed, gig view view will contain the gig's day sheet, closing numbers, and automatically generated gig insights.
   
 <img src="assets/view-closed-gig.gif" alt="Viewing a closed gig's details" width="800">  
-<br>  
 <br>  
 
 **Adding Gigs**  
 New gigs can be added by either clicking the **plus icon** in the dashboard navbar or by selecting **Add Gig** from the options menu. Bus Call intuitively auto-populates the artist inputs and the stage schedule time blocks with the last values provided by the user (a helpful feature for adding multiple shows on the same tour). Users can specify these values when adding a gig or come back and update them later. The application will alert the user if a required field has been left blank on submission.  
 
 <img src="assets/add-gig.gif" alt="Adding a new gig" width="800">  
-<br>  
-<br>  
+<br>    
 
 **Updating Gigs**  
 One of the most important features of Bus Call is how easy it makes the process of updating a gig's details when something changes. Users can edit a gig using the **edit icon** in gig view or by selected **Edit Gig** from the options menu in the dashboard navbar. Bus Call will auto-populate the form with the selected gig's details allowing the user to simply update the desired fields and save. The changes will be immediately visible when the user returns to either tour view or gig view.  
 
 <img src="assets/update-gig.gif" alt="Updating a gig" width="800">  
-<br>  
 <br>  
 
 **Closing Gigs**  
@@ -154,13 +150,11 @@ Just as it's important for an artist's touring crew to stay on the same page hea
 
 <img src="assets/close-gig.gif" alt="Closing a gig" width="800">  
 <br>  
-<br>  
 
 **Deleting Gigs**  
 No artist ever likes to cancel a show but sometimes it happens. Bus Call wants to make that process as painless as it can. Find the canceled gig and open the editor. Click the delete button in the form and confirm the deletion in the modal. Both tour view and gig view will immediately reflect the changes.  
 
 <img src="assets/delete-gig.gif" alt="Deleting a gig" width="800">  
-<br>  
 <br>  
 
 ## Build
